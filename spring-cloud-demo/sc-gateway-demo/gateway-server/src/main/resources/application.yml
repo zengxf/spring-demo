@@ -1,0 +1,14 @@
+server:
+  port: 8090
+
+logging:
+  level:
+    root: INFO
+
+ribbon:
+  eureka:
+   enabled: false
+
+test-baidu:
+  ribbon:
+    listOfServers: www.baidu.com, www.jd.com
