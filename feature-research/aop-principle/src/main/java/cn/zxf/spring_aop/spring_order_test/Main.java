@@ -14,18 +14,18 @@ public class Main {
 
         System.out.println( "----------------------" );
         service.add();
-        
+
         System.out.println( "----------------------" );
         System.out.println( "----------------------" );
         service.update( "zxf-01", "zxf-feng" );
-        
+
         System.out.println( "----------------------" );
         System.out.println( "----------------------" );
         try {
             service.error();
         } catch ( Exception e ) {
         }
-        
+
         System.out.println( "----------------------" );
         context.close();
     }

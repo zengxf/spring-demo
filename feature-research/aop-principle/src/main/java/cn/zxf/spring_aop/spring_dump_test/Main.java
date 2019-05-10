@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.springframework.cglib.core.DebuggingClassWriter;
+import net.sf.cglib.core.DebuggingClassWriter;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -27,8 +27,11 @@ public class Main {
     }
 
     static void setSavePath() throws URISyntaxException, IOException {
-        Path path = Paths.get( Main.class.getResource( "/" ).toURI() );
-        Path savePath = path.resolve( "../export/spring-aop-proxy" ).normalize().toAbsolutePath();
+        Path path = Paths.get( Main.class.getResource( "/" )
+                .toURI() );
+        Path savePath = path.resolve( "../export/spring-aop-proxy" )
+                .normalize()
+                .toAbsolutePath();
         Files.createDirectories( savePath );
 
         System.out.println( "class 存放路径：" );
