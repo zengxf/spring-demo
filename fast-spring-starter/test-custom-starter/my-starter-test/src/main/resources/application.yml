@@ -1,0 +1,8 @@
+server:
+  port: 9001
+
+example:
+  service:
+    enabled: true
+    prefix: '####'
+    suffix: '@@@@'
