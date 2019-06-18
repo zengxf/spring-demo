@@ -1,0 +1,1 @@
+INSERT INTO user (id, name, login_mobile, status, type) VALUE(1, 'f', 'xx', 1, 2);

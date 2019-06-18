@@ -1,0 +1,50 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 20
+          batch_versioned_data: true
+  shardingsphere:
+    props.sql.show: true # 显示 SQL
+    masterslave: # 读写分离配置
+      load-balance-algorithm-type: round_robin
+      name: dataSource
+      master-data-source-name: master
+      slave-data-source-names: slave
+    datasource:
+      names: master,slave
+      master: # 主数据源
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds_master?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        jdbcUrl: jdbc:mysql://localhost:3306/ds_master?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: abc
+      slave: # 从数据源
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds_slave?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        jdbcUrl: jdbc:mysql://localhost:3306/ds_slave?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: abc
+
+logging:
+  level:
+    root: INFO
+
+---
+spring:
+  profiles: init
+  datasource:
+    schema: sql/create-table.sql
+    data: sql/initialize-user.sql
+    initialization-mode: always
+    continue-on-error: false
