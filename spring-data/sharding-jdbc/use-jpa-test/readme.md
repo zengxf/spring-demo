@@ -7,3 +7,8 @@
 
 ## 主从
 - 写是主，读是从
+
+## 配置
+- 不需要 `driver-class-name`，会自动查找
+- `datasource` 下的配置，会自动调用对应的数据源，进行设置值
+  - 参考 `SpringBootConfiguration.getDataSource`
