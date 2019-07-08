@@ -1,0 +1,15 @@
+server:
+  port: 9001
+
+
+---
+spring:
+  profiles: test1
+server:
+  port: 9011
+
+---
+spring:
+  profiles: test2
+server:
+  port: 9012
