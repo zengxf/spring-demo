@@ -11,4 +11,4 @@
 - 设置密码时，字母和数字不能连用超过 2 位
 
 ## 问题
-- `@CacheConfig( cacheNames = "instruments-xx" )` 要设置，但没对应上也不会错
+- `@CacheConfig( cacheNames = "instruments-xx" )` 要设置，但没对应上也不会错。可当作 key
