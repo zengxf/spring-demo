@@ -1,0 +1,22 @@
+rocketmq:
+  name-server: 192.168.1.117:9876
+  producer:
+    group: my-group
+
+---
+spring:
+  profiles: producer
+server:
+  port: 9011
+
+---
+spring:
+  profiles: consumer1
+server:
+  port: 9021
+
+---
+spring:
+  profiles: consumer2
+server:
+  port: 9022
