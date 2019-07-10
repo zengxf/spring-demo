@@ -6,7 +6,6 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
     }
 }
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
@@ -21,16 +20,14 @@ repositories {
 
 dependencies { 
 
-// spring 
-	// web
+	// spring 
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp'
 	
-	
-// lombok
+	// lombok
 	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.12'
 
-// test
+	// test
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 
 }
