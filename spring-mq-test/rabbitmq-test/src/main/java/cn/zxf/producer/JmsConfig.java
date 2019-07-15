@@ -1,5 +1,7 @@
 package cn.zxf.producer;
 
+import java.util.List;
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,7 +14,17 @@ public class JmsConfig {
 
     @Bean
     public Queue testObjQueue() {
-        return new Queue( "test-obj" );
+        return new Queue( "test-obj-001" );
+    }
+
+    // 此配置没用
+    @Bean
+    public List<Queue> listQueue() {
+        return List.of( //
+                new Queue( "test-list-1" ), //
+                new Queue( "test-list-2" ), //
+                new Queue( "test-list-3" ) //
+        );
     }
 
     @Bean

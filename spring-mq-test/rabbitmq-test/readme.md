@@ -1,5 +1,8 @@
 # RabbitMQ 测试
 
+## 参考
+- [理解 RabbitMQ Exchange](https://zhuanlan.zhihu.com/p/37198933)
+
 ## Docker 部署
 - `docker run -it --rm --name rabbit --network host rabbitmq:3.7.16-management`
   - 设置密码 `-e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password`
