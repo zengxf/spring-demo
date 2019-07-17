@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.0.RELEASE'
 	id 'java'
 	id 'eclipse'
+    id "io.freefair.lombok" version "3.1.0"
 }
 apply plugin: 'io.spring.dependency-management'
 
@@ -9,7 +10,6 @@ sourceCompatibility = 11
 
 repositories {
 	mavenCentral()
-	// maven { url 'https://repo.spring.io/libs-snapshot' }
 	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
 }
 
