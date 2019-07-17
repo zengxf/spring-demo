@@ -8,7 +8,8 @@
   - 添加 JVM 参数：`-noverify`
 - AppCDS(Application Class Data Sharing)
   - 应用程序类数据共享
-  - OpenJDK 11 有
+  - OpenJDK 10 就有了
+  - JVM 参数：`-Xshare:dump -XX:+UseAppCDS -XX:SharedClassListFile=xx.txt XX:SharedArchiveFile=xx.jsa`
 - Thin Launcher
   - 使用 `spring-boot-thin-layout` 插件
 - 关闭 JMX
