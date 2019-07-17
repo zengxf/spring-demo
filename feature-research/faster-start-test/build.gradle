@@ -1,0 +1,41 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:1.0.15.RELEASE")
+    }
+}
+plugins {
+	id 'org.springframework.boot' version '2.1.0.RELEASE'
+	id 'java'
+	id 'eclipse'
+    id "io.freefair.lombok" version "3.1.0"
+}
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot.experimental.thin-launcher'
+
+sourceCompatibility = 11
+
+repositories {
+	mavenCentral()
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies { 
+	// spring 
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    annotationProcessor group: 'org.springframework', name: 'spring-context-indexer'
+    //testCompile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.26'
+
+	// lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+
+	// test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+configurations {
+    all {
+        //exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        //exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
+        exclude group: 'org.hibernate.validator', module: 'hibernate-validator'
+    }
+}

@@ -1,0 +1,21 @@
+# Spring 快速启动测试
+- WebMVC：WebFlux(`Netty`) 比 Web(`Tomcat`) 快
+- 添加 `spring-context-indexer` 依赖
+  - 生成的文件在 jar 里面的 `/BOOT-INF/classes/META-INF/spring.components`
+- Lazy Initialization
+  - 参考：`LazyInitialization` 类
+- No Verify
+  - 添加 JVM 参数：`-noverify`
+- AppCDS(Application Class Data Sharing)
+  - 应用程序类数据共享
+  - OpenJDK 11 有
+- Thin Launcher
+  - 使用 `spring-boot-thin-layout` 插件
+- 关闭 JMX
+  - 添加 JVM 参数：`-Dspring.jmx.enabled=false`
+- 排除 Logback
+  - `spring-boot-starter-logging`
+- 排除 JackSon
+  - `spring-boot-starter-json`
+- 排除 HibernateValidator
+  - `hibernate-validator`  
