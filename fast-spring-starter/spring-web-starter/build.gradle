@@ -14,7 +14,6 @@ repositories {
 }
 
 dependencies { 
-
 	// spring 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
@@ -24,5 +23,4 @@ dependencies {
 
 	// test
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-
 }

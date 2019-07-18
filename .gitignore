@@ -6,6 +6,7 @@ bin
 .classpath
 .project
 lombok.config
+out
 
 
 # Compiled class file
