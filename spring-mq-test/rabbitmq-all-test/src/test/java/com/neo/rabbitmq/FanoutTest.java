@@ -8,17 +8,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.neo.rabbit.fanout.FanoutSender;
 
-@RunWith(SpringRunner.class)
+@RunWith( SpringRunner.class )
 @SpringBootTest
 public class FanoutTest {
 
-	@Autowired
-	private FanoutSender sender;
+    @Autowired
+    private FanoutSender sender;
 
-	@Test
-	public void fanoutSender() throws Exception {
-		sender.send();
-	}
-
+    @Test
+    public void fanoutSender() throws Exception {
+        sender.send();
+    }
 
 }

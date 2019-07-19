@@ -6,12 +6,12 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "object")
+@RabbitListener( queues = "object" )
 public class ObjectReceiver {
 
     @RabbitHandler
-    public void process(User user) {
-        System.out.println("Receiver object : " + user);
+    public void process( User user ) {
+        System.out.println( "Receiver object : " + user );
     }
 
 }

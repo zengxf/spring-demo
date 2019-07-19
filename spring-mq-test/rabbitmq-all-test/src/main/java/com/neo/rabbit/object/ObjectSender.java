@@ -9,12 +9,12 @@ import com.neo.model.User;
 @Component
 public class ObjectSender {
 
-	@Autowired
-	private AmqpTemplate rabbitTemplate;
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
-	public void send(User user) {
-		System.out.println("Sender object: " + user.toString());
-		this.rabbitTemplate.convertAndSend("object", user);
-	}
+    public void send( User user ) {
+        System.out.println( "Sender object: " + user.toString() );
+        this.rabbitTemplate.convertAndSend( "object", user );
+    }
 
 }

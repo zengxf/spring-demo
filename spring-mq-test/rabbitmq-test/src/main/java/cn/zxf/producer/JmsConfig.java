@@ -14,11 +14,11 @@ public class JmsConfig {
 
     @Bean
     public Queue testObjQueue() {
-        return new Queue( "test-obj-001" );
+        return new Queue( "test-obj-002" );
     }
 
-    // 此配置没用
     @Bean
+    @Deprecated // 此配置没用
     public List<Queue> listQueue() {
         return List.of( //
                 new Queue( "test-list-1" ), //

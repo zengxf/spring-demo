@@ -1,7 +1,7 @@
 spring:
   rabbitmq:
     host: 120.25.93.177
-    port: xx
+    port: 5600
     username: root
     password: hunterplus123
 

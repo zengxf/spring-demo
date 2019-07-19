@@ -1,7 +1,6 @@
 package cn.zxf.consumer;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import cn.zxf.common.Email;
@@ -9,11 +8,14 @@ import cn.zxf.common.Email;
 @Component
 public class Receiver {
 
-    @Async
-    @RabbitListener( queues = "test-obj" )
-    public void receiveMessage( Email email ) {
-        System.out.println( Thread.currentThread()
-                .getName() + " => Received <" + email + ">" );
+    @RabbitListener( queues = "test-obj-001" )
+    public void receiveMessage1( Email email ) {
+        System.out.println( "test-1 => Received <" + email + ">" );
+    }
+
+    @RabbitListener( queues = "test-obj-001" )
+    public void receiveMessage2( Email email ) {
+        System.out.println( "test-2 => Received <" + email + ">" );
     }
 
 }
