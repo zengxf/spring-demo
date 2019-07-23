@@ -33,6 +33,24 @@ public class BizController {
         return "hello";
     }
 
+    // http://localhost:9011/api/biz/test-delay-2
+    @GetMapping( "test-delay-2" )
+    public String testDelay2() {
+        Email body = new Email( "zxf@s.cn", "== test == " + System.currentTimeMillis() % 1000 );
+        MessageProperties properties = new MessageProperties();
+        properties.setDelay( 5000 );
+
+        MessagePostProcessor processor = msg -> {
+            return rabbitTemplate.getMessageConverter()
+                    .toMessage( body, properties );
+        };
+
+        rabbitTemplate.convertAndSend( "test-delay-zxf", "", body, processor );
+        System.out.println( "[" + LocalTime.now() + "] send => " + body );
+
+        return "OK - " + body;
+    }
+
     // http://localhost:9011/api/biz/test-delay
     @Deprecated
     @GetMapping( "test-delay" )
@@ -53,24 +71,6 @@ public class BizController {
         Message message = new Message( json.getBytes(), properties );
         rabbitTemplate.send( "test-delay-zxf", "", message );
         return "OK - " + json;
-    }
-
-    // http://localhost:9011/api/biz/test-delay-2
-    @GetMapping( "test-delay-2" )
-    public String testDelay2() {
-        Email body = new Email( "zxf@s.cn", "== test == " + System.currentTimeMillis() % 1000 );
-        MessageProperties properties = new MessageProperties();
-        properties.setDelay( 5000 );
-
-        MessagePostProcessor processor = msg -> {
-            return rabbitTemplate.getMessageConverter()
-                    .toMessage( body, properties );
-        };
-
-        rabbitTemplate.convertAndSend( "test-delay-zxf", "", body, processor );
-        System.out.println( "[" + LocalTime.now() + "] send => " + body );
-
-        return "OK - " + body;
     }
 
 }
