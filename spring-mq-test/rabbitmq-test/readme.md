@@ -13,3 +13,7 @@
 ## 配置 JSON 序列化
 - 生产者需要配置序列化
 - 消费者需要配置反序列化
+
+## 权限
+- 创建用户 `zxf`
+- Set permission: `/` `test.*` `amq\.default|test.*` `amq\.default|test.*`
