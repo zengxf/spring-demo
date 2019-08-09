@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: server-b
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-interval: 15s
+
+---
+spring:
+  profiles: p02
+server:
+  port: 9002
+
+---
+spring:
+  profiles: p03
+server:
+  port: 9003
