@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    host: 120.25.93.177
+    port: 5600
+    username: zxf
+    password: a
+
+---
+spring:
+  profiles: producer
+server:
+  port: 9011
+
+---
+spring:
+  profiles: consumer1
+server:
+  port: 9021
+
+---
+spring:
+  profiles: consumer2
+server:
+  port: 9022

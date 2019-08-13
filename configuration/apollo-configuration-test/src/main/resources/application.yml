@@ -1,0 +1,10 @@
+server:
+  port: 9001
+
+app:
+  id: test
+apollo:
+  # meta: http://127.0.0.1:8080
+  cluster: test-cluster
+  bootstrap:
+    enabled: true
