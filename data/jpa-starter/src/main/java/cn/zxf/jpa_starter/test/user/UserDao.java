@@ -3,6 +3,7 @@ package cn.zxf.jpa_starter.test.user;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,22 +11,34 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserDao {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private EntityManager                entityManager;
     @Autowired
-    private JdbcTemplate  jdbc;
+    private JdbcTemplate                 jdbc;
+    @Autowired
+    protected NamedParameterJdbcTemplate namedJdbc;
 
     public Object findOneOnlyColumn( Integer id ) {
         String sql = "SELECT id, status FROM user WHERE id = ?1";
         return entityManager.createNativeQuery( sql )
                 .setParameter( 1, id )
                 .getSingleResult();
+    }
+
+    public List<User> findList( String name ) {
+        String sql = "SELECT * FROM user u WHERE u.name like :u.name";
+        RowMapper<User> rm = BeanPropertyRowMapper.newInstance( User.class );
+        List<User> list = namedJdbc.query( sql, Map.of( "u.name", "%" + name + "%" ), rm );
+        return list;
     }
 
     public User findOneOnlyColumnA( Integer id ) {
@@ -69,8 +82,8 @@ public class UserDao {
             @Override
             public void setValues( PreparedStatement ps, int i ) throws SQLException {
                 User user = list.get( i );
-                ps.setObject( 1, user.loginMobile() );
-                ps.setObject( 2, user.name() );
+                ps.setObject( 1, user.getLoginMobile() );
+                ps.setObject( 2, user.getName() );
             }
 
             @Override

@@ -43,8 +43,8 @@ public class TestUserBatchInsert {
     private List<User> data() {
         List<User> list = Stream.of( 23, 34, 45, 65, 76 )
                 .map( i -> new User() //
-                        .name( "zxf-batch-" + i )
-                        .loginMobile( "166-batch-" + i ) //
+                        .setName( "zxf-batch-" + i )
+                        .setLoginMobile( "166-batch-" + i ) //
                 )
                 .collect( Collectors.toList() );
         return list;

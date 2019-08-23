@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 @Entity
 @Table( name = "user" )
 @Data
-@Accessors( fluent = true )
+@Accessors( chain = true )
 @ToString( callSuper = true )
 @EqualsAndHashCode( callSuper = true )
 public class User extends AbstractEntity {

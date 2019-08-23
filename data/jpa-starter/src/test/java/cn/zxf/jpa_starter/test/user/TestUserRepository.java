@@ -28,16 +28,16 @@ public class TestUserRepository {
     @Test
     public void findCURD() {
         String name = "zxf-aa";
-        User user = new User().name( name )
-                .loginMobile( "bb" );
+        User user = new User().setName( name )
+                .setLoginMobile( "bb" );
         repos.save( user );
         log.info( "inserted-user: {}", user );
         Integer id = user.id();
 
         user = repos.findById( id )
                 .get()
-                .loginMobile( "bb-cc" )
-                .lastLoginDate( new Date() );
+                .setLoginMobile( "bb-cc" )
+                .setLastLoginDate( new Date() );
         repos.save( user );
 
         user = repos.findById( id )
@@ -47,9 +47,9 @@ public class TestUserRepository {
 
     @Test
     public void findStatus() {
-        User user = new User().name( "zxf" )
-                .status( 1 )
-                .loginMobile( "888" );
+        User user = new User().setName( "zxf" )
+                .setStatus( 1 )
+                .setLoginMobile( "888" );
         repos.save( user );
         log.info( "inserted-user: {}", user );
         Integer id = user.id();
@@ -62,9 +62,9 @@ public class TestUserRepository {
     public void replace() {
         User user = new User() //
                 .id( 100 )
-                .name( "zxf" )
-                .status( 1 )
-                .loginMobile( "888" );
+                .setName( "zxf" )
+                .setStatus( 1 )
+                .setLoginMobile( "888" );
         log.info( "replace-user: {}", user );
         repos.replace( user );
     }
@@ -81,9 +81,9 @@ public class TestUserRepository {
 
     @Test
     public void findStatusAndId() {
-        User user = new User().name( "zxf" )
-                .status( 1 )
-                .loginMobile( "888" );
+        User user = new User().setName( "zxf" )
+                .setStatus( 1 )
+                .setLoginMobile( "888" );
         repos.save( user );
         log.info( "inserted-user: {}", user );
         Integer id = user.id();
@@ -94,9 +94,9 @@ public class TestUserRepository {
 
     @Test
     public void findOneOnlyStatus() {
-        User user = new User().name( "zxf" )
-                .status( 1 )
-                .loginMobile( "888" );
+        User user = new User().setName( "zxf" )
+                .setStatus( 1 )
+                .setLoginMobile( "888" );
         repos.save( user );
         log.info( "inserted-user: {}", user );
         Integer id = user.id();
