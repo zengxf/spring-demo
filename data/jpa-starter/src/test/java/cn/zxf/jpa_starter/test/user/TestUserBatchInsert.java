@@ -30,14 +30,14 @@ public class TestUserBatchInsert {
     public void jdbcBatchInsert() {
         List<User> list = data();
         dao.batchSaveByJdbc( list );
-        repos.deleteAll();
+        // repos.deleteAll();
     }
 
     @Test
     public void jpaBatchInsert() {
         List<User> list = data();
         dao.batchSave( list );
-        repos.deleteAll();
+        // repos.deleteAll();
     }
 
     private List<User> data() {
