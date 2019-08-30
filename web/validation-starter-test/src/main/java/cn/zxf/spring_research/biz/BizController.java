@@ -2,6 +2,7 @@ package cn.zxf.spring_research.biz;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping( "/api/biz" )
 public class BizController {
+
+    @Autowired
+    Biz2Service service;
 
     // http://localhost:9001/api/biz/hello
     @GetMapping( "hello" )
@@ -39,6 +43,21 @@ public class BizController {
     public String create2( @Valid @RequestBody BizCreateDto dto ) {
         log.info( "create-dto: {}", dto );
         return "OK";
+    }
+
+    // http://localhost:9001/api/biz/biz2-hello
+    @GetMapping( "biz2-hello" )
+    public String biz2Hello() {
+        service.hello( "" );
+        return "jj";
+    }
+
+    // http://localhost:9001/api/biz/biz2-hello-dto
+    @GetMapping( "biz2-hello-dto" )
+    public String biz2HelloDto() {
+        BizDto dto = new BizDto();
+        service.hello( dto );
+        return "jj";
     }
 
 }
