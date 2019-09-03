@@ -7,6 +7,9 @@ spring:
       port: 8500
       discovery:
         health-check-interval: 15s
+        # instance-id: server-b
+        # instance-id: server-b-${server.port}
+        # service-name: server-b
 
 ---
 spring:

@@ -2,6 +2,8 @@ package cn.zxf.spring_research.biz;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,10 @@ public class BizController {
 
     // http://localhost:9001/api/biz/hello
     @GetMapping( "hello" )
-    public String hello() {
-        String value = "hello - " + System.currentTimeMillis() % 10000;
+    public String hello( HttpServletRequest request ) {
+        String value = "server-a = hello - " + System.currentTimeMillis() % 10000;
         System.out.println( "return: " + value );
+        System.out.println( "headler: " + request.getHeader( "X-Test" ) );
         return value;
     }
 

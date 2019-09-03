@@ -1,0 +1,39 @@
+server:
+  port: 9101
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: false # 不进行注册
+        enabled: false  # 不让其他服务发现
+        # instance-id: gateway
+        # health-check-interval: 15s
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: server-a-api
+        uri: lb://server-a
+        predicates:
+        - Path= /a-api/**
+        filters:
+        - AddRequestHeader= X-Test, To-A
+        - RewritePath= /a-api/(?<segment>.*), /$\{segment}
+        - AddResponseHeader= X-Response-Test, A-Server
+        - MyAuthorize= true
+        
+      - id: server-b-api
+        uri: lb://server-b
+        predicates:
+        - Path= /b-api/**
+        filters:
+        - StripPrefix= 1 # 重定向到下游时去掉前缀部分 `/b-api`
+        - AddRequestHeader= X-Test, To-B # 添加请求头到下游
+        - AddResponseHeader= X-Response-Test, B-Server # 添加响应头返回给客户端
+        - MyAuthorize= false # 自定义过滤器，使用前缀即可

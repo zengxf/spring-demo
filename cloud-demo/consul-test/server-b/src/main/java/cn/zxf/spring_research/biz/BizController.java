@@ -2,6 +2,8 @@ package cn.zxf.spring_research.biz;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +23,10 @@ public class BizController {
 
     // http://localhost:9002/api/biz/hello
     @GetMapping( "hello" )
-    public String hello() {
-        String value = port + " - hello - " + System.currentTimeMillis() % 10000;
+    public String hello( HttpServletRequest request ) {
+        String value = "server-b:" + port + " - hello - " + System.currentTimeMillis() % 10000;
         System.out.println( "return: " + value );
+        System.out.println( "headler: " + request.getHeader( "X-Test" ) );
         return value;
     }
 
