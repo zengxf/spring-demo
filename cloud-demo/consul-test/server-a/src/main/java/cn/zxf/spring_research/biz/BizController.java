@@ -16,6 +16,12 @@ public class BizController {
     @Autowired
     ServerBApi api;
 
+    // http://localhost:9001/api/biz/exit
+    @GetMapping( "exit" )
+    public void exit() {
+        System.exit( 0 );
+    }
+
     // http://localhost:9001/api/biz/hello
     @GetMapping( "hello" )
     public String hello( HttpServletRequest request ) {

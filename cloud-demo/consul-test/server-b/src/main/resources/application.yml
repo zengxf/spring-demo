@@ -2,10 +2,14 @@ spring:
   application:
     name: server-b
   cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.0.137
     consul:
       host: localhost
       port: 8500
       discovery:
+        prefer-ip-address: true
         health-check-interval: 15s
         # instance-id: server-b
         # instance-id: server-b-${server.port}

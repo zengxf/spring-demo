@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        tags: ""
+        prefer-ip-address: true
+        health-check-interval: 15s
+        healthCheckPath: /actuator/health
+        instance-id: ${spring.application.name}@${spring.cloud.client.ip-address}:${server.port}
+        enabled: true
+        register: true
+        deregister: true
+      config:
+        enabled: true
+        format: YAML
+        watch.enabled: true 
+        data-key: data             # def: data
+        prefix: zxf                # def: config
+        defaultContext: config     # def: $server-name
+        profileSeparator: '::'     # def: ','
+        # key: zxf/config::dev/data

@@ -5,11 +5,19 @@ spring:
   application:
     name: server-a
   cloud:
+    inetutils:
+      preferred-networks:
+        - 192.168.0.137
     consul:
-      host: localhost
+      #host: localhost
+      host: 192.168.0.137
       port: 8500
       discovery:
+        prefer-ip-address: true
         health-check-interval: 15s
-        instance-id: server-a
+        # deregister: true
+        instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${server.port}
+        # instance-id: ${spring.application.name}-${spring.cloud.client.hostname}-${server.port}
+        # instance-id: server-a
         # instance-id: server-a-${server.port}
         # service-name: server-a
