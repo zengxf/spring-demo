@@ -1,0 +1,40 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+    }
+}
+plugins {
+    id 'org.springframework.boot' version '2.1.0.RELEASE'
+    id 'java'
+    id 'eclipse'
+    id "io.freefair.lombok" version "3.1.0"
+}
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies { 
+    // spring 
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter'
+    compile group: 'org.redisson', name: 'redisson-spring-boot-starter', version: '3.11.5'
+    // lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    // test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.2'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.2'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.5.2'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-engine', version: '1.5.2'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.5.2'
+    testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.5.2' // 兼容 JUnit 4
+}
+configurations {
+//    testCompile.exclude group: 'junit', module: 'junit'
+}
