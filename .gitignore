@@ -8,6 +8,10 @@ bin
 lombok.config
 out
 
+.idea
+gradle
+gradlew
+gradlew.bat
 
 # Compiled class file
 *.class
