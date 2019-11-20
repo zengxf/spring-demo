@@ -3,7 +3,7 @@ package test.biz;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import error1.biz.BizService;
+import error_order.biz.BizService;
 import lombok.extern.slf4j.Slf4j;
 import test.AbstractApplicationTest;
 
