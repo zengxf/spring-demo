@@ -37,7 +37,7 @@ public class HelloWorldJobConfig {
     @Bean
     public FlatFileItemReader<Person> reader() {
         return new FlatFileItemReaderBuilder<Person>().name( "personItemReader" )
-                .resource( new ClassPathResource( "persons.csv" ) )
+                .resource( new ClassPathResource( "persons.txt" ) )
                 .delimited()
                 .names( new String[]
                 { "firstName", "lastName" } )
