@@ -1,4 +1,4 @@
-package cn.zxf.jpa_starter.test.user;
+package test.user;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +9,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import test.user.User;
+import test.user.UserDao;
+import test.user.UserRepository;
 
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE )
 @RunWith( SpringRunner.class )

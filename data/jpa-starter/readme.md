@@ -33,3 +33,6 @@
 ## JPA @Query 更改、删除
 - 要指定  `@Modifying` 和 `@Transactional`
 - 参数是对象，可以用 SpEL 表达式
+
+## JPA 指定 id 保存
+- 参考：http://spring.hhui.top/spring-blog/2019/11/19/191119-SpringBoot系列教程JPA之指定id保存/

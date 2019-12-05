@@ -1,4 +1,4 @@
-package cn.zxf.jpa_starter.test.user;
+package test.user;
 
 import java.util.Date;
 
@@ -9,11 +9,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import cn.zxf.jpa_starter.test.common.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import test.common.AbstractEntity;
 
 @DynamicInsert
 @DynamicUpdate

@@ -1,4 +1,4 @@
-package cn.zxf.jpa_starter.test.user;
+package test.user;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

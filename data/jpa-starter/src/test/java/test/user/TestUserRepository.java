@@ -1,4 +1,4 @@
-package cn.zxf.jpa_starter.test.user;
+package test.user;
 
 import java.util.Date;
 
@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import lombok.extern.slf4j.Slf4j;
+import test.user.User;
+import test.user.UserDao;
+import test.user.UserRepository;
 
 @Slf4j
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE )
