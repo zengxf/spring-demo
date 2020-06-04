@@ -21,4 +21,13 @@ public class BizController {
         return exampleService.wrap( word );
     }
 
+    // http://localhost:9001/api/biz/error?word=zxf
+    @GetMapping( "error" )
+    public String error( @RequestParam String word ) {
+        if ( "zxf".equals( word ) ) {
+            return "OK";
+        }
+        throw new RuntimeException( "test error" );
+    }
+
 }

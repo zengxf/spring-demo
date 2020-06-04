@@ -13,7 +13,6 @@ repositories {
 }
 
 dependencies { 
-
 	// spring 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
@@ -23,6 +22,5 @@ dependencies {
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
 
 	// test
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 }
