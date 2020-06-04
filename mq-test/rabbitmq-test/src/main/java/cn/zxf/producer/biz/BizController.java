@@ -28,7 +28,7 @@ public class BizController {
     public String hello() {
         Email message = new Email( "zxf@s.cn", "== test == " + System.currentTimeMillis() % 1000 );
         System.out.println( "send => " + message );
-        rabbitTemplate.convertAndSend( "test-obj-002", message );
+        rabbitTemplate.convertAndSend( "test-obj", message );
         // rabbitTemplate.convertAndSend( "test-fanout-01", "", message );
         return "hello";
     }

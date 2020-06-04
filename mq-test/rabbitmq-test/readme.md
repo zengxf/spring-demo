@@ -17,3 +17,8 @@
 ## 权限
 - 创建用户 `zxf`
 - Set permission: `/` `test.*` `amq\.default|test.*` `amq\.default|test.*`
+
+## 本地启动
+- 进入 `/sbin` 目录，运行 `rabbitmq-server.bat`
+- 访问：http://localhost:15672/
+- 登录：`admin / admin`

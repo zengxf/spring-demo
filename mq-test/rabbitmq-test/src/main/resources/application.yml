@@ -1,9 +1,9 @@
 spring:
   rabbitmq:
-    host: 120.25.93.177
-    port: 5600
-    username: zxf
-    password: a
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
 
 ---
 spring:
