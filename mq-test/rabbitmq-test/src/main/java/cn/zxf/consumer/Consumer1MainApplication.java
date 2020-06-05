@@ -19,7 +19,7 @@ public class Consumer1MainApplication {
 
     static void setProxySavePath() throws Exception {
         System.setProperty( "jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true" );
-        
+
         Path path = Paths.get( Consumer1MainApplication.class.getResource( "/" )
                 .toURI() );
         Path savePath = path.resolve( "../export/spring-aop-proxy" )
