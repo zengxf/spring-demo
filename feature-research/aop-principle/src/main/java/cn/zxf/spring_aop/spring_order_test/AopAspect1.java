@@ -20,7 +20,7 @@ public class AopAspect1 {
     public void around( ProceedingJoinPoint pjp, Action action ) throws Throwable {
         System.out.println( "[Aspect-1] around advise 1" );
         pjp.proceed();
-        System.out.println( "[Aspect-1] around advise2" );
+        System.out.println( "[Aspect-1] around advise 2" );
     }
 
     @Before( "@annotation(action)" )
