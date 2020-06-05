@@ -49,6 +49,7 @@
 - Spring 允许使用 AspectJ Annotation 用于定义方面（Aspect）、切入点（Pointcut）和增强处理（Advice）
 - Spring 只是使用了和 AspectJ 5 一样的注解，但并没有使用 AspectJ 的编译器或者织入器（Weaver）
 - 底层依然使用的是 Spring AOP，依然是在运行时动态生成 AOP 代理
+- 使用哪种方式创建代理类：可查看 `DefaultAopProxyFactory`
 
 ### manual_setup
 - [参考](https://www.jianshu.com/p/df6bd74db9c5)
