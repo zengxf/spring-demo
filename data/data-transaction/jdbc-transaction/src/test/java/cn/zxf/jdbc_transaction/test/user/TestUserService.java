@@ -13,6 +13,16 @@ public class TestUserService {
     @Autowired
     private UserService service;
 
+    // 测试只读事务
+    @Test
+    public void test_readOnly() {
+        try {
+            service.readOnly( "zxf-12", "ok" );
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+    }
+
     // 测试事务超时
     @Test
     public void test_createTransactionalRequiredTimeout() {
