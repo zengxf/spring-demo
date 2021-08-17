@@ -5,8 +5,8 @@ plugins {
     id "io.freefair.lombok" version "5.3.2"
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     maven {

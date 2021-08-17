@@ -160,3 +160,4 @@ $Proxy[n] // JDK 动态代理
 ## 异常
 - 在事务中如果产生 checked exceptions，默认数据库操作还是要 commit 的；
 - 产生的如果是 unchecked exceptions（RuntimeException 及其子类），数据库操作将 rollback
+- 在 `TransactionTemplate#execute()` 方法里
