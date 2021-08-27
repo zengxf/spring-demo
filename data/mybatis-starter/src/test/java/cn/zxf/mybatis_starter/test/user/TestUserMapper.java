@@ -52,7 +52,7 @@ public class TestUserMapper {
 
     @Test
     public void findById() {
-        log.info( "inserted-user: {}", mapper.findById( 22 ) );
+        log.info( "inserted-user: {}", mapper.findById( 1 ) );
     }
 
     @Test
