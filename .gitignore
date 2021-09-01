@@ -16,6 +16,8 @@ gradlew.bat
 # Compiled class file
 *.class
 
+*.iml
+
 # Log file
 *.log
 
