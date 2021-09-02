@@ -3,11 +3,13 @@ package test.biz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.IndexOperations;
+import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 @Component
 public class UserEao {
@@ -18,9 +20,14 @@ public class UserEao {
     public void createIndex() {
         IndexOperations indexOp = ert.indexOps(User.class);
         if (!indexOp.exists()) {
-            Map<String, Object> settings = new HashMap<>();
-            settings.put("number_of_shards", 2);
-            indexOp.create(settings);
+            indexOp.create();
+        }
+    }
+
+    public void deleteIndex() {
+        IndexOperations indexOp = ert.indexOps(User.class);
+        if (indexOp.exists()) {
+            indexOp.delete();
         }
     }
 
@@ -39,5 +46,13 @@ public class UserEao {
         return one;
     }
 
+    public SearchHits<User> searchHits(Query query) {
+        SearchHits<User> hits = ert.search(query, User.class);
+        return hits;
+    }
+
+    public void batchSave(List<User> list) {
+        ert.save(list);
+    }
 
 }
