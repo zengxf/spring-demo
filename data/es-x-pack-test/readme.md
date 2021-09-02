@@ -3,6 +3,7 @@
 ## 好的参考资料
 - Spring Data Elasticsearch 使用： https://www.jianshu.com/p/56e755415e63
   - 有介绍 `Repository` 风格操作
+- 聚合统计查询参考： https://www.jianshu.com/p/7d1f72ca49ba
 
 ## ElasticSearch
 
