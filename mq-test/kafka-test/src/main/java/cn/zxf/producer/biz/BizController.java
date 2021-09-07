@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.zxf.common.Email;
 
 @RestController
-@RequestMapping( "/api/biz" )
+@RequestMapping("/api/biz")
 public class BizController {
 
     @Autowired
     KafkaTemplate<Object, Object> template;
 
     // http://localhost:9011/api/biz/hello
-    @GetMapping( "hello" )
+    @GetMapping("hello")
     public String hello() {
         long sign = System.currentTimeMillis() % 1000;
-        Email message = new Email( "zxf@s.cn", "== test == " + sign );
-        System.out.println( "send => " + message );
-        template.send( "test-obj", message );
+        Email message = new Email("zxf-test@sina.cn", "test --> " + sign);
+        System.out.println("send => " + message);
+        template.send("test-p2", message);
         return "hello-" + sign;
     }
 

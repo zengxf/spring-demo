@@ -8,9 +8,9 @@ import cn.zxf.common.Email;
 @Component
 public class Receiver {
 
-    @KafkaListener( topics = "test-obj" )
-    public void onMessage( Email email ) {
-        System.out.println( "Received <" + email + ">" );
+    @KafkaListener(topics = "test-p2")
+    public void onMessage(Email email) {
+        System.out.println("Received < " + email + " >");
     }
 
 }
