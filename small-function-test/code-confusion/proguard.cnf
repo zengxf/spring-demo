@@ -1,0 +1,64 @@
+# 基础目录，下面injars、outjars、libraryjars参数都基于此目录
+-basedirectory build/libs/server-1.0/BOOT-INF/
+
+# 需要做混淆的jar或目录
+-injars classes
+
+# 混淆后输出的jar或目录
+-outjars classes-pro
+
+# 混淆时需要引用的java库，这些库的类不会做混淆
+-libraryjars <java.home>/lib/rt.jar
+-libraryjars lib
+
+# 不警告
+-dontwarn
+
+# 不理会警告，否则混淆失败
+-ignorewarnings
+
+# 不压缩
+-dontshrink
+
+# 不优化
+-dontoptimize
+
+# 一个类中的成员不使用重复的命名，如Student类混淆后不能出现a属性和a方法。
+-useuniqueclassmembernames
+
+# 不混淆注解
+-keepattributes *Annotation*
+
+# 不混淆泛型
+-keepattributes Signature
+
+# 保留程序入口
+-keep @org.springframework.boot.autoconfigure.SpringBootApplication class * {*;}
+
+# config 可以做混淆
+
+# constants 可以做混淆
+
+# controller 可以混淆
+
+# dao 保留全部类及类成员，方法命名也不能变，因为与xml文件做了关联
+-keep class com.abc.device.dao.** {*;}
+
+# entity 保留全部类
+-keep class com.abc.device.entity.** {*;}
+
+# service 可以混淆
+#-keep interface * extends com.baomidou.mybatisplus.service {*;}
+
+# shiro 可以混淆
+
+# util 可以混淆
+
+# vo 用keepclasseswithmembers保留类名和类成员，keepclassmembers保留部分的类成员，剩下的都混淆
+
+-keepclasseswithmembers class com.abc.device.vo.DeviceServicePropMsg {*;}
+-keepclasseswithmembers class com.abc.device.vo.DeviceNewestMsgTime {*;}
+-keepclassmembers class com.abc.device.vo.DeviceImportVo {*;}
+-keepclassmembers class com.abc.device.vo.DeviceNewestMsgTime {*;}
+-keepclassmembers class com.abc.device.vo.Option {*;}
+-keepclassmembers class com.abc.device.vo.UpdateRolePermVo {*;}

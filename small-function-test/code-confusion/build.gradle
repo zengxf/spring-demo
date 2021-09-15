@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.sf.proguard:proguard-gradle:6.2.2'
+    }
+}
+
+plugins {
+    id "org.springframework.boot" version "2.5.4"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id 'java'
+//    id 'idea'
+//    id "io.freefair.lombok" version "5.3.2"
+}
+
+import proguard.gradle.ProGuardTask
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
+sourceCompatibility = 11
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+dependencies {
+    // spring 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    // lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+    // test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
+}
+
+bootJar {
+    mainClassName = 'test.MainApplication'
+}
+
+// 混淆任务
+task proguard(type: ProGuardTask, dependsOn: compileJava) {
+    // 输出混淆前->混淆后的映射
+    printmapping "$buildDir/mapping.txt"
+    // 混淆规则文件
+    configuration 'proguard.cnf'
+
+    // 混淆时依赖的库
+    libraryjars files(configurations.compile.findAll {}.collect())
+    libraryjars "${System.getProperty('java.home')}/lib/rt.jar"
+    libraryjars "${System.getProperty('java.home')}/lib/jce.jar"
+
+    // 混淆输入
+    injars sourceSets.main.output
+    // 混淆输出
+    outjars "$buildDir/classes-pro"
+}
+
+// 混淆打包
+task bootPro(type: BootJar){
+    dependsOn 'proguard'
+    // 重新组织boot-inf下的文件
+    bootInf {
+        into('classes') {
+            from "$buildDir/classes-pro"
+        }
+
+        into('lib') {
+            from configurations.runtime
+        }
+
+    }
+    // 包名
+    baseName = "web"
+    // 入口
+    mainClassName = 'org.pkaq.Booter'
+
+    doLast {
+        new File("$buildDir/classes-pro").deleteDir()
+    }
+}
