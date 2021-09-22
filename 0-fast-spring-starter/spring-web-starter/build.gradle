@@ -19,10 +19,10 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     // lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
-    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
-    testCompileOnly  group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
-    testAnnotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.18'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    testCompileOnly  group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    testAnnotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
     // test
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
