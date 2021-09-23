@@ -3,6 +3,7 @@ package test.utils;
 import cn.hutool.core.map.MapUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
@@ -73,7 +74,14 @@ public class HttpUtils {
         requestBuilder.addHeader("Accept", ContentType.APPLICATION_JSON.toString());
         requestBuilder.addHeader("Content-type", ContentType.APPLICATION_JSON.toString());
         HttpUriRequest request = requestBuilder.build();
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(3000)
+                .build();
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultRequestConfig(requestConfig)
+                .build();
+
         HttpResponse response = httpclient.execute(request);
         return response;
     }

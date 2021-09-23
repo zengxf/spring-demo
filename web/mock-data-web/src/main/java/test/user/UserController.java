@@ -1,7 +1,6 @@
 package test.user;
 
 import cn.hutool.core.map.MapBuilder;
-import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
@@ -31,6 +30,7 @@ public class UserController {
         return user;
     }
 
+    // http://localhost:9066/user/find-all
     @GetMapping("user/find-all")
     public List<UserDto> findAll() {
         this.initData();
