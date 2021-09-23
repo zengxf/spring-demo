@@ -27,3 +27,6 @@ dependencies {
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
 }
+
+// tasks.withType(Test) { useJUnitPlatform() }
+test { useJUnitPlatform() }
