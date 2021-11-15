@@ -1,2 +1,7 @@
 // web-1
 sourceCompatibility = 11
+
+dependencies {
+    // 依赖 common 模块
+    implementation project(':common')
+}

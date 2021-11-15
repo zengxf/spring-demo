@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.extern.slf4j.Slf4j;
 import test.AbstractApplicationTest;
-import test.biz.BizService;
 
 @Slf4j
 public class TestBizService extends AbstractApplicationTest {

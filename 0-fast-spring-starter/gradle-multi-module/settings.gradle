@@ -1,6 +1,10 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'gradle-multi-module'
 
+
+// common
+include "common"
 // web 1
 include "spring-web-1"
-
 // web 2
 include "spring-web-2"
