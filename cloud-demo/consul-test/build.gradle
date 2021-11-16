@@ -1,0 +1,43 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.4' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE' apply false
+//    id 'io.freefair.lombok' version '5.3.2' apply false
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+}
+
+subprojects {
+    group = 'cn.zxf'
+    version = '1.0.0'
+    sourceCompatibility = 11
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.4"
+        }
+    }
+    dependencies {
+        // spring
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+        // lombok
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+        // test
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+        testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
+    }
+
+    // 启用 JUnit 5
+    test { useJUnitPlatform() }
+}

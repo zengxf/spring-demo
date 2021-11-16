@@ -24,7 +24,7 @@ public class BizController {
     // http://localhost:9002/api/biz/hello
     @GetMapping( "hello" )
     public String hello( HttpServletRequest request ) {
-        String value = "server-b:" + port + " - hello - " + System.currentTimeMillis() % 10000;
+        String value = "server-b: " + port + " - hello - " + System.currentTimeMillis() % 10000;
         System.out.println( "return: " + value );
         System.out.println( "headler: " + request.getHeader( "X-Test" ) );
         return value;
