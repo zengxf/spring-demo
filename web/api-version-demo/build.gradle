@@ -1,0 +1,28 @@
+plugins {
+    id "org.springframework.boot" version "2.5.4"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id 'java'
+    id "io.freefair.lombok" version "6.3.0"
+}
+
+sourceCompatibility = 11
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+dependencies { 
+    // spring 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    // lombok
+//    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+//    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+//    testCompileOnly  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+//    testAnnotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    // test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+test { useJUnitPlatform() }
