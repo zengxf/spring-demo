@@ -1,0 +1,26 @@
+plugins {
+    id "org.springframework.boot" version "2.5.4"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "io.freefair.lombok" version "6.3.0"
+    id 'java'
+}
+
+sourceCompatibility = 11
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+dependencies {
+    // spring 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+    // hutool-core
+    implementation group: 'cn.hutool', name: 'hutool-core', version: '5.7.19'
+    // test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
+}
+
+test { useJUnitPlatform() }
