@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import test.AbstractApplicationTest5;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <br/>
@@ -25,6 +27,9 @@ public class CommodityRepositoryTest extends AbstractApplicationTest5 {
                     // .setId(1)
                     .setName("t-" + i)
                     .setStatus(i % 5)
+                    .setTagMap(new LinkedHashMap<>(Map.of(
+                            "mk-" + i, new Commodity.Tag().setKey("mk1").setValue("mv1-" + i)
+                    )))
                     .setTags(new ArrayList<>(List.of(
                             new Commodity.Tag().setKey("k1").setValue("v1-" + i),
                             new Commodity.Tag().setKey("k2").setValue("v2-" + i)

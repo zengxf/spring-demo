@@ -1,5 +1,6 @@
 package test.commodity;
 
+import com.sun.source.doctree.SeeTree;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -10,6 +11,7 @@ import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <br/>
@@ -30,6 +32,10 @@ public class Commodity {
 
     private String name;
     private Integer status;
+
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    private Map<String, Tag> tagMap;
 
     @Type(type = "json")
     @Column(columnDefinition = "json")
