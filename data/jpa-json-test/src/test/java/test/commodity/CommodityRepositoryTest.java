@@ -32,7 +32,7 @@ public class CommodityRepositoryTest extends AbstractApplicationTest5 {
                     )))
                     .setTags(new ArrayList<>(List.of(
                             new Commodity.Tag().setKey("k1").setValue("v1-" + i),
-                            new Commodity.Tag().setKey("k2").setValue("v2-" + i)
+                            new Commodity.Tag().setKey("k2")
                     )));
             repos.save(commodity);
         }

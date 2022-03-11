@@ -1,6 +1,5 @@
 package test.commodity;
 
-import com.sun.source.doctree.SeeTree;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import lombok.Data;
 import lombok.experimental.Accessors;
