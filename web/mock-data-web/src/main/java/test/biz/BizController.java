@@ -29,13 +29,24 @@ public class BizController {
     @GetMapping("herder")
     public Object herder(HttpServletRequest request) {
         log.info("-------------");
-        Enumeration<String> keys = request.getHeaderNames();
-        Map<String, String> map = new LinkedHashMap<>();
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
-            String value = request.getHeader(key);
-            log.info("[{}] = [{}]", key, value);
-            map.put(key, value);
+        Map<String, Object> map = new LinkedHashMap<>();
+        { // Header
+            Enumeration<String> keys = request.getHeaderNames();
+            while (keys.hasMoreElements()) {
+                String key = keys.nextElement();
+                String value = request.getHeader(key);
+                log.info("[{}] = [{}]", key, value);
+                map.put(key, value);
+            }
+        }
+        { // Param
+            Enumeration<String> keys = request.getParameterNames();
+            while (keys.hasMoreElements()) {
+                String key = keys.nextElement();
+                String[] values = request.getParameterValues(key);
+                log.info("[{}] = [{}]", key, values);
+                map.put(key, values);
+            }
         }
         log.info("-------------");
         return map;
