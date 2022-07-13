@@ -23,7 +23,7 @@ public class BizController {
 
     /**
      * 头的 key 不能包含空格，但头的 value 可以包含空格；
-     * Tomcat 9 会将 value 的空格清除，但 Tomcat 早期版本不会清除
+     * Tomcat 9 会将 value 的空格清除，但 Tomcat 早期版本可能不会清除
      */
     // http://localhost:9066/api/biz/herder
     @GetMapping("herder")
