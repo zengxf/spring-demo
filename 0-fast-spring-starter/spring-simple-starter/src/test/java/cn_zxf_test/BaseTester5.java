@@ -1,4 +1,4 @@
-package test;
+package cn_zxf_test;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ExtendWith(SpringExtension.class)
-public abstract class AbstractApplicationTest5 {
+public abstract class BaseTester5 {
 
     @BeforeEach
     public void before() {
