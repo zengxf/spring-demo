@@ -23,7 +23,7 @@ public class TestUserController {
     @Test
     public void testFindAll() throws Exception {
         HttpResponse res = HttpUtils.get("http://localhost:9066/user/find-all");
-        this.printRes(res);
+        printRes(res);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class TestUserController {
                 .put("token", LoginController.TOKEN)
                 .build();
         HttpResponse res = HttpUtils.get("http://localhost:9066/user/find-one/{id}", paths, params, headers);
-        this.printRes(res);
+        printRes(res);
     }
 
     @Test
@@ -48,10 +48,10 @@ public class TestUserController {
                 .setAge(32)
                 .setRemark("单元测试-创建");
         HttpResponse res = HttpUtils.post("http://localhost:9066/user/create", user);
-        this.printRes(res);
+        printRes(res);
     }
 
-    private void printRes(HttpResponse res) throws IOException {
+    public static void printRes(HttpResponse res) throws IOException {
         System.out.println();
         log.info("status: [{}]", res.getStatusLine());
         Stream.of(res.getAllHeaders())
