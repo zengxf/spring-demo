@@ -5,6 +5,10 @@
 - my-ser-1 用到了 Sentinel
 - my-ser-2 用到了 LoadBalancer
 
+### Sentinel 使用说明
+
+- 直接去 Nacos 添加规则，不要直接去 dashboard 界面添加
+
 ---
 
 ## 遇到的问题
