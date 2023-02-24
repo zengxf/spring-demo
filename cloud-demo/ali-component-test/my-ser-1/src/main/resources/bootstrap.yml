@@ -15,16 +15,16 @@ spring:
         namespace: my-test
         group: group1
         # group: ${spring.profiles.active}
-      # java -D"server.port"=8165  -D"csp.sentinel.dashboard.server"=localhost:8165  -D"project.name"=sentinel-self2  -jar sentinel-dashboard-1.8.6.jar
-      sentinel:
-        transport:
-          dashboard: localhost:8165
-        datasource:
-          ds:
-            nacos:
-              server-addr: http://127.0.0.1:8848
-              data-id: my-ser-1-sentinel
-              namespace: my-test
-              group-id: DEFAULT_GROUP
-              data-type: json
-              rule-type: flow
+    # java -D"server.port"=8165  -D"csp.sentinel.dashboard.server"=localhost:8165  -D"project.name"=sentinel-self2  -jar sentinel-dashboard-1.8.6.jar
+    sentinel:
+      transport:
+        dashboard: localhost:8165
+      datasource:
+        ds:
+          nacos:
+            server-addr: http://127.0.0.1:8848
+            data-id: my-ser-1-sentinel
+            namespace: my-test
+            group-id: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow

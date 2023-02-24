@@ -32,4 +32,11 @@ public class BizController {
         return sentinelTestService.sayHello();
     }
 
+    // http://localhost:6882/api/biz/sentinel-test
+    @GetMapping("sentinel-test")
+    public String sentinelTest() {
+        log.info("sentinel test --------------");
+        return "hello --- " + config.getConfig1();
+    }
+
 }

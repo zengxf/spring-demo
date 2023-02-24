@@ -13,10 +13,3 @@ my:
     user:
       name: xf
       age: 22
-
-csp:
-  sentinel:
-    dashboard:
-      server: localhost:8165
-    api:
-      port: 8806

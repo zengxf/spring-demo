@@ -28,6 +28,8 @@ public class MyConfig {
     private String config1;
     @Value("${spring.application.name}")
     private String appName;
+    @Value("${spring.cloud.sentinel.transport.dashboard}")
+    private String sentinelDashboard;
     @Autowired
     private ConfigUser user;
     @Autowired
@@ -45,6 +47,7 @@ public class MyConfig {
         log.info("config-nacos: [{}]", this.nacos);
         log.info("config-sentinel: [{}]", this.sentinel);
         log.info("config-sentinel-dashboard: [{}]", this.sentinel.getTransport().getDashboard());
+        log.info("sentinel-dashboard: [{}]", this.sentinelDashboard);
         log.info("\n\n-------------------------------");
     }
 

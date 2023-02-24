@@ -21,6 +21,6 @@ spring:
 
 rest:
   template:
-    config: # RestTemplate调用超时配置
+    config: # RestTemplate 调用超时配置
       connectTimeout: 5000
       readTimeout: 5000
