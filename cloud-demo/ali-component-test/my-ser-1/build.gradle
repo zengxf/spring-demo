@@ -3,11 +3,11 @@ sourceCompatibility = 17
 
 dependencyManagement {
     imports {
-//        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2.2.1.RELEASE"
-//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2.2.1.RELEASE"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
 
-        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.1"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
+//        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.1"
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
     }
 }
 
@@ -15,11 +15,15 @@ dependencies {
     // 依赖 common 模块
     implementation project(':common')
 
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' // 读取 bootstrap.yml
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
 
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
+//    implementation group: 'com.alibaba.csp', name: 'sentinel-transport-simple-http'
+    implementation group: 'com.alibaba.csp', name: 'sentinel-datasource-nacos'
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 }

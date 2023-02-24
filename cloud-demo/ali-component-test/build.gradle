@@ -1,8 +1,8 @@
 // parent
 
 plugins {
-//    id 'org.springframework.boot' version "2.5.0" apply false
-    id 'org.springframework.boot' version "3.0.3" apply false
+    id 'org.springframework.boot' version "2.5.0" apply false
+//    id 'org.springframework.boot' version "3.0.3" apply false
     id 'io.spring.dependency-management' version '1.1.0' apply false
 //    id 'io.freefair.lombok' version "6.6.2" apply false // 构建出错，不纠结
 }
@@ -35,7 +35,7 @@ subprojects {
         testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
         // test
         testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-        testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
+//        testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
     }
 
     // 启用 JUnit 5

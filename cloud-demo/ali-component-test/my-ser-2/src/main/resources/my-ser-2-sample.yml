@@ -1,0 +1,15 @@
+# nacos key: my-ser-2.yaml
+# nacos key: my-ser-2-dev1.yaml
+# nacos key: my-ser-2-dev2.yaml
+# 改端口为 6892
+
+server:
+  port: 6891
+
+my:
+  config:
+    test: s2-abc
+    test2: 233
+    user:
+      name: s2-xf
+      age: 22

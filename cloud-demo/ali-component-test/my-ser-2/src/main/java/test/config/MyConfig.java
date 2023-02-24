@@ -1,17 +1,15 @@
 package test.config;
 
 // import jakarta.annotation.PostConstruct;
-import javax.annotation.PostConstruct;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
-import com.alibaba.cloud.sentinel.SentinelProperties;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 
 
 /**
@@ -24,7 +22,6 @@ import org.springframework.stereotype.Component;
 public class MyConfig {
 
     @Value("${my.config.test}") // 配合 @RefreshScope 注解才会更新
-    @Getter
     private String config1;
     @Value("${spring.application.name}")
     private String appName;
@@ -32,8 +29,6 @@ public class MyConfig {
     private ConfigUser user;
     @Autowired
     private NacosDiscoveryProperties nacos;
-    @Autowired
-    private SentinelProperties sentinel;
 
 
     @PostConstruct
@@ -43,8 +38,6 @@ public class MyConfig {
         log.info("app-name: [{}]", this.appName);
         log.info("config-user: [{}]", this.user);
         log.info("config-nacos: [{}]", this.nacos);
-        log.info("config-sentinel: [{}]", this.sentinel);
-        log.info("config-sentinel-dashboard: [{}]", this.sentinel.getTransport().getDashboard());
         log.info("\n\n-------------------------------");
     }
 

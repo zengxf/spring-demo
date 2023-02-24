@@ -2,14 +2,14 @@ package test.biz;
 
 import common.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * <br/>
  * Created by ZXFeng on  2021/11/15.
  */
 @Slf4j
-public class TestUserDto {
+public class UserDtoTest {
 
     @Test
     public void test() {

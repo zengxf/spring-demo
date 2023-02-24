@@ -1,13 +1,13 @@
 package test.biz;
 
+import test.BaseSer1AppTest5;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import test.AbstractApplicationTest5;
 
 @Slf4j
-public class Test5BizService extends AbstractApplicationTest5 {
+public class BizServiceTest extends BaseSer1AppTest5 {
 
     @Autowired
     private BizService service;

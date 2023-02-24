@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: my-ser-2
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: my-test
+        group: DEFAULT_GROUP
+        enabled: true
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: my-test
+        group: group1
+    loadbalancer:
+      cache: # 负载均衡缓存配置
+        enabled: true # 开启缓存
+        ttl: 5s # 设置缓存时间
+        capacity: 256 # 设置缓存大小
+
+rest:
+  template:
+    config: # RestTemplate调用超时配置
+      connectTimeout: 5000
+      readTimeout: 5000
