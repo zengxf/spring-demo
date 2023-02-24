@@ -1,0 +1,19 @@
+// ser-2
+sourceCompatibility = 17
+
+dependencyManagement {
+    imports {
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.1"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
+    }
+}
+
+dependencies {
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' // 读取 bootstrap.yml
+
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+}

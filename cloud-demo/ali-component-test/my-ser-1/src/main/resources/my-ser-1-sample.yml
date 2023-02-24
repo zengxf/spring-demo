@@ -1,0 +1,15 @@
+# nacos key: my-ser-1.yaml
+# nacos key: my-ser-1-dev1.yaml
+# nacos key: my-ser-1-dev2.yaml
+# 改下端口
+
+server:
+  port: 6881
+
+my:
+  config:
+    test: abc
+    test2: 233
+    user:
+      name: xf
+      age: 22
