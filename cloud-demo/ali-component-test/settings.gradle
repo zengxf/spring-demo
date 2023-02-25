@@ -1,0 +1,17 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'ali-component-test'
+
+// common
+include "common"
+
+// web 1
+include "my-ser-1"
+// web 2
+include "my-ser-2"
+
+// dubbo api
+include "dubbo-ser:d-api"
+// dubbo ser
+include "dubbo-ser:d-ser-1"
+// dubbo cli
+include "dubbo-ser:d-cli-1"

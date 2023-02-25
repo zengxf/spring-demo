@@ -3,11 +3,11 @@ sourceCompatibility = 17
 
 dependencyManagement {
     imports {
-//        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2.2.1.RELEASE"
+//        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2.2.1.RELEASE" // 会引入 ribbon
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.2"
 
         mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.1"
-//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.1"
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.1" // 与 nacos 冲突
     }
 }
 

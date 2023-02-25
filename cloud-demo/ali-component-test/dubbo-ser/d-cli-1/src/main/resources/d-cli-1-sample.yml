@@ -1,0 +1,29 @@
+# nacos key: d-cli-1.yaml
+# nacos key: d-cli-1-dev1.yaml
+# nacos key: d-cli-1-dev2.yaml
+# 改下端口
+
+server:
+  port: 6991
+
+my:
+  config:
+    test: d-cli-dev1-abc
+    test2: 36
+    user:
+      name: xf
+      age: 22
+
+dubbo:
+  application:
+    id: d-cli-1-dev1
+    name: d-cli-1
+    qosEnable: false
+  registry:
+    address: nacos://localhost:8848
+    check: false
+    parameters[namespace]: my-test
+    parameters[group]: group1
+  protocol:
+    name: dubbo
+    port: -1

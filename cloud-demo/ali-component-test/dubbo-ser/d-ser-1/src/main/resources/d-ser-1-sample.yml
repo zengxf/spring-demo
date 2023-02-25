@@ -1,0 +1,29 @@
+# nacos key: d-ser-1.yaml
+# nacos key: d-ser-1-dev1.yaml
+# nacos key: d-ser-1-dev2.yaml
+# 改下端口
+
+server:
+  port: 6981
+
+my:
+  config:
+    test: d-ser1-dev1-x1
+    test2: 66
+    user:
+      name: d-ser-dev1-xf
+      age: 66
+
+dubbo:
+  application:
+    id: d-ser-1-dev1
+    name: d-ser-1
+    qosEnable: false
+  registry:
+    address: nacos://localhost:8848
+    check: false
+    parameters[namespace]: my-test
+    parameters[group]: group1
+  protocol:
+    name: dubbo
+    port: -1

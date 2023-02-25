@@ -18,7 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ExtendWith(SpringExtension.class)
-public abstract class BaseSer1AppTest5 {
+public abstract class BaseDCli1AppTest5 {
 
     @BeforeEach
     public void before() {

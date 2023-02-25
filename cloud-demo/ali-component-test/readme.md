@@ -52,3 +52,16 @@ public class MyConfig {
 - 解决：参考 `FeignConfig`，手动指定 `LoadBalancerClient`
     - 或使用 `spring-cloud-alibaba` 最新版本 `2021.1`
     - 其引用的是 `spring-cloud-3.0.1` 并不冲突
+
+### Dubbo 2.7 在 JDK 17 中启动报错
+
+- 添加 JVM 参数：
+
+```
+# 但在单元测试中没用
+--add-opens java.base/java.lang=ALL-UNNAMED 
+--add-opens java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED
+--add-opens java.base/java.math=ALL-UNNAMED
+```
+
+- 或使用 `dubbo-3.0.6` 以上版本

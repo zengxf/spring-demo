@@ -1,4 +1,4 @@
-// ser-1
+// dubbo ser-2
 sourceCompatibility = 17
 
 dependencyManagement {
@@ -12,17 +12,22 @@ dependencyManagement {
 }
 
 dependencies {
-    // 依赖 common 模块
-    implementation project(':common')
+    // 依赖 d-api 模块
+    implementation project(':dubbo-ser:d-api')
 
+    // Spring-Cloud
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' // 读取 bootstrap.yml
-//    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
-
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
+    // Ali
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
     implementation group: 'com.alibaba.csp', name: 'sentinel-datasource-nacos'
-
+    // Dubbo
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-dubbo' // dubbo 2.7 在 JDK17 中报错
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0' // dubbo 2.7 有依赖
+//    implementation group: 'org.apache.dubbo', name: 'dubbo-spring-boot-starter', version: '3.1.7'
+//    implementation group: 'org.apache.dubbo', name: 'dubbo-registry-nacos', version: '3.1.7'
 
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 }

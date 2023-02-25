@@ -1,0 +1,12 @@
+// d-interface
+sourceCompatibility = 17
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-test'
+    }
+}
