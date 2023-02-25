@@ -3,7 +3,7 @@ package test.biz;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import test.config.MyConfig;
+import test.config.Ser1Config;
 
 /**
  * <br/>
@@ -13,7 +13,7 @@ import test.config.MyConfig;
 public class SentinelTestService {
 
     @Autowired
-    private MyConfig config;
+    private Ser1Config config;
 
     @SentinelResource(value = "ser1-sentinel-test")
     public String sayHello() {

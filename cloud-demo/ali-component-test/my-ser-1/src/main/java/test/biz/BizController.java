@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import test.config.MyConfig;
+import test.config.Ser1Config;
 
 @Slf4j
 @RestController
@@ -13,7 +13,7 @@ import test.config.MyConfig;
 public class BizController {
 
     @Autowired
-    private MyConfig config;
+    private Ser1Config config;
     @Autowired
     private SentinelTestService sentinelTestService;
 

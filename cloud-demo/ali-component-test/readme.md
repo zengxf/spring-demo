@@ -22,20 +22,33 @@
 - 解决：
     - 添加依赖：`implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap'`
 
-### lombok 插件不能用
+### Lombok 插件不能用
 
 - 解决：直接到 `dependencies` 处理
 
 ### Nacos 注册不了
 
-- 与 Spring-Cloud 版本不兼容，降低版本
+- 与 Spring-Cloud 版本不兼容，降低其版本，Ali 的不用降
 
 ### Sentinel 没集成成功
 
 - yml 配置多了 `nacos` 一层，去掉就是了
-- 通过以下代码检测出来的
+- 可通过以下代码检测
 
 ```java
-// @Value("${spring.cloud.sentinel.transport.dashboard}")
-// private String sentinelDashboard;
+public class MyConfig {
+    @Value("${spring.cloud.sentinel.transport.dashboard}")
+    private String sentinelDashboard;
+}
 ```
+
+### Feign 执行出错
+
+- OpenFeign 与 LoadBalancer 两依赖其实并不冲突，都是一个版本号
+- 原因是低版本的 `alibaba-nacos-discovery` 引用了 `spring-cloud-starter-netflix-ribbon`
+    - 所以默认使用了 `RibbonLoadBalancerClient`
+    - 而 `spring-cloud-netflix-ribbon` 版本过老
+    - 里面的 `RibbonLoadBalancerClient` 没有实现 `choose(String, Request<T>)` 方法
+- 解决：参考 `FeignConfig`，手动指定 `LoadBalancerClient`
+    - 或使用 `spring-cloud-alibaba` 最新版本 `2021.1`
+    - 其引用的是 `spring-cloud-3.0.1` 并不冲突

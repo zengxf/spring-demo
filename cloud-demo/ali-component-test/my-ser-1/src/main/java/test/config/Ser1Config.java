@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RefreshScope
 @Slf4j
-public class MyConfig {
+public class Ser1Config {
 
     @Value("${my.config.test}") // 配合 @RefreshScope 注解才会更新
     @Getter

@@ -6,6 +6,7 @@ import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ import javax.annotation.PostConstruct;
 @Component
 @RefreshScope
 @Slf4j
-public class MyConfig {
+public class Ser2Config {
 
     @Value("${my.config.test}") // 配合 @RefreshScope 注解才会更新
     private String config1;
@@ -29,6 +30,8 @@ public class MyConfig {
     private ConfigUser user;
     @Autowired
     private NacosDiscoveryProperties nacos;
+    @Autowired
+    private LoadBalancerProperties lb;
 
 
     @PostConstruct
@@ -38,6 +41,7 @@ public class MyConfig {
         log.info("app-name: [{}]", this.appName);
         log.info("config-user: [{}]", this.user);
         log.info("config-nacos: [{}]", this.nacos);
+        log.info("config-LB: [{}]", this.lb);
         log.info("\n\n-------------------------------");
     }
 
