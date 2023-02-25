@@ -1,4 +1,4 @@
-// d-interface
+// d-api
 sourceCompatibility = 17
 
 configurations {

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import test.config.Ser1Config;
 import test.dubbo.api.DUserDTO;
 import test.dubboconsumer.UserApiConsumer;
+import test.feign.DSer1BizFeign;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class BizController {
     private Ser1Config config;
     @Autowired
     private UserApiConsumer consumer;
+    @Autowired
+    private DSer1BizFeign feign;
 
     // http://localhost:6991/api/biz/hello
     @GetMapping("hello")
@@ -40,6 +43,13 @@ public class BizController {
     public List<DUserDTO> getUser5() {
         log.info("hello --------------");
         return consumer.getUsers(5);
+    }
+
+    // http://localhost:6991/api/biz/feign
+    @GetMapping("feign")
+    public String feign() {
+        log.info("hello --------------");
+        return feign.hello();
     }
 
 }

@@ -23,6 +23,5 @@ dependencies {
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
     implementation group: 'com.alibaba.csp', name: 'sentinel-datasource-nacos'
 
-
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 }

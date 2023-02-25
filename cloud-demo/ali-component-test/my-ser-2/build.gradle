@@ -19,6 +19,4 @@ dependencies {
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
-
-//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 }

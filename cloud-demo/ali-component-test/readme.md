@@ -56,12 +56,16 @@ public class MyConfig {
 ### Dubbo 2.7 在 JDK 17 中启动报错
 
 - 添加 JVM 参数：
+    - **但在单元测试中没用，单测出错**
 
 ```
-# 但在单元测试中没用
 --add-opens java.base/java.lang=ALL-UNNAMED 
 --add-opens java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED
 --add-opens java.base/java.math=ALL-UNNAMED
 ```
 
 - 或使用 `dubbo-3.0.6` 以上版本
+
+### 升级 Dubbo 3 失败
+
+- 原因是与旧的 Nacos 不兼容
