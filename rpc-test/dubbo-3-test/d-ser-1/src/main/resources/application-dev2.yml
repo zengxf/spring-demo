@@ -1,0 +1,14 @@
+
+server:
+  port: 6982
+
+my:
+  config:
+    sign: dubbo-ser-dev2-222
+    user:
+      name: dubbo-ser-dev2-xf
+      age: 22
+
+dubbo:
+  application:
+    id: dubbo-ser-dev2

@@ -1,0 +1,9 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'dubbo-3-test'
+
+// dubbo api
+include "d-api"
+// dubbo ser
+include "d-ser-1"
+// dubbo cli
+include "d-cli-1"

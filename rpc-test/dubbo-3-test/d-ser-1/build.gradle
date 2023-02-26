@@ -1,0 +1,11 @@
+// dubbo ser-1
+sourceCompatibility = 17
+
+dependencies {
+    // 依赖 d-api 模块
+    implementation project(':d-api')
+
+    // Dubbo
+    implementation group: 'org.apache.dubbo', name: 'dubbo-spring-boot-starter', version: '3.2.0-beta.5' // 支持 Spring-6
+    implementation group: 'org.apache.dubbo', name: 'dubbo-registry-nacos', version: '3.2.0-beta.5'
+}

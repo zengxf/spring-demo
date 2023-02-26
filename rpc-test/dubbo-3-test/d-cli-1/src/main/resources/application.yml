@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: dubbo-cli
+
+server:
+  port: 6991
+
+my:
+  config:
+    test: dubbo-cli-dev1
+    test2: 36
+    user:
+      name: xf
+      age: 22
+
+dubbo:
+  application:
+    id: ddubbo-cli-dev1
+    name: dubbo-cli
+    qosEnable: false
+  registry:
+    address: nacos://localhost:8848
+    check: false
+    parameters.namespace: my-test
+    parameters.group: group1
+  protocol:
+    name: dubbo
+    port: -1

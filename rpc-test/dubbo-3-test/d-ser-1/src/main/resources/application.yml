@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: dubbo-ser
+
+dubbo:
+  application:
+    name: dubbo-ser
+    qosEnable: false
+  registry:
+    address: nacos://localhost:8848
+    check: false
+    parameters.namespace: my-test
+    parameters.group: group1
+  protocol:
+    name: dubbo
+    port: -1

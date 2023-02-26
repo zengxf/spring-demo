@@ -1,0 +1,14 @@
+
+server:
+  port: 6981
+
+my:
+  config:
+    sign: dubbo-ser-dev1-111
+    user:
+      name: dubbo-ser-dev1-xf
+      age: 11
+
+dubbo:
+  application:
+    id: dubbo-ser-dev1
