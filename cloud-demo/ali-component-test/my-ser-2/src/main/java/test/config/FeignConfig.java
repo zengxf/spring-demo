@@ -1,24 +1,28 @@
 package test.config;
 
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerProperties;
-import org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient;
-import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
+import feign.Logger;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * <br/>
  * Created by ZXFeng on 2023/2/25.
  */
-@Deprecated(since = "升级 Ali 的版本即可去掉 Ribbon 依赖")
-// @Configuration
+@Configuration
 public class FeignConfig {
 
+    // @Deprecated(since = "升级 Ali 的版本即可去掉 Ribbon 依赖")
+    // @Bean
+    // public LoadBalancerClient loadBalancerClient(
+    //         LoadBalancerClientFactory factory, LoadBalancerProperties properties
+    // ) {
+    //     return new BlockingLoadBalancerClient(factory, properties);
+    // }
+
     @Bean
-    public LoadBalancerClient loadBalancerClient(
-            LoadBalancerClientFactory factory, LoadBalancerProperties properties
-    ) {
-        return new BlockingLoadBalancerClient(factory, properties);
+    Logger.Level feignLoggerLeave() { // 这个和 logback 都要配置
+        return Logger.Level.HEADERS;
+        // return Logger.Level.NONE;
     }
 
 }

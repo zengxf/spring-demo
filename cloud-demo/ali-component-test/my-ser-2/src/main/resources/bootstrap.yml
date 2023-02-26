@@ -24,3 +24,21 @@ rest:
     config: # RestTemplate 调用超时配置
       connectTimeout: 5000
       readTimeout: 5000
+
+logging:
+  level:
+    test.feign: DEBUG
+
+feign:
+  sentinel:
+    enabled: true
+  compression: # 开启压缩
+    request:
+      enabled: true
+    response:
+      enabled: true
+  client:
+    config:
+      default: # default 设置全局超时时间，指定服务名称可以设置单个服务的超时时间
+        connectTimeout: 2000
+        readTimeout: 2000

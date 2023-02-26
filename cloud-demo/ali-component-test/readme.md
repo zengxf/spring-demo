@@ -69,3 +69,21 @@ public class MyConfig {
 ### 升级 Dubbo 3 失败
 
 - 原因是与旧的 Nacos 不兼容
+
+### Feign 日志
+
+- `FeignConfig` 和 logback 都要配置
+
+---
+
+## 参考
+
+- Sentinel 介绍 https://www.cnblogs.com/cbvlog/p/15385100.html
+- OpenFeign 介绍 https://www.cnblogs.com/cbvlog/p/15322926.html
+
+### 参考类和方法
+
+- OpenFeign
+    - 配置 `org.springframework.cloud.openfeign.FeignAutoConfiguration`
+    - Sentinel `com.alibaba.cloud.sentinel.feign.SentinelFeignAutoConfiguration`
+    - 调用 `feign.SynchronousMethodHandler#executeAndDecode`

@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import test.config.Ser1Config;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/biz")
@@ -37,6 +41,14 @@ public class BizController {
     public String sentinelTest() {
         log.info("sentinel test --------------");
         return "hello --- " + config.getConfig1();
+    }
+
+    // http://localhost:6881/api/biz/get-array
+    @GetMapping("get-array")
+    public List<String> getArray() {
+        return IntStream.rangeClosed(1, 10)
+                .mapToObj(i -> "test-str-" + config.getConfig1() + "----" + i)
+                .collect(Collectors.toList());
     }
 
 }

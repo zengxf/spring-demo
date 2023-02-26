@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-
+    <!--    <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
     <logger name="org.springframework.web" level="INFO"/>
-    <logger name="org.springboot.sample" level="INFO"/>
 
     <springProfile name="test,prod">
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -61,6 +59,21 @@
             <appender-ref ref="mytest-web"/>
             <appender-ref ref="mytest-error"/>
         </logger>
+    </springProfile>
+
+    <springProfile name="dev1,dev2">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{20} - %msg%n</Pattern>
+            </encoder>
+        </appender>
+        <!--root是默认的logger -->
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+        <!--这个logger没有指定appender，它会继承root节点中定义的那些appender-->
+        <!--        <logger name="test.feign.Ser1SentinelTestFeign" level="DEBUG"/>-->
+        <!--        <logger name="test.feign.Ser1SentinelTestFeign" level="INFO"/>-->
     </springProfile>
 
 </configuration>
