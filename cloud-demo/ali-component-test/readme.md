@@ -87,3 +87,7 @@ public class MyConfig {
     - 配置 `org.springframework.cloud.openfeign.FeignAutoConfiguration`
     - Sentinel `com.alibaba.cloud.sentinel.feign.SentinelFeignAutoConfiguration`
     - 调用 `feign.SynchronousMethodHandler#executeAndDecode`
+- LoadBalancer
+    - 接口 `org.springframework.cloud.client.loadbalancer.reactive.ReactiveLoadBalancer`
+    - 接口 `org.springframework.cloud.loadbalancer.core.ReactorLoadBalancer`
+    - 使用 `org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient`
