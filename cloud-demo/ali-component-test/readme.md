@@ -101,3 +101,4 @@ public class MyConfig {
     - 加载 Nacos `com.alibaba.csp.sentinel.datasource.nacos.NacosDataSource`
     - 配置 `com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration`
     - 转换 `com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration.SentinelConverterConfiguration`
+    - 熔断实现 `com.alibaba.csp.sentinel.slots.block.degrade.circuitbreaker.ExceptionCircuitBreaker`
