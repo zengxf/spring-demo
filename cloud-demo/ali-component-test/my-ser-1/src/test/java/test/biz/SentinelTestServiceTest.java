@@ -39,4 +39,28 @@ public class SentinelTestServiceTest extends BaseSer1AppTest5 {
         }
     }
 
+    @Test
+    public void delayGetUser() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                String res = service.delayGetUser(i);
+                log.info("i: [{}], res: [{}]", i, res);
+            }
+        } catch (Exception e) {
+            log.info("Sentinel 限流！", e);
+        }
+    }
+
+    @Test
+    public void errorGetUser() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                String res = service.errorGetUser(i);
+                log.info("i: [{}], res: [{}]", i, res);
+            }
+        } catch (Exception e) {
+            log.info("Sentinel 限流！", e);
+        }
+    }
+
 }

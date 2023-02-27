@@ -29,14 +29,13 @@ public class BizController {
     }
 
     // http://localhost:6881/api/biz/sentinel-hello
-    // http://localhost:6882/api/biz/sentinel-hello
     @GetMapping("sentinel-hello")
     public String sentinelHello() {
         log.info("sentinel hello --------------");
         return sentinelTestService.sayHello();
     }
 
-    // http://localhost:6882/api/biz/sentinel-test
+    // http://localhost:6881/api/biz/sentinel-test
     @GetMapping("sentinel-test")
     public String sentinelTest() {
         log.info("sentinel test --------------");

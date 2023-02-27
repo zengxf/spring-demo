@@ -20,11 +20,19 @@ spring:
       transport:
         dashboard: localhost:8165
       datasource:
-        ds:
+        ds-flow:
           nacos:
             server-addr: http://127.0.0.1:8848
-            data-id: my-ser-1-sentinel
             namespace: my-test
             group-id: DEFAULT_GROUP
+            data-id: my-ser-1-sentinel-flow
             data-type: json
             rule-type: flow
+        ds-degrade:
+          nacos:
+            server-addr: http://127.0.0.1:8848
+            namespace: my-test
+            group-id: DEFAULT_GROUP
+            data-id: my-ser-1-sentinel-degrade
+            data-type: json
+            rule-type: degrade

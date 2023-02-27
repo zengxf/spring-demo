@@ -42,6 +42,8 @@ public class MyConfig {
 }
 ```
 
+- 还有种原因：是懒加载，**要调用系统的相关链路才会出现**
+
 ### Feign 执行出错
 
 - OpenFeign 与 LoadBalancer 两依赖其实并不冲突，都是一个版本号
@@ -92,7 +94,10 @@ public class MyConfig {
     - 接口 `org.springframework.cloud.loadbalancer.core.ReactorLoadBalancer`
     - 使用 `org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient`
 - Sentinel
-    - `DefaultController`：令牌桶
-    - `RateLimiterController`：漏斗
-    - `WarmUpController`：冷启动的令牌桶
-    - `WarmUpRateLimiterController`：冷启动的漏斗
+    - 令牌桶 `com.alibaba.csp.sentinel.slots.block.flow.controller.DefaultController`
+    - 漏桶 `com.alibaba.csp.sentinel.slots.block.flow.controller.RateLimiterController`
+    - 预热令牌桶 `com.alibaba.csp.sentinel.slots.block.flow.controller.WarmUpController`
+    - 预热漏桶 `com.alibaba.csp.sentinel.slots.block.flow.controller.WarmUpRateLimiterController`
+    - 加载 Nacos `com.alibaba.csp.sentinel.datasource.nacos.NacosDataSource`
+    - 配置 `com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration`
+    - 转换 `com.alibaba.cloud.sentinel.custom.SentinelAutoConfiguration.SentinelConverterConfiguration`
