@@ -91,3 +91,8 @@ public class MyConfig {
     - 接口 `org.springframework.cloud.client.loadbalancer.reactive.ReactiveLoadBalancer`
     - 接口 `org.springframework.cloud.loadbalancer.core.ReactorLoadBalancer`
     - 使用 `org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient`
+- Sentinel
+    - `DefaultController`：令牌桶
+    - `RateLimiterController`：漏斗
+    - `WarmUpController`：冷启动的令牌桶
+    - `WarmUpRateLimiterController`：冷启动的漏斗
