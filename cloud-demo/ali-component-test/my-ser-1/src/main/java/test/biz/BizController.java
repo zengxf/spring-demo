@@ -61,13 +61,27 @@ public class BizController {
     public Map<String, Object> echo(HttpServletRequest req) {
         log.info("hello --------------");
         Map<String, Object> res = new LinkedHashMap<>();
-        Enumeration<String> keys = req.getHeaderNames();
-        while (keys.hasMoreElements()) {
-            String key = keys.nextElement();
+
+        Map<String, Object> header = new LinkedHashMap<>();
+        Enumeration<String> hKeys = req.getHeaderNames();
+        while (hKeys.hasMoreElements()) {
+            String key = hKeys.nextElement();
             String v = req.getHeader(key);
-            res.put(key, v);
+            header.put(key, v);
         }
-        res.put("app-sign", config.getConfig1());
+        header.put("app-sign", config.getConfig1());
+
+
+        Map<String, Object> param = new LinkedHashMap<>();
+        Enumeration<String> pKeys = req.getParameterNames();
+        while (pKeys.hasMoreElements()) {
+            String key = pKeys.nextElement();
+            String v = req.getParameter(key);
+            param.put(key, v);
+        }
+
+        res.put("header", header);
+        res.put("param", param);
         return res;
     }
 

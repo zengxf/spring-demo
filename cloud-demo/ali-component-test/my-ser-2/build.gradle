@@ -20,5 +20,5 @@ dependencies {
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
 
-    implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: '10.10.1'
+    implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: '10.10.1' // Apache-HC
 }

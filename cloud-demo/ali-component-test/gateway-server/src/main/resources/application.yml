@@ -14,16 +14,30 @@ spring:
         server-addr: 127.0.0.1:8848
         namespace: my-test
         group: group1
+    sentinel:
+      transport:
+        dashboard: localhost:8165
+      datasource:
+        ds-flow:
+          nacos:
+            server-addr: http://127.0.0.1:8848
+            namespace: my-test
+            group-id: DEFAULT_GROUP
+            data-id: gateway-sentinel-flow
+            data-type: json
+            rule-type: gw-flow
     gateway:
       discovery:
         locator:
           enabled: true
       routes:
-        - id: my-ser-1-route1
+        - id: my-ser-1-route-1
           uri: lb://my-ser-1
           predicates:
-            - Path= /my-ser-1/**
+            - Path=/my-ser-a/**
           filters:
-            - AddRequestHeader= X-Test, To-My-Ser-1
-            - RewritePath= /(?<segment>.*), /$\{segment}
+            - AddRequestHeader= X-Req-Test, To-My-Ser-1
+            - AddRequestParameter= X-Req-p1, gateway-xx
+            - StripPrefix= 1
+            # - RewritePath= /my-ser-a/(?<segment>.*), /$\{segment} # 跟上面是一样的作用
             - AddResponseHeader= X-Response-Test, My-Ser-1

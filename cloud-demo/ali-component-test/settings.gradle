@@ -1,5 +1,5 @@
 // 设置名称，默认是项目目录名
-rootProject.name = 'ali-component-test'
+rootProject.name = 'ali-test'
 
 // common
 include "common"

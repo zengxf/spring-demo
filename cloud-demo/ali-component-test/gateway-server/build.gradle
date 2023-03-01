@@ -13,13 +13,17 @@ dependencyManagement {
 
 dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-gateway'
-//    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap' // 读取 bootstrap.yml
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer'
-//    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign'
 
-    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
+//    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-sentinel'
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-alibaba-sentinel-gateway'
+    implementation group: 'com.alibaba.csp', name: 'sentinel-datasource-nacos'
+}
 
-    implementation group: 'io.github.openfeign', name: 'feign-httpclient', version: '10.10.1'
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
+    }
 }
