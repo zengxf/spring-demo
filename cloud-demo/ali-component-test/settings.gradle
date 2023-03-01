@@ -9,6 +9,9 @@ include "my-ser-1"
 // web 2
 include "my-ser-2"
 
+// gateway
+include "gateway-server"
+
 // dubbo api
 include "dubbo-ser:d-api"
 // dubbo ser

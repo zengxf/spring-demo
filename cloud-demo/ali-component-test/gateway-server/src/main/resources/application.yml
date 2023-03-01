@@ -1,0 +1,29 @@
+server:
+  port: 8090
+
+logging:
+  level:
+    root: INFO
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: my-test
+        group: group1
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: my-ser-1-route1
+          uri: lb://my-ser-1
+          predicates:
+            - Path= /my-ser-1/**
+          filters:
+            - AddRequestHeader= X-Test, To-My-Ser-1
+            - RewritePath= /(?<segment>.*), /$\{segment}
+            - AddResponseHeader= X-Response-Test, My-Ser-1
