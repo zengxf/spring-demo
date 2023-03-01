@@ -1,0 +1,27 @@
+plugins {
+    id "org.springframework.boot" version "3.0.3"
+    id "io.spring.dependency-management" version "1.1.0"
+    id "io.freefair.lombok" version "6.6.3"
+    id 'java'
+}
+
+sourceCompatibility = 17
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+dependencies {
+    // spring 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+    // mysql
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
+    // lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    // test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+test { useJUnitPlatform() }
