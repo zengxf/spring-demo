@@ -12,9 +12,13 @@ include "my-ser-2"
 // gateway
 include "gateway-server"
 
+// Dubbo 测试项
 // dubbo api
-include "dubbo-ser:d-api"
+// include "dubbo-ser:d-api"
 // dubbo ser
-include "dubbo-ser:d-ser-1"
+// include "dubbo-ser:d-ser-1"
 // dubbo cli
-include "dubbo-ser:d-cli-1"
+// include "dubbo-ser:d-cli-1"
+
+// Seata 测试项
+include "seata-test:seata-ser-main"
