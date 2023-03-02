@@ -19,3 +19,4 @@ include "my-ser-2"
 // Seata 测试项
 include "seata-test:seata-ser-main"
 include "seata-test:seata-ser-order"
+include "seata-test:seata-ser-zinfo"
