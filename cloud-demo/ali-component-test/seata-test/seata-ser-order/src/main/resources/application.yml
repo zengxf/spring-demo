@@ -35,6 +35,13 @@ seata: # 阿里分布式事务配置
       seata-server: localhost:8091
     enable-degrade: false
     disable-global-transaction: false
+  #registry:
+  #  type: nacos
+  #  nacos:
+  #    application: seata-server
+  #    server-addr: 127.0.0.1:8848
+  #    namespace: my-test
+  #    group: group1
   client:
     undo:
       log-table: undo_log_order

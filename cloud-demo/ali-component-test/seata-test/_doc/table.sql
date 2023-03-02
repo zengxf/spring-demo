@@ -30,7 +30,7 @@ CREATE TABLE `t_info` (
 	`id` INT(10) NOT NULL AUTO_INCREMENT,
 	`uid` INT(10) NOT NULL DEFAULT '0',
 	`money` INT(10) NOT NULL DEFAULT '0',
-	`create_time` DATETIME(3) NULL,
+	`create_time` TIMESTAMP NULL DEFAULT NULL,
 	PRIMARY KEY (`id`) USING BTREE
 )
 COLLATE='utf8mb4_bin'
@@ -101,3 +101,9 @@ CREATE TABLE `undo_log_info` (
 COLLATE='utf8mb4_bin'
 ENGINE=InnoDB
 ;
+
+
+
+SELECT * FROM undo_log_user;
+SELECT * FROM undo_log_order;
+SELECT * FROM undo_log_info;

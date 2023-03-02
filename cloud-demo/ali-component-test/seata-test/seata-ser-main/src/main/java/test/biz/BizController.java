@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BizController {
 
     @Autowired
-    private UserService userService;
+    private OperateService operateService;
 
     // http://localhost:6851/api/biz/hello
     @GetMapping("hello")
@@ -29,7 +29,7 @@ public class BizController {
             @RequestParam(defaultValue = "1") Integer uid,
             @RequestParam(defaultValue = "10") Integer money
     ) {
-        userService.operate(sign, uid, money);
+        operateService.operate(sign, uid, money);
         return "OK";
     }
 

@@ -17,7 +17,21 @@ public class OrderService {
     public void operate(int opSign, int uid, int addMoney) {
         log.info("进入 Order -------------------");
         log.info("sign: [{}], uid: [{}], add-money: [{}]", opSign, uid, addMoney);
-        dao.addMoney(uid, addMoney);
+        int orderSign = dao.addMoney(uid, addMoney);
+        log.info("order-sign: [{}]", orderSign);
+        log.info("end ----------------------");
+
+        if (opSign == 2) {
+            throw new RuntimeException("sign = 1, err");
+        } else if (opSign == 5) {
+            try {
+                Thread.sleep(4000L);
+            } catch (InterruptedException e) {
+                log.error("Interrupted!", e);
+            }
+        } else if (opSign == 7) {
+            Thread.currentThread().stop();
+        }
     }
 
 }

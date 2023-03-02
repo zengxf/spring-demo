@@ -11,10 +11,10 @@ import test.BaseSeataMainAppTest5;
  * Created by ZXFeng on 2023/3/2.
  */
 @Slf4j
-class UserServiceTest extends BaseSeataMainAppTest5 {
+class OperateServiceTest extends BaseSeataMainAppTest5 {
 
     @Autowired
-    UserService service;
+    OperateService service;
 
     @Test
     @Disabled("JDK17 启动不了，加不了参数")
