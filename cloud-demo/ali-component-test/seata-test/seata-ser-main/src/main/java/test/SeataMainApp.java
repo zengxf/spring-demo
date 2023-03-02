@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SeataSerMainApp {
+public class SeataMainApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SeataSerMainApp.class, args);
+        SpringApplication.run(SeataMainApp.class, args);
     }
 
 }

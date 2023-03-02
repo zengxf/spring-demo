@@ -1,17 +1,15 @@
-# seata main
-
 server:
-  port: 6851
+  port: 6852
 
 my:
   config:
-    test: seata-main-111
+    test: seata-order-222
     user:
       name: s2-xf
       age: 22
 spring:
   application:
-    name: seata-main
+    name: seata-order
   datasource:
     url: jdbc:mysql://localhost:3306/seata_test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     username: root
@@ -39,4 +37,4 @@ seata: # 阿里分布式事务配置
     disable-global-transaction: false
   client:
     undo:
-      log-table: undo_log_user
+      log-table: undo_log_order

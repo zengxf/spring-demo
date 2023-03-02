@@ -24,10 +24,30 @@
       cluster: default
 ```
 
+### Web 控制台
+
+- http://localhost:7091/
+- 账号：`seata/seata`
+
 ---
 
 ## Java
 
+### 参考
+
+- 使用：https://blog.csdn.net/dghkgjlh/article/details/104730024
+- undo_log.sql: https://github.com/seata/seata-samples/blob/master/ha/src/main/resources/sql/undo_log.sql
+
 ### JDK17 报错
 
 - 添加 JVM 参数：`--add-opens=java.base/java.lang=ALL-UNNAMED`
+
+### sign 说明
+
+```js
+sign | ser-main | ser-order | ser-info
+--   |   --     |    --     |    --
+1    |   err    |    --     |    --
+2    |   -      |    err    |    --
+3    |   -      |    --     |    err
+```

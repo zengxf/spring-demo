@@ -4,21 +4,18 @@ rootProject.name = 'ali-test'
 // common
 include "common"
 
-// web 1
+// 服务发现与调用
 include "my-ser-1"
-// web 2
 include "my-ser-2"
 
-// gateway
-include "gateway-server"
+// 网关测试项
+//include "gateway-server"
 
 // Dubbo 测试项
-// dubbo api
 // include "dubbo-ser:d-api"
-// dubbo ser
 // include "dubbo-ser:d-ser-1"
-// dubbo cli
 // include "dubbo-ser:d-cli-1"
 
 // Seata 测试项
 include "seata-test:seata-ser-main"
+include "seata-test:seata-ser-order"

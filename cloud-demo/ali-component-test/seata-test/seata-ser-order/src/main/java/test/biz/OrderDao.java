@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
  * Created by ZXFeng on 2023/3/2.
  */
 @Component
-public class UserDao {
+public class OrderDao {
 
     @Autowired
     private JdbcTemplate jdbc;
 
     public int addMoney(Integer uid, Integer money) {
-        String sql = "UPDATE t_user SET money = money + ? WHERE id = ?";
+        String sql = "UPDATE t_order SET money = money + ? WHERE uid = ?";
         return jdbc.update(sql, money, uid);
     }
 
