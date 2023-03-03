@@ -5,8 +5,8 @@ rootProject.name = 'ali-test'
 include "common"
 
 // 服务发现与调用
-include "my-ser-1"
-include "my-ser-2"
+// include "my-ser-1"
+// include "my-ser-2"
 
 // 网关测试项
 //include "gateway-server"

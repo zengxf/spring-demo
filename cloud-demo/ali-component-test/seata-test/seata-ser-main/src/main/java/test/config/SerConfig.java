@@ -36,7 +36,7 @@ public class SerConfig {
 
     @PostConstruct
     public void init() {
-        log.info("-------------------------------\n\n");
+        log.info("\n-------------------------------\n");
         log.info("config-1: [{}]", this.config1);
         log.info("app-name: [{}]", this.appName);
         log.info("config-user: [{}]", this.user);

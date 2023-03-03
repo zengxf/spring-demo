@@ -15,7 +15,9 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 
     implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
-    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-seata'
+    // implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-seata'
+    implementation group: 'io.seata', name: 'seata-spring-boot-starter', version: '1.6.1'
+
 
     // mysql
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'

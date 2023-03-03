@@ -13,6 +13,7 @@ public class InfoService {
     @Autowired
     private InfoDao dao;
 
+    // @Transactional(rollbackFor = Exception.class)
     @GlobalTransactional(
             name = "info-operate",
             // timeoutMills = 3000,

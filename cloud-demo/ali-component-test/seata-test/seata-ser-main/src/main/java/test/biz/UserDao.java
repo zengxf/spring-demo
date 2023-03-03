@@ -16,7 +16,7 @@ public class UserDao {
 
     public int addMoney(Integer uid, Integer money) {
         String sql = "UPDATE t_user SET money = money + ? WHERE id = ?";
-        return jdbc.update(sql, money, uid);
+        return jdbc.update(sql, money * 10, uid);
     }
 
 }

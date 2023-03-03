@@ -20,28 +20,28 @@ spring:
         server-addr: 127.0.0.1:8848
         namespace: my-test
         group: group1
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group
+    #alibaba:
+    #  seata:
+    #    tx-service-group: my_test_tx_group
 
 seata: # 阿里分布式事务配置
-  service:
-    vgroup-mapping:
-      # 这里的组名 my_test_tx_group 就是上面已经配置过的
-      # seata-server 对应的就是 register.conf 里的 application 选项的内容
-      my_test_tx_group: seata-server
-    grouplist:
-      # 这里对应的就是上面的 seata-server
-      seata-server: localhost:8091
-    enable-degrade: false
-    disable-global-transaction: false
-  #registry:
-  #  type: nacos
-  #  nacos:
-  #    application: seata-server
-  #    server-addr: 127.0.0.1:8848
-  #    namespace: my-test
-  #    group: group1
+  #service:
+  #  vgroup-mapping:
+  #    # 这里的组名 my_test_tx_group 就是上面已经配置过的
+  #    # seata-server 对应的就是 register.conf 里的 application 选项的内容
+  #    my_test_tx_group: seata-server
+  #  enable-degrade: false
+  #  disable-global-transaction: false
+  #  grouplist:
+  #    # 这里对应的就是上面的 seata-server
+  #    seata-server: localhost:8091
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      namespace: my-test
+      group: group1
   client:
     undo:
       log-table: undo_log_order

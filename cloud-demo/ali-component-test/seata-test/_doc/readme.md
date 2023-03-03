@@ -10,7 +10,7 @@
     - 修改配置：
         - `mode: db`
         - `driver-class-name: com.mysql.cj.jdbc.Driver`
-- ~~Nacos 配置~~：
+- Nacos 配置：
 
 ```yml
   registry:
@@ -46,6 +46,10 @@
 
 - 参考：https://blog.csdn.net/fu_huo_1993/article/details/120706236
 
+### 使用 Nacos 要升级 Seata 版本
+
+- 可参考：`ser-order` 项目，不使用 `cloud-starter` 依赖
+
 ---
 
 ## 测试
@@ -80,3 +84,4 @@ sign | ser-main | ser-order | ser-info
 - 全局事务超时，会回滚
     - 下流节点也设置全局事务，不报错，如：`main 3s, info 300s(sleep 4s)`
     - 下流节点设置普通事务，会报错，如：`main 3s, order(sleep 4s)`
+    - 下流节点设置全局事务，时间会以上流的为准，不报错，如：`main 300s, info 3s(sleep 4s)`
