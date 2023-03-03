@@ -27,7 +27,7 @@ rest:
 
 logging:
   level:
-    test.feign: DEBUG
+    test.feign: DEBUG # 自己的包名
 
 feign:
   sentinel:

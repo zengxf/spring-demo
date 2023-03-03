@@ -30,4 +30,10 @@ public class Ser1BizFeignTest extends BaseSer2AppTest5 {
         }
     }
 
+    @Test
+    public void tryError() {
+        String res = feign.tryError(1);
+        log.info("res: [{}]", res);
+    }
+
 }

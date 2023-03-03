@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import test.config.Ser1Config;
 
@@ -25,6 +26,8 @@ public class BizController {
     private Ser1Config config;
     @Autowired
     private SentinelTestService sentinelTestService;
+    @Autowired
+    private BizService bizService;
 
     // http://localhost:6881/api/biz/hello
     @GetMapping("hello")
@@ -83,6 +86,16 @@ public class BizController {
         res.put("header", header);
         res.put("param", param);
         return res;
+    }
+
+
+    // http://localhost:6881/api/biz/get-array
+    @GetMapping("try-error")
+    public String tryError(
+            @RequestParam Integer sign
+    ) {
+        bizService.operate(sign);
+        return "OK";
     }
 
 }
