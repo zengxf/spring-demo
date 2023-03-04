@@ -29,7 +29,15 @@ public class BizController {
             @RequestParam(defaultValue = "1") Integer uid,
             @RequestParam(defaultValue = "10") Integer money
     ) {
-        orderService.operate(sign, uid, money);
+        log.info("进入 Order API [{}]-------------------", sign);
+        long start = System.currentTimeMillis();
+        try {
+            orderService.operate(sign, uid, money);
+        } catch (Exception e) {
+            long use = System.currentTimeMillis() - start;
+            log.info("Err use: [{}] ms", use, e);
+        }
+        log.info("end [{}] -----------------------------", sign);
         return "OK";
     }
 

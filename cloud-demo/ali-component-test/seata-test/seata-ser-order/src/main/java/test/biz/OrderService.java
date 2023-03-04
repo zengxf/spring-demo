@@ -16,6 +16,7 @@ public class OrderService {
     @GlobalTransactional(
             name = "order-operate",
             timeoutMills = 3000,
+            // timeoutMills = 300000,
             rollbackFor = Exception.class
     )
     public void operate(int opSign, int uid, int addMoney) {
@@ -30,6 +31,7 @@ public class OrderService {
         } else if (opSign == 5) {
             try {
                 Thread.sleep(4000L);
+                // Thread.sleep(40000L);
             } catch (InterruptedException e) {
                 log.error("Interrupted!", e);
             }
