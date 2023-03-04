@@ -28,7 +28,7 @@ public class TestController {
     @GetMapping("/create")
     public Flux<Map<String, Object>> create(@RequestParam String userId) {
         return Flux.just(userId)
-                .log()
+                // .log()
                 .flatMap(r -> Mono.just(r).subscribeOn(Schedulers.parallel()), 10)
                 .flatMap(id -> {
                     Map<String, Object> map = new HashMap<>();
@@ -46,7 +46,6 @@ public class TestController {
     ) {
         Thread.sleep(sleepMs);
         return Flux.just(userId)
-                .log()
                 .flatMap(r -> Mono.just(r).subscribeOn(Schedulers.parallel()), 10)
                 .flatMap(id -> {
                     Map<String, Object> map = new HashMap<>();
@@ -60,8 +59,9 @@ public class TestController {
     public Map<String, Object> findOne(@PathVariable String id) {
         Map<String, Object> map = Map.of(
                 "id", id, "name",
-                "峰-" + id, "status",
-                1, "date", System.currentTimeMillis()
+                "峰-" + id,
+                "status", 1,
+                "date", System.currentTimeMillis()
         );
         log.info("find-map: {}", map);
         return map;
