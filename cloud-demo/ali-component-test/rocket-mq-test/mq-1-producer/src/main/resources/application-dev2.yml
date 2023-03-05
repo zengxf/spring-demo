@@ -1,0 +1,9 @@
+server:
+  port: 6822
+
+my:
+  config:
+    sign: producer-2222
+    user:
+      name: xf
+      age: 33

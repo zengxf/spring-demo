@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: mq-producer
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: my_producer_group
+

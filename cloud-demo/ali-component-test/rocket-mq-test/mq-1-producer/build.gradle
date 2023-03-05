@@ -1,0 +1,6 @@
+// mq-producer
+sourceCompatibility = 17
+
+dependencies {
+    implementation group: 'org.apache.rocketmq', name: 'rocketmq-spring-boot-starter', version: '2.2.3'
+}

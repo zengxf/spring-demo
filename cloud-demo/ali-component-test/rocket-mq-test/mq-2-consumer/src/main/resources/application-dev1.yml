@@ -1,0 +1,9 @@
+server:
+  port: 6831
+
+my:
+  config:
+    sign: consumer-1111
+    user:
+      name: xf
+      age: 22

@@ -1,0 +1,9 @@
+server:
+  port: 6832
+
+my:
+  config:
+    sign: consumer-2222
+    user:
+      name: xf
+      age: 33
