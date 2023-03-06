@@ -37,8 +37,15 @@ bin> mqbroker.cmd  -c ../conf/broker.conf
 mqadmin updateTopic
 // 创建 Topic
 mqadmin updateTopic  -n localhost:9876  -b localhost:10911  -t test-1
+mqadmin updateTopic  -n localhost:9876  -b localhost:10911  -t test-order-1
+mqadmin updateTopic  -n localhost:9876  -b localhost:10911  -t test-broad-1
 // 查看所有 Topic
 mqadmin topicList  -n localhost:9876
+mqadmin statsAll  -n localhost:9876
+// 查看单个 Topic
+mqadmin topicStatus  -n localhost:9876  -t test-order-1
+mqadmin topicStatus  -n localhost:9876  -t test-broad-1
+mqadmin topicRoute  -n localhost:9876  -t test-broad-1
 
 // 查看 Broker 信息
 mqadmin brokerStatus  –n localhost:9876  –b localhost:10911
@@ -47,3 +54,11 @@ mqadmin brokerStatus  –n localhost:9876  –b localhost:10911
 mqadmin clusterList  -n localhost:9876
 mqadmin clusterList  -n localhost:9876  -m
 ```
+
+---
+
+## Java
+
+- 参考：
+    - https://www.51cto.com/article/657455.html
+    - https://blog.51cto.com/u_9177933/3858641

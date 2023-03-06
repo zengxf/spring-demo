@@ -1,5 +1,6 @@
 package test.config;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import javax.annotation.PostConstruct;
 public class SerConfig {
 
     @Value("${my.config.sign}") // 配合 @RefreshScope 注解才会更新
+    @Getter
     private String sign;
     @Value("${spring.application.name}")
     private String appName;
