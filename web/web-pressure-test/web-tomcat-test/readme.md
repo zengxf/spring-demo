@@ -1,9 +1,9 @@
-## WebFlux 测试
+## Web-Tomcat 测试
 
 ### URL
 
 - http://localhost:8866/api/test/find-one/22
-- http://localhost:8866/api/test/create-sleep/s50/50
+- http://localhost:8866/api/test/find-sleep/s50/50
 
 ### Apache-ab 测试
 
@@ -63,7 +63,7 @@ Percentage of the requests served within a certain time (ms)
     - QPS 下降明显
 
 ```js
-> ab -n 2000 -c 10 -m GET http://localhost:8866/api/test/create-sleep/s50/50
+> ab -n 2000 -c 10 -m GET http://localhost:8866/api/test/find-sleep/s50/50
 This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -78,7 +78,7 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            8866
 
-Document Path:          /api/test/create-sleep/s50/50
+Document Path:          /api/test/find-sleep/s50/50
 Document Length:        36 bytes
 
 Concurrency Level:      10
@@ -115,7 +115,7 @@ Percentage of the requests served within a certain time (ms)
     - QPS 下降非常明显
 
 ```js
-> ab -n 1000 -c 10 -m GET http://localhost:8866/api/test/create-sleep/s200/200
+> ab -n 1000 -c 10 -m GET http://localhost:8866/api/test/find-sleep/s200/200
 This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -130,7 +130,7 @@ Server Software:
 Server Hostname:        localhost
 Server Port:            8866
 
-Document Path:          /api/test/create-sleep/s200/200
+Document Path:          /api/test/find-sleep/s200/200
 Document Length:        37 bytes
 
 Concurrency Level:      10

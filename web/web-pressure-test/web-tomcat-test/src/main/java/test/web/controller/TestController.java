@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 @RestController
 @RequestMapping("/api/test")
+@Slf4j
 public class TestController {
 
     @SneakyThrows
-    @GetMapping("/create-sleep/{userId}/{sleepMs}")
-    public Map<String, Object> createSleep(
+    @GetMapping("/find-sleep/{userId}/{sleepMs}")
+    public Map<String, Object> findSleep(
             @PathVariable String userId,
             @PathVariable Integer sleepMs
     ) {

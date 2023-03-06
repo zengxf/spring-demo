@@ -1,0 +1,6 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'web-pressure-test'
+
+
+include "web-tomcat-test"
+include "webflux-test"
