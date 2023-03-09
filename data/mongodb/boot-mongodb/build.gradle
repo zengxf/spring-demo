@@ -1,36 +1,25 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
-    }
+plugins {
+    id "org.springframework.boot" version "3.0.3"
+    id "io.spring.dependency-management" version "1.1.0"
+    id "io.freefair.lombok" version "6.6.3"
+    id 'java'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'application'
-apply plugin: 'org.springframework.boot'
+sourceCompatibility = 17
 
 repositories {
-    maven {
-        url "http://maven.aliyun.com/nexus/content/groups/public/"
-    }
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
 }
 
-dependencies { 
-
-// spring 
-	// web
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
-	
-	
-// lombok
-	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.12'
-
-// test
-	testCompile("org.springframework.boot:spring-boot-starter-test")
-
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
+    // Lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    // Test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 }
+
+// Test 5
+test { useJUnitPlatform() }
