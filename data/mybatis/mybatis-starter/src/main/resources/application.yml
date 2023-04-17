@@ -4,9 +4,20 @@ spring:
          &useSSL=false&failOverReadOnly=false
          &serverTimezone=GMT%2B8
     username: root
-    password: abc
+    password: abcd
 
 logging:
   level:
     root: INFO
-    cn.zxf.mybatis_starter.test.user: TRACE
+    cn.zxf.mybatis_starter.test: TRACE
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapperLocations: classpath*:cn/zxf/mybatis_starter/test/user/**/*.xml
+
+
+server:
+  port: 8866
