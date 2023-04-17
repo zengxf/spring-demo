@@ -4,7 +4,7 @@ spring:
          &useSSL=false&failOverReadOnly=false
          &serverTimezone=GMT%2B8
     username: root
-    password: 1234
+    password: abc
 
 logging:
   level:

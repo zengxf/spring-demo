@@ -28,12 +28,13 @@ public class TestController {
         return map;
     }
 
+    // http://localhost:8866/api/test/find-one/test
     @GetMapping("/find-one/{id}")
     public Map<String, Object> findOne(@PathVariable String id) {
         Map<String, Object> map = Map.of(
                 "id", id, "name",
                 "峰-" + id,
-                "status", 1,
+                "status", 2,
                 "date", System.currentTimeMillis()
         );
         log.info("find-map: {}", map);
