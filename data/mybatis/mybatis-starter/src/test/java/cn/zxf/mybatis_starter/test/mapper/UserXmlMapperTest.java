@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class UserXmlMapperTest {
 
     @Autowired
-    private UserXmlMapper mapper;
+    UserXmlMapper mapper;
 
     @Test
     public void findStatus() {
