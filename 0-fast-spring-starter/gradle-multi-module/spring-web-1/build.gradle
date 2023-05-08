@@ -1,5 +1,5 @@
 // web-1
-sourceCompatibility = 11
+sourceCompatibility = 17
 
 dependencies {
     // 依赖 common 模块

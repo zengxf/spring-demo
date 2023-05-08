@@ -1,8 +1,8 @@
 plugins {
-    id "org.springframework.boot" version "3.0.3"
-    id "io.spring.dependency-management" version "1.1.0"
-    id "io.freefair.lombok" version "6.6.3"
     id 'java'
+    id 'org.springframework.boot' version '3.0.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id "io.freefair.lombok" version "8.0.1"
 }
 
 sourceCompatibility = 17
@@ -13,20 +13,20 @@ repositories {
 }
 
 dependencies {
-    // spring 
+    // Spring
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
-    // mysql
+    // MySQL
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
-    // lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-//    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-//    testCompileOnly  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-//    testAnnotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
-    // test
+    // Lombok
+//    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+//    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+//    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+//    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+    // Test
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
 }
 
-// tasks.withType(Test) { useJUnitPlatform() }
+// JUnit 5
 test { useJUnitPlatform() }
