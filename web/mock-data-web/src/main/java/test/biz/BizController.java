@@ -2,12 +2,16 @@ package test.biz;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import test.user.UserDto;
 
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -15,10 +19,34 @@ import java.util.Map;
 @Slf4j
 public class BizController {
 
+    @Autowired
+    private BizService service;
+
     // http://localhost:9066/api/biz/hello
     @GetMapping("hello")
     public String hello() {
         return "hello";
+    }
+
+    // err: http://localhost:9066/api/biz/getUsers?size=-1
+    // err: http://localhost:9066/api/biz/getUsers?size=6
+    // ok:  http://localhost:9066/api/biz/getUsers?size=1
+    @GetMapping("getUsers")
+    public List<UserDto> getUsers(
+            @RequestParam(defaultValue = "3") int size
+    ) {
+        log.info("req-param -> size: [{}]", size);
+        return service.getUsers(size);
+    }
+
+    // ok:  http://localhost:9066/api/biz/getUsers2?size=1&idPrefix=id-
+    @GetMapping("getUsers2")
+    public List<UserDto> getUsers2(
+            @RequestParam(defaultValue = "3") int size,
+            @RequestParam(defaultValue = "id-") String idPrefix
+    ) {
+        log.info("req-param -> size: [{}], idPrefix: [{}]", size, idPrefix);
+        return service.getUsers(size, idPrefix);
     }
 
     /**
