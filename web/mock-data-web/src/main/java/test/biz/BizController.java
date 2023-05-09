@@ -49,6 +49,17 @@ public class BizController {
         return service.getUsers(size, idPrefix);
     }
 
+    // http://localhost:9066/api/biz/sleepMs?ms=20
+    // http://localhost:9066/api/biz/sleepMs?ms=45
+    @GetMapping("sleepMs")
+    public Map<String, Object> sleepMs(
+            @RequestParam(defaultValue = "10") int ms
+    ) {
+        log.info("req-param -> ms: [{}]", ms);
+        service.sleepMs(ms);
+        return Map.of("ms", ms, "sign", "OK!");
+    }
+
     /**
      * 头的 key 不能包含空格，但头的 value 可以包含空格；
      * Tomcat 9 会将 value 的空格清除，但 Tomcat 早期版本可能不会清除

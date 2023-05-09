@@ -16,7 +16,12 @@ public class TestBizService extends AbstractApplicationTest {
     @Test
     public void hello() {
         service.hello();
-        log.info( "ok!" );
+        log.info("ok!");
+    }
+
+    @Test
+    public void sleepMs() {
+        service.sleepMs(10);
     }
 
 }

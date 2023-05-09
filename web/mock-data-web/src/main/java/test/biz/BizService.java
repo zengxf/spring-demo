@@ -5,10 +5,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import test.user.UserDto;
+import test.utils.UserUtils;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Slf4j
 @Component
@@ -32,14 +31,27 @@ public class BizService {
             throw new RuntimeException("参数错误！size = " + size);
         if (size > 5)
             throw new RuntimeException("size 不能超过 5！size = " + size);
+        return UserUtils.getUsers(size, idPrefix);
+    }
 
-        return IntStream.rangeClosed(1, size)
-                .mapToObj(i -> new UserDto()
-                        .setId(idPrefix + i)
-                        .setName("test-" + i)
-                        .setAge(32 + i)
-                )
-                .collect(Collectors.toList());
+    public void sleepMs(int ms) {
+        try {
+            log.info("start ----");
+            long start = System.currentTimeMillis();
+            Thread.sleep(ms);
+            int ms2 = this.sleep5Ms();
+            long useMs = System.currentTimeMillis() - start;
+            log.info("end   ----");
+            log.info("use ms: [{}], ms2: [{}]", useMs, ms2);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int sleep5Ms() throws InterruptedException {
+        int ms = 5;
+        Thread.sleep(ms);
+        return ms;
     }
 
 }
