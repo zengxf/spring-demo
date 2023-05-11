@@ -48,8 +48,14 @@ public class BizService {
         }
     }
 
-    private int sleep5Ms() throws InterruptedException {
+    int sleep5Ms() throws InterruptedException {
         int ms = 5;
+        Thread.sleep(ms);
+        return ms;
+    }
+
+    int sleep6Ms() throws InterruptedException {
+        int ms = 6;
         Thread.sleep(ms);
         return ms;
     }

@@ -54,10 +54,12 @@ public class BizController {
     @GetMapping("sleepMs")
     public Map<String, Object> sleepMs(
             @RequestParam(defaultValue = "10") int ms
-    ) {
+    ) throws InterruptedException {
         log.info("req-param -> ms: [{}]", ms);
         service.sleepMs(ms);
-        return Map.of("ms", ms, "sign", "OK!");
+        int ms1 = service.sleep6Ms();
+        log.info("ms1: [{}]", ms1);
+        return Map.of("ms", ms + ms1, "sign", "OK!");
     }
 
     /**
