@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,6 +28,13 @@ public class DemoController {
                 "res", "OK",
                 "status", status
         );
+    }
+
+    // http://localhost:8866/demo/getUsers
+    @GetMapping("/demo/getUsers")
+    public List<User> getUsers() {
+        List<User> users = mapper.findList();
+        return users;
     }
 
 }

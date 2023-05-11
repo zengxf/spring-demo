@@ -1,6 +1,9 @@
 package cn.zxf.mybatis_starter.test.mapper;
 
+import cn.zxf.mybatis_starter.test.user.User;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <br>
@@ -12,5 +15,7 @@ public interface UserXmlMapper {
     Integer findStatus(int id);
 
     Integer findOneStatus(String name, int age);
+
+    List<User> findList();
 
 }

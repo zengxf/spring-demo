@@ -10,4 +10,8 @@
         SELECT status FROM user1 WHERE name = #{name} AND age > #{age} LIMIT 1
     </select>
 
+    <select id="findList" resultType="cn.zxf.mybatis_starter.test.user.User">
+        SELECT * FROM user1 LIMIT 3
+    </select>
+
 </mapper>

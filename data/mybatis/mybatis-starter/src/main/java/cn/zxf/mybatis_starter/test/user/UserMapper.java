@@ -40,9 +40,9 @@ public interface UserMapper {
             return new SQL() {
                 {
                     UPDATE("user1");
-                    if (user.name() != null)
+                    if (user.getName() != null)
                         SET("name = #{name}");
-                    if (user.age() != null)
+                    if (user.getAge() != null)
                         SET("age = #{age}");
                     WHERE("id = #{id}");
                 }
