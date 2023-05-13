@@ -12,6 +12,7 @@
         SELECT * FROM json_data;
     </select>
 
+    <!-- 会将生成的 id 返回到实体对象里面去 -->
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO json_data (id, remark, user_ids) VALUES (#{id}, #{remark}, #{userIds});
     </insert>

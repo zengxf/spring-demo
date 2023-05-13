@@ -33,7 +33,8 @@ public class JsonDataMapperTest {
                 .setUserIds(List.of(1L, 2L, 3L).toString())
                 .setRemark("test-" + LocalDateTime.now());
         log.info("data: [{}]", data);
-        mapper.save(data);
+        int res = mapper.save(data);
+        log.info("save-res: [{}]", res);
         log.info("saved-data: [{}]", data);
     }
 
