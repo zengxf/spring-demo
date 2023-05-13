@@ -16,7 +16,7 @@ mybatis:
     map-underscore-to-camel-case: true
     default-fetch-size: 100
     default-statement-timeout: 30
-  mapperLocations: classpath*:cn/zxf/mybatis_starter/test/user/**/*.xml
+  mapperLocations: classpath*:cn/zxf/mybatis_starter/test/**/*.xml
 
 
 server:
