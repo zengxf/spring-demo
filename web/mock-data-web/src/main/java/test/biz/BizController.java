@@ -57,8 +57,9 @@ public class BizController {
     ) throws InterruptedException {
         log.info("req-param -> ms: [{}]", ms);
         service.sleepMs(ms);
-        int ms1 = service.sleep6Ms();
+        int ms1 = service.sleep5Ms();
         log.info("ms1: [{}]", ms1);
+        log.info("--------- test [xxx] --------");
         return Map.of("ms", ms + ms1, "sign", "OK!");
     }
 
