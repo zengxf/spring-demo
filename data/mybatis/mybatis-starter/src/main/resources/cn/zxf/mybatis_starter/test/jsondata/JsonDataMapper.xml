@@ -12,4 +12,8 @@
         SELECT * FROM json_data;
     </select>
 
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO json_data (id, remark, user_ids) VALUES (#{id}, #{remark}, #{userIds});
+    </insert>
+
 </mapper>

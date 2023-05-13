@@ -13,4 +13,6 @@ public interface JsonDataMapper {
 
     List<JsonData> findAll();
 
+    int save(JsonData data);
+
 }

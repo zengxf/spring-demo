@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -24,6 +25,16 @@ public class JsonDataMapperTest {
         List<JsonData> list = mapper.findAll();
         log.info("list-size: [{}]", list.size());
         list.forEach(data -> log.info("data: [{}]", data));
+    }
+
+    @Test
+    public void save() {
+        JsonData data = new JsonData()
+                .setUserIds(List.of(1L, 2L, 3L).toString())
+                .setRemark("test-" + LocalDateTime.now());
+        log.info("data: [{}]", data);
+        mapper.save(data);
+        log.info("saved-data: [{}]", data);
     }
 
 }
