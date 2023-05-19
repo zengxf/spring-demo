@@ -4,10 +4,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.extern.slf4j.Slf4j;
-import cn_zxf_test.BaseTester;
+import cn_zxf_test.BaseNotLazyTester;
 
 @Slf4j
-public class TestBizService extends BaseTester {
+public class BizServiceNotLazyTest extends BaseNotLazyTester {
 
     @Autowired
     private BizService service;

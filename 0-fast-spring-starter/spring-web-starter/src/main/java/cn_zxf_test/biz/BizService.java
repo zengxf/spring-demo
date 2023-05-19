@@ -1,6 +1,6 @@
 package cn_zxf_test.biz;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 

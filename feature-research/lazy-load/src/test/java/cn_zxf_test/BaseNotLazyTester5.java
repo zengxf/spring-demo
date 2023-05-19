@@ -14,9 +14,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  */
 @Slf4j
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(
+        classes = UnitNotLazyApp.class,
+        webEnvironment = SpringBootTest.WebEnvironment.NONE
+)
 @ExtendWith(SpringExtension.class)
-public abstract class BaseTester5 {
+public abstract class BaseNotLazyTester5 {
 
     @BeforeEach
     public void before() {

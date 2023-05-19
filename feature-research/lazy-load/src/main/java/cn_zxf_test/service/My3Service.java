@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class My1Service {
+public class My3Service {
 
     @PostConstruct
     public void init() throws InterruptedException {
-        log.info("== My 1111 service init! ==");
         Thread.sleep(1000L);
+        log.info("== My 3333 service init! ==");
     }
 
     public void hello() {
