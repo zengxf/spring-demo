@@ -15,9 +15,10 @@ import org.springframework.context.annotation.FilterType;
         excludeFilters = @ComponentScan.Filter(
                 type = FilterType.ASSIGNABLE_TYPE,
                 classes = {
-                        MainApplication.class, UnitNotLazyApp.class
-                })
-        , lazyInit = true
+                        MainApplication.class, UnitNotLazyApp.class,
+                }
+        ),
+        lazyInit = true
 )
 @Slf4j
 public class UnitLazyApp {
