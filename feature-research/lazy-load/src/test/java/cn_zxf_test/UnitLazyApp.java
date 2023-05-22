@@ -1,5 +1,6 @@
 package cn_zxf_test;
 
+import cn_zxf_test.config.MyConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.FilterType;
                 type = FilterType.ASSIGNABLE_TYPE,
                 classes = {
                         MainApplication.class, UnitNotLazyApp.class,
+                        MyConfiguration.class, // 可以排除
                 }
         ),
         lazyInit = true

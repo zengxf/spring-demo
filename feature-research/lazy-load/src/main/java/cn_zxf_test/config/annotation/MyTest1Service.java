@@ -1,4 +1,4 @@
-package cn_zxf_test.config;
+package cn_zxf_test.config.annotation;
 
 import lombok.extern.slf4j.Slf4j;
 

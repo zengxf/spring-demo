@@ -6,16 +6,17 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @Slf4j
-@SpringBootTest(
-        classes = UnitNotLazyApp.class,
-        webEnvironment = SpringBootTest.WebEnvironment.NONE
+@ContextConfiguration( // 这种方式可以不运行 ApplicationRunner
+        classes = UnitLazyApp.class,
+        initializers = ConfigDataApplicationContextInitializer.class
 )
-@RunWith(SpringRunner.class)
-public abstract class BaseNotLazyTester {
+@RunWith(SpringRunner.class) // JUnit-4 测试
+public abstract class BaseFastTester {
 
     static ThreadLocal<Long> startUnitTs = new ThreadLocal<>();
     static ThreadLocal<Long> startAppTs = new ThreadLocal<>();

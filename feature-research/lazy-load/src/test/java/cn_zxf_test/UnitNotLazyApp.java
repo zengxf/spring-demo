@@ -1,6 +1,6 @@
 package cn_zxf_test;
 
-import cn_zxf_test.config.NewService;
+import cn_zxf_test.config.annotation.NewService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

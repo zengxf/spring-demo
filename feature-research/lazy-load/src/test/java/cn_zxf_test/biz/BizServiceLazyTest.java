@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BizServiceLazyTest extends BaseLazyTester {
 
     @Autowired
-    private BizService service;
+    BizService service;
 
     @Test
     public void hello() {

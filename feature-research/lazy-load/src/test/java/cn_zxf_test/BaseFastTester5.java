@@ -1,46 +1,47 @@
 package cn_zxf_test;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @Slf4j
-@SpringBootTest(
-        classes = UnitNotLazyApp.class,
-        webEnvironment = SpringBootTest.WebEnvironment.NONE
+@ContextConfiguration( // 这种方式可以不运行 ApplicationRunner
+        classes = UnitLazyApp.class,
+        initializers = ConfigDataApplicationContextInitializer.class
 )
-@RunWith(SpringRunner.class)
-public abstract class BaseNotLazyTester {
+@ExtendWith(SpringExtension.class) // JUnit-5 测试
+public abstract class BaseFastTester5 {
 
     static ThreadLocal<Long> startUnitTs = new ThreadLocal<>();
     static ThreadLocal<Long> startAppTs = new ThreadLocal<>();
 
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         log.info("\n------- App start -------\n\n\n");
         startAppTs.set(System.currentTimeMillis());
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() {
         long us = System.currentTimeMillis() - startAppTs.get();
         log.info("\n\n\n------- App end -------");
         log.info("App 用时：[{}]", fmtMs(us));
     }
 
-    @Before
+    @BeforeEach
     public void before() {
         log.info("\n------- Unit start ------\n\n\n");
         startUnitTs.set(System.currentTimeMillis());
     }
 
-    @After
+    @AfterEach
     public void after() {
         long us = System.currentTimeMillis() - startUnitTs.get();
         log.info("\n\n\n------- Unit end ------");

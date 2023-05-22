@@ -1,12 +1,16 @@
-package cn_zxf_test.units;
+package cn_zxf_test.utils;
 
-import cn_zxf_test.BaseNotLazyTester5;
+import cn_zxf_test.BaseLazyTester5;
 import cn_zxf_test.biz.BizService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
-public class SpringUtilsNotLazyTest extends BaseNotLazyTester5 {
+public class SpringUtilsLazyTest extends BaseLazyTester5 {
+
+    @Autowired // 声明一下，才初始化
+    SpringUtils springUtils;
 
     @Test
     public void getBean() {

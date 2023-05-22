@@ -1,4 +1,4 @@
-package cn_zxf_test.config;
+package cn_zxf_test.config.annotation;
 
 import org.springframework.stereotype.Component;
 
