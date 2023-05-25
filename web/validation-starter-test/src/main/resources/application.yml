@@ -1,2 +1,14 @@
 server:
   port: 9001
+
+
+# 腾讯云对象存储配置
+tx-cloud:
+  cos:
+    secretId: id-0
+    secretKey: key-2
+    bucketName: test-1
+    region: sz
+    cosPath:
+    append:
+      key1: test

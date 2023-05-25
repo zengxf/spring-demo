@@ -1,8 +1,8 @@
 package cn.zxf.spring_research;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,9 @@ public class ValidationConfiguration {
 
     @Bean
     public Validator validator() {
-        ValidatorFactory vf = Validation.byProvider( HibernateValidator.class )
+        ValidatorFactory vf = Validation.byProvider(HibernateValidator.class)
                 .configure()
-                .failFast( true )
+                .failFast(true)
                 .buildValidatorFactory();
         return vf.getValidator();
     }
