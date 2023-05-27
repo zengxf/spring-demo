@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import test.bizconfig.BizConfigUtils;
 import test.user.UserDto;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -92,6 +95,12 @@ public class BizController {
         }
         log.info("-------------");
         return map;
+    }
+
+    // http://localhost:9066/api/biz/bizConfigContent
+    @GetMapping("bizConfigContent")
+    public String bizConfigContent() throws URISyntaxException, IOException {
+        return BizConfigUtils.readContentUseSpring();
     }
 
 }
