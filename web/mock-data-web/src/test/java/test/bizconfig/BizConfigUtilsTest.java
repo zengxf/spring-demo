@@ -4,13 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 @Slf4j
 public class BizConfigUtilsTest {
 
     @Test
-    public void readContent() throws IOException {
+    public void readContent() {
         String content = BizConfigUtils.readContent();
         log.info("content: \n\n{}\n", content);
     }
