@@ -10,13 +10,13 @@ import java.net.URISyntaxException;
 public class BizConfigUtilsTest {
 
     @Test
-    public void readContent() throws URISyntaxException, IOException {
+    public void readContent() throws IOException {
         String content = BizConfigUtils.readContent();
         log.info("content: \n\n{}\n", content);
     }
 
     @Test
-    public void readContentUseSpring() throws URISyntaxException, IOException {
+    public void readContentUseSpring() throws IOException {
         String content = BizConfigUtils.readContentUseSpring();
         log.info("content: \n\n{}\n", content);
     }

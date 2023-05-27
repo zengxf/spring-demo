@@ -99,8 +99,9 @@ public class BizController {
 
     // http://localhost:9066/api/biz/bizConfigContent
     @GetMapping("bizConfigContent")
-    public String bizConfigContent() throws URISyntaxException, IOException {
-        return BizConfigUtils.readContentUseSpring();
+    public String bizConfigContent() throws IOException {
+        // return BizConfigUtils.readContentUseSpring();
+        return BizConfigUtils.readContent();
     }
 
 }
