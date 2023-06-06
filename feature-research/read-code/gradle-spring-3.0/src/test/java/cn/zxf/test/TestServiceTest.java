@@ -13,7 +13,8 @@ public class TestServiceTest {
         String path = "application.xml";
         ApplicationContext context = new ClassPathXmlApplicationContext(path);
 
-        TestService service = (TestService) context.getBean("testService");
+        // TestService service = (TestService) context.getBean("testService");
+        TestService service = context.getBean(TestService.class);
         String result = service.test("admin");
 
         log.info("result : " + result);
