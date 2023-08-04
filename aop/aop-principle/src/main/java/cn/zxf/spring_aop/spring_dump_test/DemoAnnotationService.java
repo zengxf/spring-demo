@@ -9,18 +9,18 @@ public class DemoAnnotationService {
     @Autowired
     DemoAnnotationService self;
 
-    @Action( name = "注解式拦截的add操作" )
+    @Action(name = "注解式拦截的 add 操作")
     public void add() {
-        System.out.println( "entry DemoAnnotationService.add() ..." );
-        System.out.println( "this.add1()" );
+        System.out.println("进入 Demo-Annotation-Service #add() ...");
+        System.out.println("this.add1()");
         this.add1();
-        System.out.println( "self.add1()" );
+        System.out.println("self.add1()");
         self.add1();
     }
 
-    @Action( name = "注解式拦截的add1操作" )
+    @Action(name = "注解式拦截的 add1 操作")
     public void add1() {
-        System.out.println( "entry DemoAnnotationService.add1() ..." );
+        System.out.println("进入 Demo-Annotation-Service #add1() ...");
     }
 
 }

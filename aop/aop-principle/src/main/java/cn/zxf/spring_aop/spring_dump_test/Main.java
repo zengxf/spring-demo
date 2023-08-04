@@ -16,20 +16,29 @@ public class Main {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class); // 1
 
-        DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService.class);
-        DemoMethodService demoMethodService = context.getBean(DemoMethodService.class);
-        System.out.println("----------------------");
-        demoAnnotationService.add();
-        System.out.println("----------------------");
-        demoMethodService.add();
+        DemoAnnotationService annotationService = context.getBean(DemoAnnotationService.class);
+        DemoMethodService methodService = context.getBean(DemoMethodService.class);
+
+        System.out.println("\n----------- 注解 -----------");
+        // annotationService.add();
+
+        System.out.println("\n----------- 方法 -----------");
+        methodService.add();
+        methodService.testPackage();
+        methodService.testProtected();
+        methodService.testPublicFinal();
+
+        System.out.println("\n----------- 输出 -----------");
+        System.out.println("DemoMethodService - proxy: " + methodService);
 
         context.close();
     }
 
     static void setSavePath() throws URISyntaxException, IOException {
-        Path path = Paths.get(Main.class.getResource("/")
-                .toURI());
-        Path savePath = path.resolve("../export/spring-aop-proxy")
+        Path path = Paths.get(Main.class.getResource("/").toURI());
+        Path savePath = path
+                .resolve("../export/spring-aop-proxy")
+                // .resolve("../main") // 打断点，也不能调试进去
                 .normalize()
                 .toAbsolutePath();
         Files.createDirectories(savePath);
@@ -38,7 +47,7 @@ public class Main {
         System.out.println(savePath);
         System.out.println("----------------------");
 
-        // 设置将 cglib 生成的代理类字节码生成到指定位置
+        // 设置将 CGLib 生成的代理类字节码生成到指定位置
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, savePath.toString());
     }
 
