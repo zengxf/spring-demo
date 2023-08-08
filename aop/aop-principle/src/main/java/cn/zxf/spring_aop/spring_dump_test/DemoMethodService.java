@@ -17,6 +17,16 @@ public class DemoMethodService {
         System.out.println("包可见");
     }
 
+    public void testError() {
+        System.out.println("出错");
+        throw new RuntimeException("------ 出错测试 ------");
+    }
+
+    public int testReturn() {
+        System.out.println("返回结果");
+        return 888888;
+    }
+
     protected void testProtected() {
         System.out.println("子类可见");
     }

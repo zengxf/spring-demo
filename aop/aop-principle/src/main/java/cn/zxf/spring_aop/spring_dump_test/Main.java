@@ -23,10 +23,12 @@ public class Main {
         // annotationService.add();
 
         System.out.println("\n----------- 方法 -----------");
-        methodService.add();
-        methodService.testPackage();
-        methodService.testProtected();
-        methodService.testPublicFinal();
+        // methodService.add();
+        // methodService.testPackage();
+        // methodService.testProtected();
+        // methodService.testPublicFinal();
+        // methodService.testError();
+        methodService.testReturn();
 
         System.out.println("\n----------- 输出 -----------");
         System.out.println("DemoMethodService - proxy: " + methodService);
