@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws URISyntaxException, IOException {
         setSavePath();
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class); // 1
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
 
         DemoAnnotationService annotationService = context.getBean(DemoAnnotationService.class);
         DemoMethodService methodService = context.getBean(DemoMethodService.class);

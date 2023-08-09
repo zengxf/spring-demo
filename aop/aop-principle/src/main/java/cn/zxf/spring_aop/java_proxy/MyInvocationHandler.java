@@ -11,10 +11,10 @@ public class MyInvocationHandler implements InvocationHandler {
     private final IUserService service;
 
     @Override
-    public Object invoke( Object proxy, Method method, Object[] args ) throws Throwable {
-        System.out.println( "进入 proxy !!! ==> proxy: " + proxy.getClass() ); // toString() 会死循环调用
-        Object result = method.invoke( service, args );
-        System.out.println( "proxy-result: " + result );
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("进入 proxy !!! ==> proxy: " + proxy.getClass()); // toString() 会死循环调用
+        Object result = method.invoke(service, args);
+        System.out.println("proxy-result: " + result);
         return result;
     }
 
