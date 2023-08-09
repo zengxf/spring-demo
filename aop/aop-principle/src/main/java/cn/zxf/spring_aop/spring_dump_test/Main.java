@@ -28,7 +28,8 @@ public class Main {
         // methodService.testProtected();
         // methodService.testPublicFinal();
         // methodService.testError();
-        methodService.testReturn();
+        Integer v = methodService.testReturn();
+        System.out.println("v ==> " + v);
 
         System.out.println("\n----------- 输出 -----------");
         System.out.println("DemoMethodService - proxy: " + methodService);

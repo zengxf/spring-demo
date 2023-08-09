@@ -31,6 +31,7 @@ public class DemoMethodService {
         System.out.println("子类可见");
     }
 
+    // 不能 AOP，不进行代理
     public final void testPublicFinal() {
         System.out.println("公共 & Final");
     }
