@@ -2,11 +2,12 @@ package cn.zxf.spring_aop.spring_order_test;
 
 import org.springframework.aop.aspectj.AspectJAfterAdvice;
 import org.springframework.aop.aspectj.AspectJAroundAdvice;
+import org.springframework.aop.framework.ReflectiveMethodInvocation;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * 断点调试：org.springframework.aop.framework.ReflectiveMethodInvocation #proceed() 时，<br/>
- * 会按顺序一个一个执行，只是输出有些不一致，<br/>
+ * 断点调试 {@link ReflectiveMethodInvocation#proceed()} 时，<p/>
+ * 会按顺序一个一个执行，只是输出有些不一致，<p/>
  * 是因为 {@link AspectJAroundAdvice}、{@link AspectJAfterAdvice} 等拦截器内部处理会按对应逻辑进行传递，导致仅看输出时会不一致。
  */
 public class Main {
