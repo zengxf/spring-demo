@@ -12,11 +12,11 @@ public class BizService {
 
     @PostConstruct
     public void init() {
-        log.info( "== BizService init! ==" );
+        log.info("== BizService init! ==");
     }
 
     public void hello() {
-        log.info( "== hello ==" );
+        log.info("== hello ==");
     }
 
 }

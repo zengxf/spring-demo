@@ -15,7 +15,7 @@ public class TestBizService extends BaseTester {
     @Test
     public void hello() {
         service.hello();
-        log.info( "ok!" );
+        log.info("ok!");
     }
 
 }
