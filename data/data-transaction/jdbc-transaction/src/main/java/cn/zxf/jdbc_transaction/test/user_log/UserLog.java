@@ -7,8 +7,8 @@ import lombok.Data;
 @Builder
 public class UserLog {
 
-    private Long   id;
-    private Long   userId;
+    private Long id;
+    private Long userId;
     private String msg;
 
 }
