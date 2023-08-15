@@ -9,8 +9,10 @@ spring:
     password: abcd
   jpa:
     hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+#      ddl-auto: none
+      ddl-auto: validate
+#      ddl-auto: update # 每次会打印：Hibernate: alter table xx ...
+    database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     properties:
       hibernate:

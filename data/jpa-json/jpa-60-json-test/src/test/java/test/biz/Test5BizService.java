@@ -8,8 +8,10 @@ import test.AbstractApplicationTest5;
 
 @Slf4j
 public class Test5BizService extends AbstractApplicationTest5 {
+
     @Autowired
     private BizService service;
+
     @Test
     @DisplayName("测试 1")
     public void hello() {
