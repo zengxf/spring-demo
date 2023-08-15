@@ -1,0 +1,21 @@
+// open module jpa60.json.test {
+//     requires java.xml.bind;
+//     requires jakarta.transaction;
+//     requires jakarta.persistence;
+//     requires spring.beans;
+//     requires spring.core;
+//     requires spring.context;
+//     requires spring.tx;
+//     requires spring.data.commons;
+//     requires spring.data.jpa;
+//     requires spring.boot;
+//     requires spring.boot.autoconfigure;
+//     requires org.hibernate.orm.core;
+//     requires lombok;
+//     requires java.logging;
+//     requires org.apache.logging.log4j;
+//     requires org.slf4j;
+//     // requires org.jboss.logging;
+//     // requires org.hibernate.commons.annotations;
+//
+// }

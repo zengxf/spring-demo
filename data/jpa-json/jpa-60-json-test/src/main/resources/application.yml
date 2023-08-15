@@ -10,8 +10,8 @@ spring:
   jpa:
     hibernate:
 #      ddl-auto: none
-      ddl-auto: validate
-#      ddl-auto: update # 每次会打印：Hibernate: alter table xx ...
+#      ddl-auto: validate
+      ddl-auto: update # 每次会打印：Hibernate: alter table xx ...
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: true
     properties:

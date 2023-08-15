@@ -1,13 +1,11 @@
 package test.commodity;
 
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
