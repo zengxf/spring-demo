@@ -28,4 +28,9 @@ public class UserDao {
         return user;
     }
 
+    public User save2(User user) {
+        jdbcTemplate.update("INSERT INTO user(name, age) VALUES(?, ?)", user.getName(), user.getAge());
+        return user;
+    }
+
 }
