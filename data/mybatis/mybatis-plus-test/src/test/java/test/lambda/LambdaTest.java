@@ -64,7 +64,12 @@ public class LambdaTest {
         log.info("method: [{}]", meta.getImplMethodName());
         log.info("class: [{}]\n", meta.getInstantiatedClass());
 
-        Method method = fun.getClass().getDeclaredMethod("writeReplace");
+        Class clazz = fun.getClass();
+        Method[] arr1 = clazz.getDeclaredMethods();
+        log.info("arr1-len: [{}]", arr1.length);
+        Method method = clazz.getDeclaredMethod("writeReplace"); // Serializable 方法
+        Method[] arr2 = clazz.getDeclaredMethods();
+        log.info("arr2-len: [{}]", arr2.length);
         SerializedLambda sl = (SerializedLambda) ReflectionKit.setAccessible(method).invoke(fun);
         log.info("serialized-lambda: [{}]\n", sl);
 
