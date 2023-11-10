@@ -44,7 +44,10 @@ public class SuperTestMain {
         userService.selectList(8855);
 
         log.info("");
-        userService.updateOne(5566);    // 会被 AOP，但没有拦截链路，不走拦截处理
+        userService.updateOne(5566);    // 会被 AOP (重写方法)，但没有拦截链路，不走拦截处理
+
+        log.info("");
+        userService.selectByMy(2266);   // 会被 AOP (重写方法)，但没有拦截链路，不走拦截处理
 
         context.close();
     }

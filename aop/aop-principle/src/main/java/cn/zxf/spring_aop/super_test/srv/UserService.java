@@ -22,4 +22,8 @@ public class UserService extends BaseService {
         log.info("UserSrv -> select-one-id: [{}]", id);
     }
 
+    public void selectByMy(int id) {
+        log.info("UserSrv -> select-by-my-id: [{}]", id);
+    }
+
 }
