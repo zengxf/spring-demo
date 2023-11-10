@@ -10,11 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class BaseService {
 
     public void selectOne(int id) {
-        log.info("select-id: [{}]", id);
+        log.info("BaseSrv -> select-one-id: [{}]", id);
+    }
+
+    public void selectList(int id) {
+        log.info("BaseSrv -> select-list-id: [{}]", id);
     }
 
     public void updateOne(int id) {
-        log.info("update-id: [{}]", id);
+        log.info("BaseSrv -> update-id: [{}]", id);
     }
 
 }

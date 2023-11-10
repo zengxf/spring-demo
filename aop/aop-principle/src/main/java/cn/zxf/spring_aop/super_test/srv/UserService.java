@@ -17,4 +17,9 @@ public class UserService extends BaseService {
         log.info("test1...");
     }
 
+    @Override
+    public void selectOne(int id) {
+        log.info("UserSrv -> select-one-id: [{}]", id);
+    }
+
 }

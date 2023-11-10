@@ -38,7 +38,10 @@ public class SuperTestMain {
         userService.test1();
 
         log.info("");
-        userService.selectOne(8899);
+        userService.selectOne(8899);    // 就算重写，AOP 链也还存在
+
+        log.info("");
+        userService.selectList(8855);
 
         log.info("");
         userService.updateOne(5566);    // 会被 AOP，但没有拦截链路，不走拦截处理
