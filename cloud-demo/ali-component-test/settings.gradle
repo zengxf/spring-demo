@@ -5,8 +5,8 @@ rootProject.name = 'ali-test'
 include "common"
 
 // 服务发现与调用
-//include "my-ser-1"
-//include "my-ser-2"
+include "my-ser-1"
+include "my-ser-2"
 
 // 网关测试项
 //include "gateway-server"
@@ -22,5 +22,5 @@ include "common"
 //include "seata-test:seata-ser-zinfo"
 
 // RocketMQ 测试项
-include "rocket-mq-test:mq-1-producer"
-include "rocket-mq-test:mq-2-consumer"
+//include "rocket-mq-test:mq-1-producer"
+//include "rocket-mq-test:mq-2-consumer"
