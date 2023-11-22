@@ -1,0 +1,7 @@
+# nacos:
+#   namespace: my-test
+#   group: DEFAULT_GROUP
+#   key: my-ser.yaml
+
+app:
+  sign: test-001
