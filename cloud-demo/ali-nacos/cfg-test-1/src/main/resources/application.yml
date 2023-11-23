@@ -14,5 +14,9 @@ spring:
     activate:
       on-profile: dev
 
+logging:
+  level:
+    ROOT: info
+
 test:
   name: dev-0000

@@ -1,5 +1,7 @@
 package cn_zxf_test.biz;
 
+import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/biz")
+@Slf4j
 public class BizController {
 
     @Value("${test.name}")
@@ -17,11 +20,17 @@ public class BizController {
     @Autowired
     AppCfg appCfg;              // 能刷新值
 
+    @PostConstruct
+    public void init() {
+        log.info("== BizController init! ==");
+        log.info("{} --- {} --- {}", testName, appCfg, appCfg.sign);
+    }
 
     // http://localhost:9001/api/biz/hello
     @GetMapping("hello")
     public String hello() {
-        return "hello --> " + testName + " ----------- " + appSign + " ----------- " + appCfg.getSign();
+        log.info("{} --- {} --- {}", testName, appCfg, appCfg.sign);
+        return "hello --> " + testName + " ----------- " + appSign + " ----------- " + appCfg.sign;
     }
 
 }
