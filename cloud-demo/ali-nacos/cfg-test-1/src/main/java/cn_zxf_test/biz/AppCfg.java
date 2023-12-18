@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p/>
- * 曾献峰(656553) 创建于 2023/11/22
+ * Created by ZXFeng on 2023/11/22
  */
 @Component
 @ConfigurationProperties(prefix = "app")    // 能刷新值
