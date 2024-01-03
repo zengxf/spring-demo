@@ -1,0 +1,9 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'nacos-naming-test'
+
+// common
+include "common"
+
+// 服务发现与调用
+include "my-ser-1"
+include "my-ser-2"

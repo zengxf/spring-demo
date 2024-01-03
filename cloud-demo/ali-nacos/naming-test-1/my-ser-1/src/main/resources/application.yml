@@ -1,0 +1,34 @@
+
+server:
+  port: 6881
+
+spring:
+  application:
+    name: my-ser-1
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: my-test
+        group: test-a1
+        # group: ${spring.profiles.active}
+
+my:
+  config:
+    test: s1-888
+    user:
+      name: s1-66
+      age: 66
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev2
+
+server:
+  port: 6882
+
+my:
+  config:
+    test: s1-666

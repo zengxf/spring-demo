@@ -1,0 +1,49 @@
+
+server:
+  port: 6892
+
+spring:
+  application:
+    name: my-ser-2
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: my-test
+        group: test-a1
+    loadbalancer:
+      cache: # 负载均衡缓存配置
+        enabled: true # 开启缓存
+        ttl: 5s # 设置缓存时间
+        capacity: 256 # 设置缓存大小
+
+my:
+  config:
+    test: s2-fa-99
+    user:
+      name: s2-99
+      age: 99
+
+
+logging:
+  level:
+    ROOT: INFO
+    test.feign: DEBUG # 自己的包名
+
+rest:
+  template:
+    config: # RestTemplate 调用超时配置
+      connectTimeout: 5000
+      readTimeout: 5000
+
+feign:
+  compression: # 开启压缩
+    request:
+      enabled: true
+    response:
+      enabled: true
+  client:
+    config:
+      default: # default 设置全局超时时间，指定服务名称可以设置单个服务的超时时间
+        connectTimeout: 2000
+        readTimeout: 2000
