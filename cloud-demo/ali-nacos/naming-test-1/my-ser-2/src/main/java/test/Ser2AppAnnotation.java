@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * 只是声明
  * <br/>
- * Created by ZXFeng on 2023/2/24.
+ * Created by ZXFeng on 2024/1/3.
  */
 @EnableFeignClients
 @EnableDiscoveryClient
