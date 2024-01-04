@@ -13,7 +13,7 @@ public class Ser2App2 {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Ser2AppAnnotation.class);
         app.setAdditionalProfiles("dev2");
-        app.run(args);
+        // app.run(args);
     }
 
 }
