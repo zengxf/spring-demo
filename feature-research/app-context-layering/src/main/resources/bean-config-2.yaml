@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: child2
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        exclude: '*'
+    web:
+      exposure:
+        include: '*'
