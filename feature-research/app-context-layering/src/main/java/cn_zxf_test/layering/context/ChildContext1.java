@@ -1,6 +1,7 @@
 package cn_zxf_test.layering.context;
 
 import cn_zxf_test.layering.bean.ChildBean;
+import cn_zxf_test.layering.bean.PartBean;
 import cn_zxf_test.layering.bean.RootBean;
 import cn_zxf_test.layering.config.YamlPropertyLoaderFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,11 @@ public class ChildContext1 {
         childBean.setName(name);
         childBean.setFatherBean(fatherBean);
         return childBean;
+    }
+
+    @Bean("partBean")
+    public PartBean getPartBean() {
+        return new PartBean("child-1-test");
     }
 
 }
