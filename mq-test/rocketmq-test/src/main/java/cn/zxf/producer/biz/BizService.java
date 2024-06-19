@@ -1,7 +1,6 @@
 package cn.zxf.producer.biz;
 
-import javax.annotation.PostConstruct;
-
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;

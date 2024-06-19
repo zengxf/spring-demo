@@ -1,22 +1,31 @@
 rocketmq:
-  name-server: 192.168.1.117:9876
+  name-server: localhost:9876
   producer:
     group: my-group
 
 ---
 spring:
-  profiles: producer
+  # profiles: producer # 旧版本的写法
+  config:
+    activate:
+      on-profile: producer
 server:
   port: 9011
 
 ---
 spring:
-  profiles: consumer1
+  # profiles: consumer1 # 旧版本的写法
+  config:
+    activate:
+      on-profile: consumer1
 server:
   port: 9021
 
 ---
 spring:
-  profiles: consumer2
+  # profiles: consumer2 # 旧版本的写法
+  config:
+    activate:
+      on-profile: consumer2
 server:
   port: 9022

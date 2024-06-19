@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import cn.zxf.common.Email;
 
 @Component
-@RocketMQMessageListener( topic = "test-obj", consumerGroup = "my-consumer-1" )
+@RocketMQMessageListener(topic = "test-obj", consumerGroup = "my-consumer-1")
 public class Receiver implements RocketMQListener<Email> {
 
-    public void onMessage( Email email ) {
-        System.out.println( "Received <" + email + ">" );
+    public void onMessage(Email email) {
+        System.out.println("Received => " + email);
     }
 
 }
