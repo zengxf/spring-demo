@@ -1,0 +1,2 @@
+## 生产者发消息
+GET http://localhost:9011/api/biz/hello
