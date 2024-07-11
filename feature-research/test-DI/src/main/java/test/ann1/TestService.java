@@ -19,17 +19,17 @@ public class TestService {
     // @Resource(type = TestImpl1.class)
     ITest obj;
     @Resource
-    TestImpl1 testImpl;
+    TestImpl1 testImpl; // type 可识别
     @Resource
-    ITest testImpl2;
+    ITest testImpl2;    // name 可识别
 
     // @Autowired
     // @Qualifier("testImpl2")
     // ITest obj;
     // @Autowired
-    // TestImpl1 testImpl;
+    // TestImpl1 testImpl; // type 可识别
     // @Autowired
-    // ITest testImpl2;
+    // ITest testImpl2;    // name 可识别
 
     @PostConstruct
     public void init() {
