@@ -1,0 +1,26 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "3.3.3"
+    id "io.spring.dependency-management" version "1.1.6"
+    id "io.freefair.lombok" version "8.10"
+}
+
+sourceCompatibility = 17
+
+repositories {
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+    mavenCentral()
+}
+
+dependencies {
+    // Spring
+    implementation group: "org.springframework.boot", name: "spring-boot-starter"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-web"
+	
+    // Test
+    testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
+    testImplementation group: "org.junit.vintage", name: "junit-vintage-engine" // 兼容 JUnit 4
+}
+
+// JUnit 5
+test { useJUnitPlatform() }
