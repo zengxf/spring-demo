@@ -3,6 +3,7 @@ plugins {
     id "org.springframework.boot" version "3.3.3"
     id "io.spring.dependency-management" version "1.1.6"
     id "io.freefair.lombok" version "8.10"
+    id "org.graalvm.buildtools.native" version "0.10.2"
 }
 
 sourceCompatibility = 17
@@ -16,7 +17,7 @@ dependencies {
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
     implementation group: "org.springframework.boot", name: "spring-boot-starter-web"
-	
+
     // Test
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
     testImplementation group: "org.junit.vintage", name: "junit-vintage-engine" // 兼容 JUnit 4
@@ -24,3 +25,21 @@ dependencies {
 
 // JUnit 5
 test { useJUnitPlatform() }
+
+// 设置编译参数
+graalvmNative {
+    testSupport = false // 不跑单测
+    binaries {
+        main {
+            imageName = "my-app"
+            mainClass = "cn_zxf_test.MainApplication"
+            buildArgs.add("-O4")
+        }
+        test {
+            buildArgs.add("-O0")
+        }
+    }
+    binaries.all {
+        buildArgs.add("--verbose")
+    }
+}
