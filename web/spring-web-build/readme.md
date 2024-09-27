@@ -8,6 +8,10 @@ gradle -PExcludeFlag=1 task2
 
 # 排除指定文件 (构建)
 gradle -PExcludeFlag=1 build -x test
+
+
+# 默认不排除 (构建)
+gradle build -x test
 ```
 
 
@@ -18,4 +22,5 @@ java -jar -Dspring.profiles.active=prod   build/libs/spring-web-build.jar
 
 # pwd (使用默认值，不会异常)
 java -jar -Dspring.profiles.active=pwd    build/libs/spring-web-build.jar
+java -jar                                 build/libs/spring-web-build.jar
 ```
