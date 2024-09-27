@@ -32,13 +32,3 @@ spring:
 
 test:
   name: dev-0000
-
-
----
-spring:
-  config:
-    activate:
-      on-profile: prod
-
-test:
-  name: prod-666
