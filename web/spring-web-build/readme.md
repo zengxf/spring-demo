@@ -24,3 +24,15 @@ java -jar -Dspring.profiles.active=prod   build/libs/spring-web-build.jar
 java -jar -Dspring.profiles.active=pwd    build/libs/spring-web-build.jar
 java -jar                                 build/libs/spring-web-build.jar
 ```
+
+
+## JLink 测试
+```shell
+# Git Bash 下运行
+
+# 使用 Gradle 插件
+gradle jlink
+
+# 运行
+./build/image/bin/spring-web-build
+```

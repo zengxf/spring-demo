@@ -1,4 +1,4 @@
-package cn_zxf_test;
+package cn.test;
 
 import org.junit.After;
 import org.junit.Before;

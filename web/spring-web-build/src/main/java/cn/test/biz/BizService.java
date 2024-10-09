@@ -1,4 +1,4 @@
-package cn_zxf_test.biz;
+package cn.test.biz;
 
 import jakarta.annotation.PostConstruct;
 

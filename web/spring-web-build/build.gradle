@@ -1,8 +1,10 @@
 plugins {
     id "java"
+    id "application"
     id "org.springframework.boot" version "3.3.3"
     id "io.spring.dependency-management" version "1.1.6"
     id "io.freefair.lombok" version "8.10"
+    id "org.beryx.jlink" version "3.0.1"    // jLink
 }
 
 sourceCompatibility = 17
@@ -53,5 +55,25 @@ task task1 {
 task task2(dependsOn: 'task1') {
     doLast {
         println 'Executing task2'
+    }
+}
+
+
+// JLink 测试
+application {
+    // 定义应用程序的主类
+    mainModule = "cn.test"
+    mainClass = "cn.test.MainApplication"
+}
+
+jlink {
+    mergedModule {  // 打包某些类失败时，即使不需要下面的配置，也要进行空配置
+        requires "org.slf4j"    // does not read module org.slf4j
+        requires "java.desktop" // does not read module java.desktop
+        // requires "cn_zxf_test"  // does not read module cn_zxf_test (不能这样用)
+    }
+    launcher {
+        name = "spring-web-build"
+        jvmArgs = ["-Dfile.encoding=UTF-8"]
     }
 }
