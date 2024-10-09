@@ -74,6 +74,11 @@ jlink {
     }
     launcher {
         name = "spring-web-build"
-        jvmArgs = ["-Dfile.encoding=UTF-8"]
+        jvmArgs = [
+                "-Dfile.encoding=UTF-8",
+                // 相当于 JVM 参数:
+                //   --add-reads spring.web.build.merged.module=cn.test
+                "--add-reads", "spring.web.build.merged.module=cn.test" // does not read module cn_zxf_test
+        ]
     }
 }

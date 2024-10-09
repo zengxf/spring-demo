@@ -35,4 +35,15 @@ gradle jlink
 
 # 运行
 ./build/image/bin/spring-web-build
+
+
+```
+
+### 解压
+```shell
+# 进目录
+cd ./build/image/lib
+
+# 提取
+jimage extract modules
 ```
