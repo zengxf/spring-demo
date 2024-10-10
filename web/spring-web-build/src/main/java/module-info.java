@@ -7,6 +7,8 @@ open module cn.test {
 
     requires jakarta.annotation;
 
+    requires com.fasterxml.jackson.annotation;
+
     requires spring.boot;
     requires spring.boot.autoconfigure;
 
@@ -17,4 +19,6 @@ open module cn.test {
 
     exports cn.test;
     exports cn.test.biz;
+    // opens cn.test;
+    // opens cn.test.biz;
 }

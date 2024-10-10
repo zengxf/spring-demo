@@ -47,3 +47,13 @@ cd ./build/image/lib
 # 提取
 jimage extract modules
 ```
+
+
+## Native 测试
+```shell
+# 编译 (跳过测试)
+gradle nativeCompile -x nativeTestCompile
+
+# 运行 (指定参数)
+./build/native/nativeCompile/spring-web-build -Dspring.profiles.active=prod
+```
