@@ -14,7 +14,6 @@ gradle -PExcludeFlag=1 build -x test
 gradle build -x test
 ```
 
-
 ### 测试 jar
 ```shell
 # prod (ok)
@@ -35,8 +34,6 @@ gradle jlink
 
 # 运行
 ./build/image/bin/spring-web-build
-
-
 ```
 
 ### 解压

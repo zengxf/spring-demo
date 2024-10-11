@@ -8,7 +8,7 @@ plugins {
     id "io.freefair.lombok" version "8.10"
 
     id "org.beryx.jlink" version "3.0.1"    // jLink
-    id "org.graalvm.buildtools.native" version "0.10.2" // native
+    id "org.graalvm.buildtools.native" version "0.10.2" // Native
 }
 
 sourceCompatibility = 17
@@ -22,6 +22,7 @@ dependencies {
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
     implementation group: "org.springframework.boot", name: "spring-boot-starter-web"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-logging"
 
     // Test
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
@@ -74,7 +75,7 @@ jlink {
     mergedModule {  // 打包某些类失败时，即使不需要下面的配置，也要进行空配置
         requires "org.slf4j"    // does not read module org.slf4j
         requires "java.desktop" // does not read module java.desktop
-        // requires "cn_zxf_test"  // does not read module cn_zxf_test (不能这样用)
+        // requires "cn.test"   // does not read module cn.test (不能这样用，用下面的 JVM 参数)
     }
     launcher {
         name = "spring-web-build"
@@ -82,7 +83,7 @@ jlink {
                 "-Dfile.encoding=UTF-8",
                 // 相当于 JVM 参数:
                 //   --add-reads spring.web.build.merged.module=cn.test
-                "--add-reads", "spring.web.build.merged.module=cn.test" // does not read module cn_zxf_test
+                "--add-reads", "spring.web.build.merged.module=cn.test" // does not read module cn.test
         ]
     }
 }

@@ -8,6 +8,11 @@ spring:
   profiles:
     active: pwd
 
+logging:
+  level:
+    root: INFO
+
+
 ---
 spring:
   config:
