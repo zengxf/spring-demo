@@ -38,11 +38,18 @@ gradle jlink
 
 ### 解压
 ```shell
+# 指定要提取的镜像和指定到目标目录 (比下面 2 步骤省事)
+jimage extract --dir=./build/_image0 ./build/image/lib/modules
+
+
 # 进目录
 cd ./build/image/lib
-
 # 提取
 jimage extract modules
+
+
+# 分析依赖 (不行，是 Spring fat 包)
+jdeps --generate-module-info . ./build/libs/spring-web-build.jar
 ```
 
 
