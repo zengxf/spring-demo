@@ -1,14 +1,3 @@
-import proguard.gradle.ProGuardTask
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.guardsquare:proguard-gradle:7.3.2")
-    }
-}
-
 plugins {
     id "java"
     id "application"
@@ -36,8 +25,6 @@ dependencies {
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
     testImplementation group: "org.junit.vintage", name: "junit-vintage-engine" // 兼容 JUnit 4
 }
-
-task proguard(type: ProGuardTask) {}
 
 // JUnit 5
 test { useJUnitPlatform() }
