@@ -1,0 +1,23 @@
+server:
+  port: 9001
+
+test:
+  name: def-8899
+
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    root: INFO
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+test:
+  name: dev-0000
