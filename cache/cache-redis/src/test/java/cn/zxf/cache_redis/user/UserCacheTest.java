@@ -8,12 +8,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @Slf4j
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class TestUserService {
+public class UserCacheTest {
 
     @Autowired
-    private UserService service;
+    private UserCache service;
 
     @Test
     public void test_save() {
@@ -43,7 +43,10 @@ public class TestUserService {
     public void test_findOne() {
         String id = "zxf-001";
         User user = service.findOne(id);
-        log.info("test-findOne-user: {}", user);
+        log.info("test-findOne-user 1: {}", user);
+
+        user = service.findOne(id);
+        log.info("test-findOne-user 2: {}", user);
     }
 
     @Test
