@@ -1,4 +1,5 @@
 spring:
-  redis:
-    database: 2
-    url: redis://localhost:6379
+  data:
+    redis:
+      url: redis://localhost:6379
+      database: 2
