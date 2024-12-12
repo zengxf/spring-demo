@@ -1,8 +1,11 @@
 plugins {
     id "java"
-    id "org.springframework.boot" version "3.0.6"
-    id "io.spring.dependency-management" version "1.1.0"
-    id "io.freefair.lombok" version "8.4"
+    //id "org.springframework.boot" version "3.0.6"
+    //id "io.spring.dependency-management" version "1.1.0"
+    //id "io.freefair.lombok" version "8.4"
+    id "org.springframework.boot" version "3.4.0"
+    id "io.spring.dependency-management" version "1.1.6"
+    id "io.freefair.lombok" version "8.11"
 }
 
 sourceCompatibility = 17
@@ -12,23 +15,29 @@ repositories {
     mavenCentral()
 }
 
-ext{
+ext {
     jacksonV = "2.18.2"
 }
 
-dependencies { 
+dependencies {
 
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
-	implementation group: "org.springframework.boot", name: "spring-boot-starter-cache"
-	implementation group: "org.springframework.boot", name: "spring-boot-starter-data-redis"
-	
-	implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: "${jacksonV}"
-	implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: "${jacksonV}"
-	implementation group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "${jacksonV}"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-cache"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-data-redis"
+
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-core", version: "${jacksonV}"
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-annotations", version: "${jacksonV}"
+    implementation group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "${jacksonV}"
 
     // Test
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
     testImplementation group: "org.junit.vintage", name: "junit-vintage-engine" // 兼容 JUnit 4
 
+}
+
+// Spring-Boot 3.4.0 之后要加；3.0.6 可以不加
+// 否则：If you are using named parameters, ensure that the compiler uses the '-parameters' flag.
+compileJava {
+    options.compilerArgs << '-parameters'
 }

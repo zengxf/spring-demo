@@ -1,7 +1,9 @@
-# 测试 cache
+# Spring Cache Redis 测试
+- 版本：`3.4.0`
 
 ## starter
 - spring-boot-starter-cache
+- spring-boot-starter-data-redis
 
 ## 常用注解
 - @CachePut
