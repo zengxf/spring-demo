@@ -47,10 +47,15 @@ public class UserCache {
         return user;
     }
 
+    /*** 组合注解 & 设置条件 - 测试 */
     @Caching(put = {
             @CachePut(value = USER_ID_CACHE, key = "#user.id"),
-            @CachePut(value = USER_MOBILE_CACHE, key = "#user.mobile", condition = "#user.mobile != null && #user.mobile != ''"),
-            @CachePut(value = USER_NAME_CACHE, key = "#user.name", condition = "#user.name != null && #user.name != ''"),
+            @CachePut(value = USER_MOBILE_CACHE, key = "#user.mobile",
+                    condition = "#user.mobile != null && #user.mobile != ''"    // mobile 不能为空
+            ),
+            @CachePut(value = USER_NAME_CACHE, key = "#user.name",
+                    condition = "#user.name != null && #user.name != ''"        // name 不能为空
+            ),
     })
     public void save(User user) {
         log.info("save - user: {}", user);
