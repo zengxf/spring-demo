@@ -6,10 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
-import com.fasterxml.jackson.databind.jsontype.DefaultBaseTypeLimitingValidator;
 import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.Resource;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -37,14 +35,14 @@ public class RedisCacheConfig {
             USER_MOBILE_CACHE = "user:mobile",
             USER_NAME_CACHE = "user:name";
 
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    @Resource
+    private RedisConnectionFactory connectionFactory;
 
     @Bean
     @Primary
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(stringSerializer());
         redisTemplate.setHashKeySerializer(stringSerializer());
         redisTemplate.setValueSerializer(this.jsonSerializer());
@@ -70,19 +68,19 @@ public class RedisCacheConfig {
 
     @Bean
     public CacheManager cacheManager() {
-        RedisCacheManager manager = RedisCacheManager.builder(redisConnectionFactory)
+        RedisCacheManager manager = RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(
                         RedisCacheConfiguration.defaultCacheConfig()
-                                .entryTtl(Duration.ofMinutes(30))
-                                // .disableKeyPrefix() // def: true
+                                .entryTtl(Duration.ofMinutes(30))   // 30 分钟
+                                // .disableKeyPrefix()              // def: true
                                 .serializeValuesWith(SerializationPair.fromSerializer(this.jsonSerializer()))
                 )
-                .withCacheConfiguration(USER_MOBILE_CACHE,
+                .withCacheConfiguration(USER_MOBILE_CACHE,          // 单独一个配置
                         RedisCacheConfiguration.defaultCacheConfig()
                                 .serializeValuesWith(SerializationPair.fromSerializer(this.jsonSerializer()))
-                                .entryTtl(Duration.ofMinutes(10))
+                                .entryTtl(Duration.ofMinutes(10))   // 10 分钟
                 )
-                .initialCacheNames(new HashSet<>(Arrays.asList( // 用默认的配置
+                .initialCacheNames(new HashSet<>(Arrays.asList(     // 用默认的配置
                         USER_ID_CACHE, USER_NAME_CACHE
                 )))
                 .build();

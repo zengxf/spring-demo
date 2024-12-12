@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RunWith( SpringRunner.class )
 @SpringBootTest
-public class TestCacheRedisApplication {
+public class CApplicationTest {
 
     @Test
     public void testApp() {

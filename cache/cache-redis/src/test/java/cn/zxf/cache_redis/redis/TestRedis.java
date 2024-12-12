@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class TestRedis {
 
     @Autowired
-    protected RedisTemplate redis;
+    protected RedisTemplate<String, Object> redis;
 
     @Test
     public void test_keys() {
@@ -43,8 +43,7 @@ public class TestRedis {
     }
 
     private void setKV(String key, String value) {
-        redis.opsForValue()
-                .set(key, value);
+        redis.opsForValue().set(key, value);
         redis.expire(key, 30, TimeUnit.SECONDS);
     }
 
