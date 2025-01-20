@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: s0xx
+
+app:
+  sign: sign-def
+
+
+---
+
+server:
+  port: 9901
+
+spring:
+  config:
+    activate:
+      on-profile: s01
+
+app:
+  sign: sign-01
+
+
+---
+
+server:
+  port: 9902
+
+spring:
+  config:
+    activate:
+      on-profile: s02
+
+app:
+  sign: sign-02
