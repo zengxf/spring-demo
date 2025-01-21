@@ -1,0 +1,7 @@
+### 基础测试
+GET http://localhost:9901/test/base?test1=v1&key2=v2
+Content-Type: application/json
+X-UID: 8866
+X-UserName: %E5%8F%9188
+
+{"key1": "v1-009", "k2": 88}

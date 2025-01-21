@@ -17,7 +17,7 @@ spring:
       on-profile: s01
 
 app:
-  sign: sign-01
+  sign: sign-01111
 
 
 ---
@@ -31,4 +31,4 @@ spring:
       on-profile: s02
 
 app:
-  sign: sign-02
+  sign: sign-02222
