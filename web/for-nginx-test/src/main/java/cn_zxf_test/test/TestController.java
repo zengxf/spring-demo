@@ -19,7 +19,7 @@ public class TestController {
     // http://localhost:9901/test/base
     @GetMapping("/test/base")
     public String baseTest(HttpServletRequest request) {
-        System.out.println("IP : " + IpUtils.extractClientIp(request));
+        System.out.println("IP : " + IpUtils.clientIp(request));
         printReq(request);
         return "hello --> " + appSign;
     }
@@ -27,6 +27,7 @@ public class TestController {
     // http://localhost:9901/test/header/nginx-add
     @GetMapping("/test/header/nginx-add")
     public String testHeaderNginxAdd(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
         printReq(request);
         return "hello --> " + appSign;
     }
@@ -40,7 +41,7 @@ public class TestController {
         System.out.println("------------------- URI -------------------");
         System.out.println(req.getMethod());
         System.out.println(req.getRequestURI());
-        System.out.println(req.getQueryString());
+        // System.out.println(req.getQueryString());
 
         System.out.println("------------------- Header -------------------");
         Enumeration<String> hNames = req.getHeaderNames();

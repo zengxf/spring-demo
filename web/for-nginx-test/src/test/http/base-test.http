@@ -5,3 +5,10 @@ X-UID: 8866
 X-UserName: %E5%8F%9188
 
 {"key1": "v1-009", "k2": 88}
+
+
+### Nginx-加头
+GET http://127.0.0.1:9801/test/header/nginx-add
+Content-Type: application/json
+
+{"key1": "v1-009", "k2": 88}

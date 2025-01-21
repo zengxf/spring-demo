@@ -22,10 +22,11 @@ public class IpUtils {
             "http_via",
             "remote_addr",
             "x-real-ip",
+            "x1-real-ip",
     };
 
     /*** 提取客户端 IP 地址 (可以穿透代理) */
-    public static String extractClientIp(HttpServletRequest request) {
+    public static String clientIp(HttpServletRequest request) {
         for (String header : HEADERS_TO_TRY) {
             String ip = request.getHeader(header);
             if (!isEffective(ip)) {
