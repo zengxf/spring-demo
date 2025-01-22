@@ -25,6 +25,14 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    // http://localhost:9901/test/nginx/keepalive
+    @GetMapping("/test/nginx/keepalive")
+    public String testNginxKeepalive(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
     // http://localhost:9901/test/header/nginx-add-req
     @GetMapping("/test/header/nginx-add-req")
     public String testHeaderNginxAddReq(HttpServletRequest request) {
