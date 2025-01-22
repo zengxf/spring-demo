@@ -11,8 +11,8 @@ public class S01Start {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplicationBuilder()
-                .sources(MainApplication.class)
-                .profiles(MainApplication.S01)
+                .sources(Application.class)
+                .profiles(Application.S01)
                 .build(args);
         app.run();
     }

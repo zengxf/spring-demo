@@ -2,6 +2,7 @@ package cn_zxf_test.test;
 
 import cn_zxf_test.utils.IpUtils;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,9 +35,10 @@ public class TestController {
 
     // http://localhost:9901/test/header/nginx-add-res
     @GetMapping("/test/header/nginx-add-res")
-    public String testHeaderNginxAddRes(HttpServletRequest request) {
+    public String testHeaderNginxAddRes(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("IP : " + IpUtils.clientIp(request));
         printReq(request);
+        response.addHeader("J2-Sign", appSign);
         return "hello --> " + appSign;
     }
 
@@ -47,7 +49,8 @@ public class TestController {
         System.out.println();
 
         System.out.println("------------------- URI -------------------");
-        System.out.println(req.getMethod());
+        System.out.println(req.getProtocol());
+        System.out.print(req.getMethod() + "  ");
         System.out.println(req.getRequestURI());
         // System.out.println(req.getQueryString());
 

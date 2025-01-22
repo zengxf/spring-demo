@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by ZXFeng on 2025/1/20
  */
 @SpringBootApplication
-public class MainApplication {
+public class Application {
 
     public static final String
             S01 = "s01",
