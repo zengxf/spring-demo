@@ -19,6 +19,13 @@ spring:
 app:
   sign: sign-01111
 
+logging:
+  level:
+    org:
+      apache:
+        tomcat: info
+        catalina: info
+        coyote: debug   # host 解析出错好打印日志
 
 ---
 
