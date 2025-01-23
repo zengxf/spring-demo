@@ -47,12 +47,16 @@ public abstract class BaseHTester {
 
     // ----------------------------------------
 
+    /*** 日志打印 */
+    protected static void out(String msg, Object... args) {
+        System.out.println(StrUtil.format(msg, args));
+    }
+
+
+    // ----------------------------------------
+
     /**
-     * POST 请求
-     *
-     * @param uid     请求标识
-     * @param url     目标 URL
-     * @param reqBody 请求体 (GET 不会发送，POST 才会发送)
+     * POST 请求 (不返回结果，直接输出)
      */
     protected static void post(String uid, String url, String reqBody) {
         // 打印响应结果
@@ -61,6 +65,10 @@ public abstract class BaseHTester {
 
     /**
      * POST 请求 (返回结果)
+     *
+     * @param uid     请求标识
+     * @param url     目标 URL
+     * @param reqBody 请求体 (GET 不会发送，POST 才会发送)
      */
     protected static String post0(String uid, String url, String reqBody) {
         // 创建 RestTemplate 实例

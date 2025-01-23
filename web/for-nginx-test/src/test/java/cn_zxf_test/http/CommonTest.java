@@ -1,5 +1,6 @@
 package cn_zxf_test.http;
 
+import cn.hutool.core.util.StrUtil;
 import org.junit.Test;
 
 /**
@@ -16,6 +17,42 @@ public class CommonTest extends BaseHTester {
         String url = "http://127.0.0.1:9812/test/nginx/master-slave";
         String reqBody = "{\"key1\": \"v1-J29\", \"k2\": 88}";
         post(uid, url, reqBody);
+    }
+
+    /*** 负载均衡-最少连接 */
+    @Test
+    public void testNginxLbLeastConn() {
+        String uid = "J-9978";
+        String url = "http://127.0.0.1:9821/test/nginx/lb-least-conn";
+        String reqBody = "{\"key1\": \"v1-J36\", \"k2\": 58}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
+    /*** 负载均衡-轮询 */
+    @Test
+    public void testNginxLbRoundRobin() {
+        String uid = "J-9982";
+        String url = "http://127.0.0.1:9822/test/nginx/lb-round-robin";
+        String reqBody = "{\"key1\": \"v1-J52\", \"k2\": 58}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
+    /*** 负载均衡-随机 */
+    @Test
+    public void testNginxLbRandom() {
+        String uid = "J-9985";
+        String url = "http://127.0.0.1:9823/test/nginx/lb-random";
+        String reqBody = "{\"key1\": \"v1-J55\", \"k2\": 55}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
     }
 
 

@@ -18,6 +18,7 @@ public class TestController {
     @Value("${app.sign}")
     String appSign;
 
+    /*** 基础测试 */
     // http://localhost:9901/test/base
     @GetMapping("/test/base")
     public String baseTest(HttpServletRequest request) {
@@ -26,6 +27,7 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    /*** 用于 Nginx 保持长连接 */
     // http://localhost:9901/test/nginx/keepalive
     @GetMapping("/test/nginx/keepalive")
     public String testNginxKeepalive(HttpServletRequest request) {
@@ -34,6 +36,7 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    /*** 用于 Nginx 主从设置 */
     // http://localhost:9901/test/nginx/master-slave
     @RequestMapping("/test/nginx/master-slave")
     public String testNginxMasterSlave(HttpServletRequest request) {
@@ -42,6 +45,34 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    /*** 用于 Nginx 负载均衡-最少连接 */
+    // http://localhost:9901/test/nginx/lb-least-conn
+    @RequestMapping("/test/nginx/lb-least-conn")
+    public String testNginxLbLeastConn(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 负载均衡-轮询 */
+    // http://localhost:9901/test/nginx/lb-round-robin
+    @RequestMapping("/test/nginx/lb-round-robin")
+    public String testNginxLbRoundRobin(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 负载均衡-随机 */
+    // http://localhost:9901/test/nginx/lb-random
+    @RequestMapping("/test/nginx/lb-random")
+    public String testNginxLbRandom(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 添加请求头 */
     // http://localhost:9901/test/header/nginx-add-req
     @GetMapping("/test/header/nginx-add-req")
     public String testHeaderNginxAddReq(HttpServletRequest request) {
@@ -50,6 +81,7 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    /*** 用于 Nginx 添加响应头 */
     // http://localhost:9901/test/header/nginx-add-res
     @GetMapping("/test/header/nginx-add-res")
     public String testHeaderNginxAddRes(HttpServletRequest request, HttpServletResponse response) {
