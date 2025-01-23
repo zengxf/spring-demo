@@ -4,6 +4,7 @@
 
 - [TestController.java](./src/main/java/cn_zxf_test/test/TestController.java)
 - [base-test.http](./src/test/http/base-test.http)
+- [Nginx-Configs](https://github.com/zengxf/super-demo/tree/master/Demo-Config/Nginx)
 
 ## 测试
 
