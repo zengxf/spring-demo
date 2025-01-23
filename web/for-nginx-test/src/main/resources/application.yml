@@ -39,3 +39,29 @@ spring:
 
 app:
   sign: sign-02222
+
+---
+
+server:
+  port: 9903
+
+spring:
+  config:
+    activate:
+      on-profile: s03
+
+app:
+  sign: sign-03333
+
+---
+
+server:
+  port: 9904
+
+spring:
+  config:
+    activate:
+      on-profile: s04
+
+app:
+  sign: sign-04444

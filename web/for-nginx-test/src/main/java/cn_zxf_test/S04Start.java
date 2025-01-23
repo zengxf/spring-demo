@@ -4,16 +4,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
- * s01 标识启动
+ * s04 标识启动
  * <p/>
- * Created by ZXFeng on 2025/1/20
+ * Created by ZXFeng on 2025/1/23
  */
-public class S01Start {
+public class S04Start {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplicationBuilder()
                 .sources(Application.class)
-                .profiles(Application.S01)
+                .profiles(Application.S04)
                 .build(args);
         app.run();
     }
