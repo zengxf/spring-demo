@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
@@ -28,6 +29,14 @@ public class TestController {
     // http://localhost:9901/test/nginx/keepalive
     @GetMapping("/test/nginx/keepalive")
     public String testNginxKeepalive(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    // http://localhost:9901/test/nginx/master-slave
+    @RequestMapping("/test/nginx/master-slave")
+    public String testNginxMasterSlave(HttpServletRequest request) {
         System.out.println("IP : " + IpUtils.clientIp(request));
         printReq(request);
         return "hello --> " + appSign;
