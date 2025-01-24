@@ -1,6 +1,5 @@
 package cn_zxf_test.http;
 
-import cn.hutool.core.util.StrUtil;
 import org.junit.Test;
 
 /**
@@ -61,6 +60,18 @@ public class CommonTest extends BaseHTester {
         String uid = "J-9986";
         String url = "http://127.0.0.1:9824/test/nginx/lb-weight";
         String reqBody = "{\"key1\": \"v1-058\", \"k2\": 18}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
+    /*** 负载均衡-IP哈希 */
+    @Test
+    public void testNginxLbIpHash() {
+        String uid = "J-9988";
+        String url = "http://127.0.0.1:9825/test/nginx/lb-ip-hash";
+        String reqBody = "{\"key1\": \"v1-059\", \"k2\": 26}";
         for (int i = 1; i <= 10; i++) {
             String res = post0(uid, url, reqBody);
             out("[{}] res: [{}]", i, res);

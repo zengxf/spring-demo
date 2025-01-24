@@ -109,6 +109,15 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+    /*** 用于 Nginx 负载均衡-IP哈希 */
+    // http://localhost:9901/test/nginx/lb-ip-hash
+    @RequestMapping("/test/nginx/lb-ip-hash")
+    public String testNginxLbIpHash(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
 
     // ----------------------------------
 
