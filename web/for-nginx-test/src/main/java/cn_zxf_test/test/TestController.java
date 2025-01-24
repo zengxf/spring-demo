@@ -27,6 +27,31 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
+
+    // -------------------------------------
+
+    /*** 用于 Nginx 添加请求头 */
+    // http://localhost:9901/test/header/nginx-add-req
+    @GetMapping("/test/header/nginx-add-req")
+    public String testHeaderNginxAddReq(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 添加响应头 */
+    // http://localhost:9901/test/header/nginx-add-res
+    @GetMapping("/test/header/nginx-add-res")
+    public String testHeaderNginxAddRes(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        response.addHeader("J2-Sign", appSign);
+        return "hello --> " + appSign;
+    }
+
+
+    // -------------------------------------
+
     /*** 用于 Nginx 保持长连接 */
     // http://localhost:9901/test/nginx/keepalive
     @GetMapping("/test/nginx/keepalive")
@@ -44,6 +69,9 @@ public class TestController {
         printReq(request);
         return "hello --> " + appSign;
     }
+
+
+    // -------------------------------------
 
     /*** 用于 Nginx 负载均衡-最少连接 */
     // http://localhost:9901/test/nginx/lb-least-conn
@@ -72,24 +100,15 @@ public class TestController {
         return "hello --> " + appSign;
     }
 
-    /*** 用于 Nginx 添加请求头 */
-    // http://localhost:9901/test/header/nginx-add-req
-    @GetMapping("/test/header/nginx-add-req")
-    public String testHeaderNginxAddReq(HttpServletRequest request) {
+    /*** 用于 Nginx 负载均衡-权重 */
+    // http://localhost:9901/test/nginx/lb-weight
+    @RequestMapping("/test/nginx/lb-weight")
+    public String testNginxLbWeight(HttpServletRequest request) {
         System.out.println("IP : " + IpUtils.clientIp(request));
         printReq(request);
         return "hello --> " + appSign;
     }
 
-    /*** 用于 Nginx 添加响应头 */
-    // http://localhost:9901/test/header/nginx-add-res
-    @GetMapping("/test/header/nginx-add-res")
-    public String testHeaderNginxAddRes(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("IP : " + IpUtils.clientIp(request));
-        printReq(request);
-        response.addHeader("J2-Sign", appSign);
-        return "hello --> " + appSign;
-    }
 
     // ----------------------------------
 

@@ -55,5 +55,17 @@ public class CommonTest extends BaseHTester {
         }
     }
 
+    /*** 负载均衡-权重 */
+    @Test
+    public void testNginxLbWeight() {
+        String uid = "J-9986";
+        String url = "http://127.0.0.1:9824/test/nginx/lb-weight";
+        String reqBody = "{\"key1\": \"v1-058\", \"k2\": 18}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
 
 }

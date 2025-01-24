@@ -62,3 +62,11 @@ Content-Type: application/json
 X-UID: 9985
 
 {"key1": "v1-056", "k2": 168}
+
+
+### Nginx-负载均衡-权重
+GET http://127.0.0.1:9824/test/nginx/lb-weight
+Content-Type: application/json
+X-UID: 9986
+
+{"key1": "v1-058", "k2": 18}
