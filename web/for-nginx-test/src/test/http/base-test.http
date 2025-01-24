@@ -78,3 +78,11 @@ Content-Type: application/json
 X-UID: 9988
 
 {"key1": "v1-059", "k2": 26}
+
+
+### Nginx-负载均衡-通用哈希
+GET http://127.0.0.1:9826/test/nginx/lb-generic-hash/666
+Content-Type: application/json
+X-UID: 9989
+
+{"key1": "v1-169", "k2": 56}

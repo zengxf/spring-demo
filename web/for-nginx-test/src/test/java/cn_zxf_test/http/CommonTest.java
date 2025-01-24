@@ -78,5 +78,43 @@ public class CommonTest extends BaseHTester {
         }
     }
 
+    /*** 负载均衡-通用哈希-URI */
+    @Test
+    public void testNginxLbGenericHash_URI() {
+        String uid = "J-9989";
+        String url = "http://127.0.0.1:9826/test/nginx/lb-generic-hash/";
+        String reqBody = "{\"key1\": \"v1-169\", \"k2\": 56}";
+        for (int i = 1; i <= 10; i++) {
+            String sign = "66" + i % 2;
+            String res = post0(uid, url + sign, reqBody);
+            out("[{}-{}] res: [{}]", i, sign, res);
+        }
+    }
+
+    /*** 负载均衡-通用哈希-请求头 */
+    @Test
+    public void testNginxLbGenericHash_Header() {
+        String url = "http://127.0.0.1:9826/test/nginx/lb-generic-hash/666";
+        String reqBody = "{\"key1\": \"v1-169\", \"k2\": 56}";
+        for (int i = 1; i <= 10; i++) {
+            String uid = "J-9989-" + i;
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
+    /*** 负载均衡-通用哈希-查询参数 */
+    @Test
+    public void testNginxLbGenericHash_Param() {
+        String uid = "J-9989";
+        // String url = "http://127.0.0.1:9826/test/nginx/lb-generic-hash/666?p_signx="; // 没有 p_sign 参数，则用轮循
+        String url = "http://127.0.0.1:9826/test/nginx/lb-generic-hash/666?p_sign=";
+        String reqBody = "{\"key1\": \"v1-169\", \"k2\": 56}";
+        for (int i = 1; i <= 10; i++) {
+            String res = post0(uid, url + i, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
 
 }

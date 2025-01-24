@@ -4,9 +4,7 @@ import cn_zxf_test.utils.IpUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -114,6 +112,21 @@ public class TestController {
     @RequestMapping("/test/nginx/lb-ip-hash")
     public String testNginxLbIpHash(HttpServletRequest request) {
         System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 负载均衡-通用哈希 */
+    // http://localhost:9901/test/nginx/lb-generic-hash
+    @RequestMapping("/test/nginx/lb-generic-hash/{sign}")
+    public String testNginxLbGenericHash(
+            HttpServletRequest request,
+            @PathVariable String sign,
+            @RequestParam(name = "p_sign", required = false, defaultValue = "none") String param
+    ) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        System.out.println("Sign : " + sign);
+        System.out.println("Param : " + param);
         printReq(request);
         return "hello --> " + appSign;
     }
