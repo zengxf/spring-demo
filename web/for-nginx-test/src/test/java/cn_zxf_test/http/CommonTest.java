@@ -124,7 +124,7 @@ public class CommonTest extends BaseHTester {
         String uid = "J-9966";
         String url = "http://127.0.0.1:9831/test/nginx/limit";
         String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 1; i <= 30; i++) { /** 第 25、26 个请求时，出错 */
             String res = post0(uid, url, reqBody);
             out("[{}] res: [{}]", i, res);
         }
@@ -138,7 +138,7 @@ public class CommonTest extends BaseHTester {
         String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
         IntStream.rangeClosed(1, 5)
                 .parallel()
-                .forEach(i -> {
+                .forEach(i -> { /** 并发第 3 个时，报错 */
                     String res = post0(uid, url, reqBody);
                     out("[{}] res: [{}]", i, res);
                 });
@@ -150,7 +150,7 @@ public class CommonTest extends BaseHTester {
         String uid = "J-9966";
         String url = "http://127.0.0.1:9833/test/nginx/limit2";
         String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
-        IntStream.rangeClosed(1, 5)
+        IntStream.rangeClosed(1, 5) /** 差不多 6 秒完成 */
                 // .parallel()
                 .forEach(i -> {
                     String res = post0(uid, url, reqBody);
