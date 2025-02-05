@@ -17,10 +17,14 @@ public class TempTest {
 
     @Test
     public void ResUtilsGet1k() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             String res = ResUtils.get1k();
             System.out.println(res);
         }
+        // ---------------------
+        String res = ResUtils.get1k();
+        System.out.println(res);
+        System.out.println(res.length());
     }
 
 }
