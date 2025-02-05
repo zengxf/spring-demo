@@ -2,6 +2,8 @@ package cn_zxf_test.http;
 
 import org.junit.Test;
 
+import java.util.stream.IntStream;
+
 /**
  * 常规 HTTP 请求测试
  * <p/>
@@ -114,6 +116,46 @@ public class CommonTest extends BaseHTester {
             String res = post0(uid, url + i, reqBody);
             out("[{}] res: [{}]", i, res);
         }
+    }
+
+    /*** 限流-请求数 */
+    @Test
+    public void testNginxLimitReq() {
+        String uid = "J-9966";
+        String url = "http://127.0.0.1:9831/test/nginx/limit";
+        String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
+        for (int i = 1; i <= 30; i++) {
+            String res = post0(uid, url, reqBody);
+            out("[{}] res: [{}]", i, res);
+        }
+    }
+
+    /*** 限流-连接数 */
+    @Test
+    public void testNginxLimitConn() {
+        String uid = "J-9966";
+        String url = "http://127.0.0.1:9832/test/nginx/limit";
+        String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
+        IntStream.rangeClosed(1, 5)
+                .parallel()
+                .forEach(i -> {
+                    String res = post0(uid, url, reqBody);
+                    out("[{}] res: [{}]", i, res);
+                });
+    }
+
+    /*** 限流-限速 */
+    @Test
+    public void testNginxLimitRate() {
+        String uid = "J-9966";
+        String url = "http://127.0.0.1:9833/test/nginx/limit2";
+        String reqBody = "{\"key1\": \"v1-269\", \"k2\": 66}";
+        IntStream.rangeClosed(1, 5)
+                // .parallel()
+                .forEach(i -> {
+                    String res = post0(uid, url, reqBody);
+                    out("[{}] res: [{}]", i, res);
+                });
     }
 
 

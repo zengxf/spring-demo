@@ -1,6 +1,7 @@
 package cn_zxf_test.test;
 
 import cn_zxf_test.utils.IpUtils;
+import cn_zxf_test.utils.ResUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -129,6 +130,25 @@ public class TestController {
         System.out.println("Param : " + param);
         printReq(request);
         return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 限流 */
+    // http://localhost:9901/test/nginx/limit
+    @RequestMapping("/test/nginx/limit")
+    public String testNginxLimit(HttpServletRequest request) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        printReq(request);
+        return "hello --> " + appSign;
+    }
+
+    /*** 用于 Nginx 限流 */
+    // http://localhost:9901/test/nginx/limit2
+    @RequestMapping("/test/nginx/limit2")
+    public String testNginxLimit2(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("IP : " + IpUtils.clientIp(request));
+        response.addHeader("J2-big-h1", ResUtils.get1k());
+        printReq(request);
+        return "hello --> " + appSign + " --> big-c --> " + ResUtils.get1k();
     }
 
 

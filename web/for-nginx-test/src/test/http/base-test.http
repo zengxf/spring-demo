@@ -86,3 +86,27 @@ Content-Type: application/json
 X-UID: 9989
 
 {"key1": "v1-169", "k2": 56}
+
+
+### Nginx-限流-请求数
+GET http://127.0.0.1:9831/test/nginx/limit
+Content-Type: application/json
+X-UID: 9966
+
+{"key1": "v1-269", "k2": 66}
+
+
+### Nginx-限流-连接数
+GET http://127.0.0.1:9832/test/nginx/limit
+Content-Type: application/json
+X-UID: 9968
+
+{"key1": "v1-269", "k2": 66}
+
+
+### Nginx-限流-限速
+GET http://127.0.0.1:9833/test/nginx/limit2
+Content-Type: application/json
+X-UID: 9968
+
+{"key1": "v1-269", "k2": 66}
