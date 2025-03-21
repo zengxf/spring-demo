@@ -1,0 +1,8 @@
+
+### 花生壳-直接映射-测试
+### (不用带端口)
+GET http://6706lnah0357x0.vicp.fun/test/oray/base
+Content-Type: application/json
+X-UID: 8899
+
+{"key1": "v1-o-09", "k2": 9988}

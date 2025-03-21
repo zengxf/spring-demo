@@ -11,8 +11,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Enumeration;
 
+/**
+ * 给 Nginx 测试
+ */
 @RestController
-public class TestController {
+public class NginxController {
 
     @Value("${app.sign}")
     String appSign;
@@ -154,7 +157,7 @@ public class TestController {
 
     // ----------------------------------
 
-    private static void printReq(HttpServletRequest req) {
+    public static void printReq(HttpServletRequest req) {
         System.out.println("###########################################");
         System.out.println();
 
