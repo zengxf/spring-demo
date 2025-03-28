@@ -24,7 +24,7 @@ public class OrayController {
     public String baseTest(HttpServletRequest request) {
         System.out.println("IP : " + IpUtils.clientIp(request));
         NginxController.printReq(request);
-        return "hello --> " + appSign;
+        return "hello --> " + appSign + " <-- version: 111";
     }
 
 }

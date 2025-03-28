@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "application"
     id "org.springframework.boot" version "3.3.3"
     id "io.freefair.lombok" version "8.11"
     id "io.spring.dependency-management" version "1.1.6"
@@ -12,13 +13,17 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClassName = "cn_zxf_test.S01Start"
+}
+
 dependencies {
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
     implementation group: "org.springframework.boot", name: "spring-boot-starter-web"
 
     // HuTool
-    implementation group: 'cn.hutool', name: 'hutool-core', version: '5.8.35'
+    implementation group: "cn.hutool", name: "hutool-core", version: "5.8.35"
 
     // Test
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
