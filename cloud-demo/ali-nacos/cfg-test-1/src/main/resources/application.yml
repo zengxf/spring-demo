@@ -6,7 +6,8 @@ test:
 
 spring:
   profiles:
-    active: dev
+    #active: dev
+    active: test
 
 ---
 spring:

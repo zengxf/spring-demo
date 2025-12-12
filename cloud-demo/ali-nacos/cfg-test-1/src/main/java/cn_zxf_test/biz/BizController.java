@@ -24,10 +24,18 @@ public class BizController {
     @Autowired
     AppCfg appCfg;              // 能刷新值
 
+    @Value("${spring.redis-md.host:none}")
+    String redisHost;
+
     @PostConstruct
     public void init() {
         log.info("== BizController init! ==");
-        log.info("{} --- {} --- {}", testName, appCfg, appCfg.sign);
+        log.info("{} ---- {} ---- {}", testName, appCfg, appCfg.sign);
+        System.out.println("-----------------------------");
+        System.out.println("-----------------------------");
+        System.out.println("redisHost: " + redisHost);
+        System.out.println("-----------------------------");
+        System.out.println("-----------------------------");
     }
 
     // http://localhost:9001/api/biz/hello
