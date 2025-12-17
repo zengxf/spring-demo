@@ -1,0 +1,30 @@
+server:
+  port: 9001
+
+test:
+  name: zxf
+
+spring:
+  profiles:
+    active: prod
+  threads:
+    virtual:
+      enabled: true # 启用虚拟线程。默认值是 false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+test:
+  name: dev-0000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+test:
+  name: prod-2222

@@ -10,4 +10,5 @@ spring:
         file-extension: yaml
         #namespace: my-test
         namespace: public
+        #namespace: 6582b38a-6214-44c1-9c23-17dff486acb2
         group: DEFAULT_GROUP
