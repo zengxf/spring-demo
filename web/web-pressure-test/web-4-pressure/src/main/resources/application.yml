@@ -6,7 +6,7 @@ test:
 
 spring:
   profiles:
-    active: pt
+    active: vt
 
 
 ---
