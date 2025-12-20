@@ -6,25 +6,30 @@ test:
 
 spring:
   profiles:
-    active: prod
+    active: pt
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: pt # 平台线程
+  threads:
+    virtual:
+      enabled: false # 启用虚拟线程。默认值是 false
+
+test:
+  name: pt-0000
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: vt # 虚拟线程
   threads:
     virtual:
       enabled: true # 启用虚拟线程。默认值是 false
 
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-
 test:
-  name: dev-0000
-
----
-spring:
-  config:
-    activate:
-      on-profile: prod
-
-test:
-  name: prod-2222
+  name: vt-2222
