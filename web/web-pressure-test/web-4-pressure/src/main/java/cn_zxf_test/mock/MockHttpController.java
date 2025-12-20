@@ -30,7 +30,7 @@ public class MockHttpController {
         String result = HttpUtils.doGet(url);
 
         long useTime = System.currentTimeMillis() - start;
-        this.printBaidu(useTime, result);
+        // this.printBaidu(useTime, result);   // 结果都是正常的
 
         return Map.of(
                 "v", v,
@@ -43,7 +43,7 @@ public class MockHttpController {
 
     private void printBaidu(long useTime, String result) {
         log.info("Baidu -> useTime: {}, res-len: {}, result: {}",
-                useTime, StrUtil.length(result), StrUtil.sub(result, 0, 500)
+                useTime, StrUtil.length(result), StrUtil.sub(result, 0, 50)
         );
     }
 
