@@ -19,11 +19,11 @@ repositories {
 dependencies {
     // Spring
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
-    //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    implementation('org.springframework.boot:spring-boot-starter-web') {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-    }
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jetty' // 使用 Jetty 测试
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+//    implementation('org.springframework.boot:spring-boot-starter-web') {
+//        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+//    }
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jetty' // 使用 Jetty 测试
     // HuTool
     implementation group: 'cn.hutool', name: 'hutool-all', version: '5.8.42'
     // Test

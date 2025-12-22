@@ -12,12 +12,13 @@ curl http://localhost:9001/mock/http/baidu
 ### 自己的服务，没有具体的逻辑
 - http://localhost:9001/api/biz/hello2
 
-#### Apache-ab 测试 vt & tomcat
+#### Apache-ab 测试 vt & Tomcat
 ```shell
-> ab -n 20000 -c 20 -m GET http://localhost:9001/api/biz/hello2
-This is ApacheBench, Version 2.3 <$Revision: 1923142 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+# 执行 2 次，以第 2 次为准 (方便 JIT 处理)
+
+ab -n 20000 -c 50 -m GET http://localhost:9001/api/biz/hello2
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 Benchmarking localhost (be patient)
 Completed 2000 requests
@@ -38,36 +39,97 @@ Server Hostname:        localhost
 Server Port:            9001
 
 Document Path:          /api/biz/hello2
-Document Length:        141 bytes
+Document Length:        132 bytes
 
-Concurrency Level:      20
-Time taken for tests:   2.121 seconds
+Concurrency Level:      50
+Time taken for tests:   2.203 seconds
 Complete requests:      20000
-Failed requests:        0
-Total transferred:      4920000 bytes
-HTML transferred:       2820000 bytes
-Requests per second:    9429.11 [#/sec] (mean)
-Time per request:       2.121 [ms] (mean)
-Time per request:       0.106 [ms] (mean, across all concurrent requests)
-Transfer rate:          2265.20 [Kbytes/sec] received
+Failed requests:        3392
+   (Connect: 0, Receive: 0, Length: 3392, Exceptions: 0)
+Total transferred:      4401272 bytes
+HTML transferred:       2641272 bytes
+Requests per second:    9077.11 [#/sec] (mean)
+Time per request:       5.508 [ms] (mean)
+Time per request:       0.110 [ms] (mean, across all concurrent requests)
+Transfer rate:          1950.72 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.2      0       1
-Processing:     0    2   0.3      2       4
-Waiting:        0    2   0.5      2       4
-Total:          0    2   0.3      2       4
+Connect:        0    0   0.3      0       1
+Processing:     1    5   0.5      5      12
+Waiting:        0    4   0.9      4      11
+Total:          1    5   0.5      5      12
 
 Percentage of the requests served within a certain time (ms)
-  50%      2
-  66%      2
-  75%      2
-  80%      2
-  90%      3
-  95%      3
-  98%      3
-  99%      3
- 100%      4 (longest request)
+  50%      5
+  66%      6
+  75%      6
+  80%      6
+  90%      6
+  95%      6
+  98%      6
+  99%      6
+ 100%     12 (longest request)
+```
+
+#### Apache-ab 测试 vt & Jetty
+```shell
+# 执行 2 次，以第 2 次为准 (方便 JIT 处理)
+
+ab -n 20000 -c 50 -m GET http://localhost:9001/api/biz/hello2
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Benchmarking localhost (be patient)
+Completed 2000 requests
+Completed 4000 requests
+Completed 6000 requests
+Completed 8000 requests
+Completed 10000 requests
+Completed 12000 requests
+Completed 14000 requests
+Completed 16000 requests
+Completed 18000 requests
+Completed 20000 requests
+Finished 20000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            9001
+
+Document Path:          /api/biz/hello2
+Document Length:        132 bytes
+
+Concurrency Level:      50
+Time taken for tests:   2.191 seconds
+Complete requests:      20000
+Failed requests:        2516
+   (Connect: 0, Receive: 0, Length: 2516, Exceptions: 0)
+Total transferred:      4397484 bytes
+HTML transferred:       2637484 bytes
+Requests per second:    9129.58 [#/sec] (mean)
+Time per request:       5.477 [ms] (mean)
+Time per request:       0.110 [ms] (mean, across all concurrent requests)
+Transfer rate:          1960.31 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.3      0       1
+Processing:     1    5   0.6      5      15
+Waiting:        0    4   1.0      4      14
+Total:          1    5   0.6      5      15
+
+Percentage of the requests served within a certain time (ms)
+  50%      5
+  66%      6
+  75%      6
+  80%      6
+  90%      6
+  95%      6
+  98%      6
+  99%      7
+ 100%     15 (longest request)
 ```
 
 
@@ -75,7 +137,7 @@ Percentage of the requests served within a certain time (ms)
 ### Mock req Baidu
 - http://localhost:9001/mock/http/baidu
 
-#### Apache-ab 测试 vt & tomcat
+#### Apache-ab 测试 vt & Tomcat
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
@@ -138,7 +200,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 
 
-#### Apache-ab 测试 vt & tomcat
+#### Apache-ab 测试 vt & Tomcat
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
@@ -201,7 +263,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 
 
-#### Apache-ab 测试 pt & jetty
+#### Apache-ab 测试 pt & Jetty
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
@@ -262,7 +324,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 
 
-#### Apache-ab 测试 vt & jetty
+#### Apache-ab 测试 vt & Jetty
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
