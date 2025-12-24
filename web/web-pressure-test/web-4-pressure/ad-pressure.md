@@ -16,8 +16,11 @@ curl http://localhost:9001/mock/http/baidu
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
-ab -n 20000 -c 50 -m GET http://localhost:9001/api/biz/hello2
+# ab -n 20000 -c 50 -l -k -m GET http://localhost:9001/api/biz/hello2
+  ab -n 20000 -c 50 -l    -m GET http://localhost:9001/api/biz/hello2
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# 总结：加 -k 没有明显提升 QPS
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 Benchmarking localhost (be patient)
@@ -141,8 +144,12 @@ Percentage of the requests served within a certain time (ms)
 ```shell
 # 执行 2 次，以第 2 次为准 (方便 JIT 处理)
 
-ab -n 10000 -c 50 -m GET http://localhost:9001/mock/http/baidu
+# ab -n 10000 -c 50 -l -k -m GET http://localhost:9001/mock/http/baidu
+  ab -n 10000 -c 50 -l    -m GET http://localhost:9001/mock/http/baidu
 
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# 总结：使用 -k 保活能加 100+ QPS
+# 使用 HTTP/2 没有显示提升 QPS
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 This is ApacheBench, Version 2.3 <$Revision: 1923142 $>
@@ -166,37 +173,36 @@ Server Hostname:        localhost
 Server Port:            9001
 
 Document Path:          /mock/http/baidu
-Document Length:        188 bytes
+Document Length:        Variable
 
 Concurrency Level:      50
-Time taken for tests:   12.720 seconds
+Time taken for tests:   14.724 seconds
 Complete requests:      10000
-Failed requests:        7582
-   (Connect: 0, Receive: 0, Length: 7582, Exceptions: 0)
-Total transferred:      2940408 bytes
-HTML transferred:       1890408 bytes
-Requests per second:    786.16 [#/sec] (mean)
-Time per request:       63.601 [ms] (mean)
-Time per request:       1.272 [ms] (mean, across all concurrent requests)
-Transfer rate:          225.74 [Kbytes/sec] received
+Failed requests:        0
+Total transferred:      2951030 bytes
+HTML transferred:       1901030 bytes
+Requests per second:    679.17 [#/sec] (mean)
+Time per request:       73.619 [ms] (mean)
+Time per request:       1.472 [ms] (mean, across all concurrent requests)
+Transfer rate:          195.73 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.4      0       4
-Processing:    20   63 134.3     33    1725
-Waiting:       20   63 134.4     33    1725
-Total:         21   63 134.4     33    1725
+Connect:        0    0   0.4      0      18
+Processing:    20   73 151.7     37    1464
+Waiting:       20   73 151.7     37    1464
+Total:         20   73 151.7     37    1464
 
 Percentage of the requests served within a certain time (ms)
-  50%     33
-  66%     37
+  50%     37
+  66%     40
   75%     42
-  80%     44
-  90%     93
-  95%    174
-  98%    434
-  99%    680
- 100%   1725 (longest request)
+  80%     45
+  90%     99
+  95%    218
+  98%    720
+  99%   1005
+ 100%   1464 (longest request)
 ```
 
 
