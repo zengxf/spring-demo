@@ -1,2 +1,11 @@
 // common
 sourceCompatibility = 17
+
+dependencies {
+    // Lombok
+//    implementation group: "org.projectlombok", name: "lombok", version: "1.18.42"
+    compileOnly group: "org.projectlombok", name: "lombok", version: "1.18.42"
+    annotationProcessor group: "org.projectlombok", name: "lombok", version: "1.18.42"
+    testCompileOnly group: "org.projectlombok", name: "lombok", version: "1.18.42"
+    testAnnotationProcessor group: "org.projectlombok", name: "lombok", version: "1.18.42"
+}

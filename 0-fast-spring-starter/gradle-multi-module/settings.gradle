@@ -1,5 +1,5 @@
 // 设置名称，默认是项目目录名
-rootProject.name = 'gradle-multi-module'
+rootProject.name = 'my-srv'
 
 
 // common

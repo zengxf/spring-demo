@@ -1,41 +1,18 @@
 plugins {
-    id "org.springframework.boot" version "3.0.6" apply false
-    id "io.spring.dependency-management" version "1.1.0" apply false
-    id "io.freefair.lombok" version "8.0.1" apply false
-    id 'java'
+    id "java"
 }
 
 allprojects {
-    apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'io.freefair.lombok'
+    apply plugin: "java"
 }
 
 subprojects {
-    group = 'cn.zxf'
-    version = '1.0.0'
+    group = "cn.zxf"
+    version = "1.0.0"
     sourceCompatibility = 17
 
     repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
         mavenCentral()
     }
-    dependencies {
-        // Spring
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter'
-		
-        // Lombok
-//        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
-//        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
-//        testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
-//        testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
-
-        // Test
-        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-        testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine' // 兼容 JUnit 4
-    }
-
-    // 启用 JUnit 5
-    test { useJUnitPlatform() }
 }

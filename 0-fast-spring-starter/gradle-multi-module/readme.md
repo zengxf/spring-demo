@@ -1,7 +1,8 @@
 # 快速创建 Gradle 多模块（Spring Web）项目-脚手架
 
-## 插件设置问题
-- 参考： https://stackoverflow.com/questions/26236308/how-to-apply-plugin-to-allprojects-with-new-gradle-plugins-mechanism
+## 版本
+- JDK: 17
+- Gradle: 8.8
 
 ## Gradle 相关
 - 查看所有项目：`gradle -q projects`
