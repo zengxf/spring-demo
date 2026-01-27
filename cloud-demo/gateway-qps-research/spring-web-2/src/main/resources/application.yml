@@ -1,0 +1,10 @@
+server:
+  port: 9671
+
+spring:
+  application:
+    name: test-web2
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

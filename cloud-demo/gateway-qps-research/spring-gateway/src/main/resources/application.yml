@@ -1,0 +1,36 @@
+server:
+  port: 9661
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true                 # 🔥 允许从注册中心发现服务
+          lower-case-service-id: true   # 🔥 自动将服务名转换为小写（URL 中更方便）
+      default-filters: # 为所有路由（包括自动生成的）添加默认过滤器
+        - StripPrefix=1
+      routes:
+        - id: baidu_route
+          uri: https://www.baidu.com # 转发的目标地址
+          predicates:
+            - Path=/baidu, /baidu/**
+          filters:
+            - AddRequestParameter=wd, test # (可选) 强制加上查询参数 wd=test
+    loadbalancer:
+      retry:
+        enabled: true
+        max-retries-on-same-service-instance: 1 # 允许在同一实例上重试的次数
+        max-retries-on-next-service-instance: 2 # 允许切换到其他实例重试的次数
+        retry-on-all-operations: true # 即使是 POST 请求也重试（默认 false 只重试 GET，因为 POST 不是幂等的，重试可能导致数据重复提交）
+        retryable-status-codes: 500, 503, 504 # 哪些状态码触发重试
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG

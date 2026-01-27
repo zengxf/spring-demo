@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: Test-Web1
+
+  profiles:
+    active: port1
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+
+
+
+---
+# 端口 1 环境
+spring:
+  config:
+    activate:
+      on-profile: port1
+my:
+  sign: FFF1
+server:
+  port: 9681
+
+
+
+---
+# 端口 2 环境
+spring:
+  config:
+    activate:
+      on-profile: port2
+my:
+  sign: XXX2
+server:
+  port: 9682
