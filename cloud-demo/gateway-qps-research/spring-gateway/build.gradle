@@ -21,11 +21,13 @@ dependencies {
 
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
-    implementation group: "org.springframework.boot", name: "spring-boot-starter-webflux"
-    implementation group: "org.springframework.cloud", name: "spring-cloud-starter-gateway"
-    implementation group: "com.alibaba.cloud", name: "spring-cloud-starter-alibaba-nacos-discovery"
+    implementation group: "org.springframework.cloud", name: "spring-cloud-starter-gateway" // 包含 webflux
     implementation group: "org.springframework.cloud", name: "spring-cloud-starter-loadbalancer" // 🔥 必须加上
-    implementation "org.springframework.retry:spring-retry" // 🔥 必须加上，重试机制才能生效
+    implementation group: "com.alibaba.cloud", name: "spring-cloud-starter-alibaba-nacos-discovery"
+    implementation group: "org.springframework.retry", name: "spring-retry" // 🔥 必须加上，重试机制才能生效
+
+    // Sentinel
+    implementation "com.alibaba.csp:sentinel-core:1.8.9"
 
     // Test
     testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"

@@ -7,12 +7,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBufferFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import test.exception.FlowException;
+import test.exception.QpsException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,13 +38,12 @@ public class ExceptionHandler implements ErrorWebExceptionHandler {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
 
-        if (response.isCommitted()) {
-            return Mono.error(ex);
-        }
-
         response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
-        if (ex instanceof ResponseStatusException) {
-            response.setStatusCode(((ResponseStatusException) ex).getStatusCode());
+        if (ex instanceof FlowException) {
+            response.setStatusCode(HttpStatus.INSUFFICIENT_SPACE_ON_RESOURCE);
+        }
+        if (ex instanceof QpsException) {
+            response.setStatusCode(HttpStatus.INSUFFICIENT_SPACE_ON_RESOURCE);
         }
 
         return response.writeWith(Mono.fromSupplier(() -> {

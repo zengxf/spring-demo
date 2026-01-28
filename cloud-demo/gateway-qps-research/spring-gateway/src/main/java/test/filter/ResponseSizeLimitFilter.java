@@ -21,7 +21,7 @@ import test.exception.FlowException;
  */
 @Component
 @Slf4j
-@Order(-2) // 🔥 必须在 NettyWriteResponseFilter(-1) 之前执行，否则来不及包装响应
+@Order(-100) // 🔥 必须在 NettyWriteResponseFilter(-1) 之前执行，否则来不及包装响应
 public class ResponseSizeLimitFilter implements GlobalFilter {
 
     private static final int MAX_SIZE_BYTES = 2 * 1024; // 2KB 限制
