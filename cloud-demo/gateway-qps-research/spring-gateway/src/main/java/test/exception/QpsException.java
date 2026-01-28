@@ -2,6 +2,7 @@ package test.exception;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * 流量超限
@@ -9,6 +10,7 @@ import lombok.Data;
  * Created by ZXFeng on 2026/1/28
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class QpsException extends RuntimeException {
 
     private long useNum;
