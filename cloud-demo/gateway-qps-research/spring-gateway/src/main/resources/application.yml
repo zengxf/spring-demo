@@ -32,5 +32,5 @@ spring:
         retryable-status-codes: 500, 503, 504 # 哪些状态码触发重试
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.loadbalancer: DEBUG
+    org.springframework.cloud.gateway: INFO # DEBUG
+    org.springframework.cloud.loadbalancer: INFO # DEBUG

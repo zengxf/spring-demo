@@ -8,19 +8,22 @@ plugins {
 }
 
 ext {
-    set('springCloudVersion', "2023.0.3")          // Spring Cloud 版本
-    set('springCloudAlibabaVersion', "2023.0.1.2") // Spring Cloud Alibaba 版本
+    set("springCloudVersion", "2023.0.3")          // Spring Cloud 版本
+    set("springCloudAlibabaVersion", "2023.0.1.2") // Spring Cloud Alibaba 版本
 }
 
 dependencies {
     // 依赖 common 模块
-    implementation project(':common')
+    implementation project(":common")
+
+    // HuTool
+    implementation group: "cn.hutool", name: "hutool-core", version: "5.8.43"
 
     // Spring
     implementation group: "org.springframework.boot", name: "spring-boot-starter"
     implementation group: "org.springframework.boot", name: "spring-boot-starter-webflux"
     implementation group: "org.springframework.cloud", name: "spring-cloud-starter-gateway"
-    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery'
+    implementation group: "com.alibaba.cloud", name: "spring-cloud-starter-alibaba-nacos-discovery"
     implementation group: "org.springframework.cloud", name: "spring-cloud-starter-loadbalancer" // 🔥 必须加上
     implementation "org.springframework.retry:spring-retry" // 🔥 必须加上，重试机制才能生效
 

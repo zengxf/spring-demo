@@ -29,8 +29,8 @@ public class BizController {
     // http://localhost:9681/api/biz/hello
     @GetMapping("hello")
     public String hello() {
-        log.info("hello --------------");
-        return "hello";
+        log.info("hello -------------- {}",sign);
+        return "Hello from " + sign;
     }
 
     // -------------------------------------
@@ -39,7 +39,7 @@ public class BizController {
     // http://localhost:9681/api/biz/mockReq1
     @GetMapping("mockReq1")
     public Map<String, Object> mockReq1() {
-        log.info("mockReq 1 --------------");
+        log.info("mockReq 1 -------------- {}",sign);
 
         Map<String, Object> res = buildRes();
         res.put("data", "OK 1");
@@ -51,7 +51,7 @@ public class BizController {
     // http://localhost:9681/api/biz/mockReq2
     @GetMapping("mockReq2")
     public Map<String, Object> mockReq2() {
-        log.info("mockReq2 --------------");
+        log.info("mockReq2 -------------- {}",sign);
 
         Map<String, Object> res = buildRes();
         res.put("data", "OK 2");
@@ -65,7 +65,7 @@ public class BizController {
     // http://localhost:9681/api/biz/mockFlow1k
     @GetMapping("mockFlow1k")
     public Map<String, Object> mockFlow1k() {
-        log.info("mockFlow 1k --------------");
+        log.info("mockFlow 1k -------------- {}",sign);
 
         Map<String, Object> res = buildRes();
         res.put("data", mackData(1));
@@ -77,7 +77,7 @@ public class BizController {
     // http://localhost:9681/api/biz/mockFlow2k
     @GetMapping("mockFlow2k")
     public Map<String, Object> mockFlow2k() {
-        log.info("mockFlow 2k --------------");
+        log.info("mockFlow 2k -------------- {}",sign);
 
         Map<String, Object> res = buildRes();
         res.put("data", mackData(2));
