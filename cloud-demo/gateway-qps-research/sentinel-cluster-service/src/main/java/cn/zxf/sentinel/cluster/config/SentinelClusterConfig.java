@@ -1,7 +1,7 @@
 package cn.zxf.sentinel.cluster.config;
 
 import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
-import com.alibaba.csp.sentinel.cluster.server.ClusterTokenServer;
+import com.alibaba.csp.sentinel.cluster.server.EmbeddedClusterTokenServerProvider;
 import com.alibaba.csp.sentinel.cluster.server.config.ClusterServerConfigManager;
 import com.alibaba.csp.sentinel.cluster.server.config.ServerTransportConfig;
 import jakarta.annotation.PostConstruct;
@@ -45,8 +45,8 @@ public class SentinelClusterConfig {
             Set<String> namespaceSet = Collections.singleton(applicationName);
             ClusterServerConfigManager.loadServerNamespaceSet(namespaceSet);
 
-            // // 4. 启动 Token Server（关键步骤！）
-            // ClusterTokenServer.start();
+            // 4. 启动嵌入式 Token Server（使用默认实现）
+            EmbeddedClusterTokenServerProvider.getServer().start();
 
             log.info("Sentinel Cluster Token Server 启动成功，端口: {}, 命名空间: {}",
                     serverPort, applicationName);
