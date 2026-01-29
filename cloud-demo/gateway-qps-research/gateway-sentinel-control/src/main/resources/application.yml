@@ -1,0 +1,32 @@
+server:
+  port: 9641
+
+spring:
+  application:
+    name: gateway-sentinel-control
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        group: DEFAULT_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      default-filters:
+        - StripPrefix=1
+
+# Sentinel 集群客户端配置
+sentinel:
+  cluster:
+    client:
+      enabled: true
+      server-host: localhost
+      server-port: 18730
+      request-timeout: 2000
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    com.alibaba.csp.sentinel: INFO

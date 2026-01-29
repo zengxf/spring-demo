@@ -1,5 +1,7 @@
 package cn.zxf.sentinel.cluster.config;
 
+import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
+import com.alibaba.csp.sentinel.cluster.server.ClusterTokenServer;
 import com.alibaba.csp.sentinel.cluster.server.config.ClusterServerConfigManager;
 import com.alibaba.csp.sentinel.cluster.server.config.ServerTransportConfig;
 import jakarta.annotation.PostConstruct;
@@ -27,17 +29,31 @@ public class SentinelClusterConfig {
 
     @PostConstruct
     public void init() {
-        // 配置 Token Server 传输配置
-        ServerTransportConfig transportConfig = new ServerTransportConfig();
-        transportConfig.setPort(serverPort);
-        transportConfig.setIdleSeconds(600);
-        ClusterServerConfigManager.loadGlobalTransportConfig(transportConfig);
+        try {
+            log.info("开始初始化 Sentinel Cluster Token Server...");
 
-        // 配置命名空间（支持多个应用）
-        Set<String> namespaceSet = Collections.singleton(applicationName);
-        ClusterServerConfigManager.loadServerNamespaceSet(namespaceSet);
+            // 1. 设置为集群服务端模式
+            ClusterStateManager.applyState(ClusterStateManager.CLUSTER_SERVER);
 
-        log.info("Sentinel Cluster Token Server 初始化完成，端口: {}", serverPort);
+            // 2. 配置 Token Server 传输配置
+            ServerTransportConfig transportConfig = new ServerTransportConfig();
+            transportConfig.setPort(serverPort);
+            transportConfig.setIdleSeconds(600);
+            ClusterServerConfigManager.loadGlobalTransportConfig(transportConfig);
+
+            // 3. 配置命名空间（支持多个应用）
+            Set<String> namespaceSet = Collections.singleton(applicationName);
+            ClusterServerConfigManager.loadServerNamespaceSet(namespaceSet);
+
+            // // 4. 启动 Token Server（关键步骤！）
+            // ClusterTokenServer.start();
+
+            log.info("Sentinel Cluster Token Server 启动成功，端口: {}, 命名空间: {}",
+                    serverPort, applicationName);
+        } catch (Exception e) {
+            log.error("Sentinel Cluster Token Server 启动失败", e);
+            throw new RuntimeException("Sentinel Cluster Token Server 启动失败", e);
+        }
     }
 
 }

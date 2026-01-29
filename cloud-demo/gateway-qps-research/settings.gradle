@@ -15,3 +15,6 @@ include "spring-gateway"
 
 // sentinel cluster service
 include "sentinel-cluster-service"
+
+// gateway sentinel control - Sentinel 集群流控客户端网关
+include "gateway-sentinel-control"
