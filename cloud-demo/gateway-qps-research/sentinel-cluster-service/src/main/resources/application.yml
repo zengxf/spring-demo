@@ -1,0 +1,21 @@
+server:
+  port: 9651
+
+spring:
+  application:
+    name: sentinel-cluster-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: public
+    sentinel:
+      # 集群流控配置
+      cluster:
+        server:
+          # 作为 Token Server 启动
+          enabled: true
+          # Token Server 端口
+          port: 18730
+          # 最大允许的 QPS
+          max-allowed-qps: 30000

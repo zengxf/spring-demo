@@ -12,3 +12,6 @@ include "spring-web-2"
 
 // gateway
 include "spring-gateway"
+
+// sentinel cluster service
+include "sentinel-cluster-service"
