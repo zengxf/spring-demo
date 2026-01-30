@@ -1,0 +1,31 @@
+server:
+  port: 8056
+
+spring:
+  application:
+    name: spring-ai-mcp-server
+  ai:
+    mcp:
+      server:
+        enabled: true
+        name: mcp_demo_server # 服务器名称
+        version: 1.0.0 # 服务器版本
+        transport: http # 传输方式：http/stdio
+        protocol: SSE
+        type: SYNC
+        path: /mcp      # MCP 接口路径（默认 /mcp）
+      client:
+        enabled: true # 必须显式启用 MCP 客户端自动配置
+        # 以下配置根据你的MCP服务器实际情况填写
+        name: my-mcp-client # 客户端名称，可自定义
+        version: 1.0.0
+        # 配置连接到的MCP服务器地址（这里以本地WebFlux服务器为例）
+        server:
+          - type: SSE # 服务器类型，SSE或STDIO
+            url: http://localhost:8056/sse # 你的MCP服务器SSE端点地址
+
+logging:
+  level:
+    root: INFO
+    org.springframework.ai: DEBUG
+    org.springframework.ai.mcp: DEBUG
