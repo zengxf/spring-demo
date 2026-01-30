@@ -1,0 +1,20 @@
+server:
+  port: 8026
+
+spring:
+  application:
+    name: spring-ai-mcp-stdio
+  ai:
+    mcp:
+      server:
+        enabled: true
+        name: mcp_demo_server # 服务器名称
+        version: 1.0.0 # 服务器版本
+        transport: http # 传输方式：http/stdio
+        protocol: SSE
+        path: /mcp      # MCP 接口路径（默认 /mcp）
+
+logging:
+  level:
+    root: INFO
+    org.springframework.ai.mcp: DEBUG
