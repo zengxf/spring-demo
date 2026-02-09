@@ -1,6 +1,7 @@
 package cn.zxf.gateway.sentinel.config;
 
 import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
+import com.alibaba.csp.sentinel.cluster.client.TokenClientProvider;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientAssignConfig;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientConfig;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientConfigManager;
@@ -78,6 +79,8 @@ public class SentinelClusterClientConfig {
 
         rules.add(rule);
         FlowRuleManager.loadRules(rules); // 客户端加载到本地 FlowRuleManager
+
+        log.info("Is cluster mode supported: {}", TokenClientProvider.getClient() != null);
     }
 
 }
