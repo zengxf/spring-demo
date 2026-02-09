@@ -13,6 +13,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class GatewaySentinelControlApplication {
 
     public static void main(String[] args) {
+        // System.setProperty("csp.sentinel.log.level", "DEBUG");
+        // System.setProperty("project.name", "ns_test");
         SpringApplication.run(GatewaySentinelControlApplication.class, args);
     }
 }

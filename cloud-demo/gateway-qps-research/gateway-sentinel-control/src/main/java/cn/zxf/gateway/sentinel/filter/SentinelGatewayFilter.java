@@ -2,7 +2,9 @@ package cn.zxf.gateway.sentinel.filter;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.node.ClusterNode;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.slots.clusterbuilder.ClusterBuilderSlot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -30,7 +32,21 @@ public class SentinelGatewayFilter implements GlobalFilter, Ordered {
         try {
             // 使用 Sentinel 进行流控检查
             entry = SphU.entry(resourceName);
-            log.debug("请求通过流控检查: {}", resourceName);
+            log.info("请求通过流控检查: {}", resourceName);
+
+            // 获取 QPS 数据
+            ClusterNode node = ClusterBuilderSlot.getClusterNode(resourceName);
+            if (node != null) {
+                double passQps = node.passQps();  // 通过的请求 QPS
+                double blockQps = node.blockQps(); // 被限流的请求 QPS
+                double totalQps = passQps + blockQps;
+                log.info("{} 通过QPS: {}", resourceName, passQps);
+                log.info("{} 限流QPS: {}", resourceName, blockQps);
+                log.info("{} 总QPS: {}", resourceName, totalQps);
+            } else {
+                log.info("{} 未找到资源节点，可能还未触发埋点", resourceName);
+            }
+
             return chain.filter(exchange);
 
         } catch (BlockException ex) {

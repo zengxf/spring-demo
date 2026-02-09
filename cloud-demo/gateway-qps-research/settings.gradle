@@ -4,6 +4,7 @@ rootProject.name = 'gateway-qps-research'
 
 // common
 include "common"
+include "c-test"
 
 // web 1
 include "spring-web-1"
@@ -18,3 +19,4 @@ include "sentinel-cluster-service"
 
 // gateway sentinel control - Sentinel 集群流控客户端网关
 include "gateway-sentinel-control"
+include 'c-test'

@@ -19,3 +19,8 @@ spring:
           port: 18730
           # 最大允许的 QPS
           max-allowed-qps: 30000
+
+logging:
+  level:
+    org.springframework.cloud.gateway: INFO
+    com.alibaba.csp.sentinel: DEBUG

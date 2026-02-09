@@ -4,11 +4,20 @@ import com.alibaba.csp.sentinel.cluster.ClusterStateManager;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientAssignConfig;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientConfig;
 import com.alibaba.csp.sentinel.cluster.client.config.ClusterClientConfigManager;
+import com.alibaba.csp.sentinel.config.SentinelConfig;
+import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.flow.ClusterFlowConfig;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.alibaba.csp.sentinel.util.AppNameUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import jakarta.annotation.PostConstruct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sentinel 集群客户端配置
@@ -27,9 +36,14 @@ public class SentinelClusterClientConfig {
     @Value("${sentinel.cluster.client.request-timeout:2000}")
     private Integer requestTimeout;
 
+    @Value("${spring.cloud.sentinel.cluster.namespace:ns_test}")
+    private String namespaceName;
+
     @PostConstruct
     public void init() {
         log.info("初始化 Sentinel 集群客户端配置");
+        System.setProperty(SentinelConfig.PROJECT_NAME_PROP_KEY, namespaceName);
+        log.info("AppNameUtil.getAppName(): [{}]", AppNameUtil.getAppName());
 
         // 设置为集群客户端模式
         ClusterStateManager.applyState(ClusterStateManager.CLUSTER_CLIENT);
@@ -47,5 +61,23 @@ public class SentinelClusterClientConfig {
 
         log.info("Sentinel 集群客户端配置完成: serverHost={}, serverPort={}, requestTimeout={}",
                 serverHost, serverPort, requestTimeout);
+
+        loadClientRules();
     }
+
+    private void loadClientRules() {
+        List<FlowRule> rules = new ArrayList<>();
+        FlowRule rule = new FlowRule("test-web1");
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        rule.setCount(4);
+        rule.setClusterMode(true);
+
+        ClusterFlowConfig clusterConfig = new ClusterFlowConfig();
+        clusterConfig.setFlowId(20260209L); // 必须与服务端一致
+        rule.setClusterConfig(clusterConfig);
+
+        rules.add(rule);
+        FlowRuleManager.loadRules(rules); // 客户端加载到本地 FlowRuleManager
+    }
+
 }

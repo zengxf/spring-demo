@@ -24,8 +24,8 @@ public class SentinelClusterConfig {
     @Value("${spring.cloud.sentinel.cluster.server.port:18730}")
     private Integer serverPort;
 
-    @Value("${spring.application.name}")
-    private String applicationName;
+    @Value("${spring.cloud.sentinel.cluster.namespace:ns_test}")
+    private String namespaceName;
 
     @PostConstruct
     public void init() {
@@ -42,14 +42,13 @@ public class SentinelClusterConfig {
             ClusterServerConfigManager.loadGlobalTransportConfig(transportConfig);
 
             // 3. 配置命名空间（支持多个应用）
-            Set<String> namespaceSet = Collections.singleton(applicationName);
+            Set<String> namespaceSet = Collections.singleton(namespaceName);
             ClusterServerConfigManager.loadServerNamespaceSet(namespaceSet);
 
             // 4. 启动嵌入式 Token Server（使用默认实现）
             EmbeddedClusterTokenServerProvider.getServer().start();
 
-            log.info("Sentinel Cluster Token Server 启动成功，端口: {}, 命名空间: {}",
-                    serverPort, applicationName);
+            log.info("Sentinel Cluster Token Server 启动成功，端口: {}, 命名空间: {}", serverPort, namespaceName);
         } catch (Exception e) {
             log.error("Sentinel Cluster Token Server 启动失败", e);
             throw new RuntimeException("Sentinel Cluster Token Server 启动失败", e);
