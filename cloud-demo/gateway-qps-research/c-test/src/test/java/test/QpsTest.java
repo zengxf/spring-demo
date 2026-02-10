@@ -5,29 +5,40 @@ import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * {@link com.alibaba.csp.sentinel.cluster.client.DefaultClusterTokenClient}
  * <p/>
  * Created by ZXFeng on 2026/2/9
  */
 @Slf4j
 public class QpsTest {
 
+    RestTemplate restTemplate = new RestTemplate();
+
     @Test
     public void test() {
-        RestTemplate restTemplate = new RestTemplate();
         for (int i = 1; i <= 5; i++) {
             // log.info("================ {} ================", i);
-            try {
-                // String str = restTemplate.getForObject("http://localhost:9661/test-web1/api/biz/mockReq1", String.class);
+            // String str = restTemplate.getForObject("http://localhost:9661/test-web1/api/biz/mockReq1", String.class);
 
-                String str1 = restTemplate.getForObject("http://localhost:9641/test-web1/api/biz/mockReq1", String.class);
-                log.info("res-1: [{}]", str1);
+            get("res-1", "http://localhost:9641/test-web1/api/biz/mockReq1");
+            get("res-2", "http://localhost:9642/test-web1/api/biz/mockReq1");
+        }
+    }
 
-                String str2 = restTemplate.getForObject("http://localhost:9642/test-web1/api/biz/mockReq1", String.class);
-                log.info("res-2: [{}]", str2);
-            } catch (Exception e) {
-                log.error("err: [{}]", e.getMessage());
-            }
+    @Test
+    public void test1s() throws InterruptedException {
+        for (int i = 1; i <= 5; i++) {
+            get("res-1", "http://localhost:9641/test-web1/api/biz/mockReq1");
+            get("res-2", "http://localhost:9642/test-web1/api/biz/mockReq1");
+            Thread.sleep(1000);
+        }
+    }
+
+    private void get(String sign, String url) {
+        try {
+            String res = restTemplate.getForObject(url, String.class);
+            log.info("{}: [{}]", sign, res);
+        } catch (Exception e) {
+            log.error("{} err: [{}]", sign, e.getMessage());
         }
     }
 

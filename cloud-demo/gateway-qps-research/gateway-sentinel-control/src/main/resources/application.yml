@@ -20,6 +20,8 @@ spring:
   config:
     activate:
       on-profile: port1
+my:
+  sign: SC-AAA-1
 server:
   port: 9641
 
@@ -30,5 +32,7 @@ spring:
   config:
     activate:
       on-profile: port2
+my:
+  sign: SC-BBB-2
 server:
   port: 9642

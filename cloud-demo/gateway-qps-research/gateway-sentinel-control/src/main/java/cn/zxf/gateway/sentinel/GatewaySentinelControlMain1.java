@@ -10,11 +10,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class GatewaySentinelControlApplication {
+public class GatewaySentinelControlMain1 {
 
     public static void main(String[] args) {
         // System.setProperty("csp.sentinel.log.level", "DEBUG");
         // System.setProperty("project.name", "ns_test");
-        SpringApplication.run(GatewaySentinelControlApplication.class, args);
+        System.setProperty("spring.profiles.active", "port1");
+        SpringApplication.run(GatewaySentinelControlMain1.class, args);
     }
 }

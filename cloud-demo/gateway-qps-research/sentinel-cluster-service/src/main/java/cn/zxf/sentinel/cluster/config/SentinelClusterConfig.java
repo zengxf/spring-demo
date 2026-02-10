@@ -59,7 +59,7 @@ public class SentinelClusterConfig {
 
             log.info("Sentinel Cluster Token Server 启动成功，端口: {}, 命名空间: {}", serverPort, namespaceName);
 
-            // this.initClusterFlowRules();
+            this.initClusterFlowRules();
         } catch (Exception e) {
             log.error("Sentinel Cluster Token Server 启动失败", e);
             throw new RuntimeException("Sentinel Cluster Token Server 启动失败", e);

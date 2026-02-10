@@ -6,6 +6,7 @@ import com.alibaba.csp.sentinel.node.ClusterNode;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.clusterbuilder.ClusterBuilderSlot;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -22,6 +23,9 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Component
 public class SentinelGatewayFilter implements GlobalFilter, Ordered {
+
+    @Value("${my.sign:xx}")
+    private String sign;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -86,8 +90,8 @@ public class SentinelGatewayFilter implements GlobalFilter, Ordered {
         exchange.getResponse().setStatusCode(HttpStatus.TOO_MANY_REQUESTS);
         exchange.getResponse().getHeaders().setContentType(MediaType.APPLICATION_JSON);
 
-        String errorMsg = String.format("{\"code\":429,\"message\":\"请求过于频繁,请稍后再试\",\"type\":\"%s\"}",
-                ex.getClass().getSimpleName());
+        String errorMsg = String.format("{\"code\":429,\"message\":\"请求过于频繁,请稍后再试\",\"type\":\"%s\",\"sign\":\"%s\"}",
+                ex.getClass().getSimpleName(), sign);
 
         return exchange.getResponse().writeWith(
                 Mono.just(exchange.getResponse().bufferFactory().wrap(errorMsg.getBytes()))

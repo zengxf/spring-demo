@@ -20,8 +20,8 @@ import java.util.List;
  * Created by ZXFeng on 2026/2/9
  */
 @Slf4j
-@Configuration
-@DependsOn("sentinelClusterConfig") // 对 @PostConstruct 顺序执行，这个才有效果
+// @Configuration
+// @DependsOn("sentinelClusterConfig") // 对 @PostConstruct 顺序执行，这个才有效果
 public class ClusterFlowRuleConfig {
 
     @Value("${spring.cloud.sentinel.cluster.namespace:ns_test}")
@@ -40,7 +40,7 @@ public class ClusterFlowRuleConfig {
         FlowRule rule = new FlowRule();
         rule.setResource("test-web1");  // 资源名称
         rule.setGrade(RuleConstant.FLOW_GRADE_QPS);  // 限流阈值类型：QPS
-        int qps = 3;
+        int qps = 2;
         rule.setCount(qps);  // QPS 阈值为 3
         rule.setClusterMode(true);  // 开启集群模式
 
@@ -50,6 +50,7 @@ public class ClusterFlowRuleConfig {
         // 关键设置：将阈值模式改为全局模式
         // 0 代表单机均摊 (默认), 1 代表集群总体
         clusterConfig.setThresholdType(ClusterRuleConstant.FLOW_THRESHOLD_GLOBAL);
+        clusterConfig.setWindowIntervalMs(2000); // 统计周期
 
         rule.setClusterConfig(clusterConfig);
 
