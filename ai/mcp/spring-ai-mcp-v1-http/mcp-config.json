@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "spring-ai-mcp-stdio": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "D:\\Data\\llm\\temp\\spring-ai-mcp-stdio\\build\\libs\\spring-ai-mcp-stdio-1.0.0.jar"
+      ],
+      "env": {}
+    }
+  }
+}

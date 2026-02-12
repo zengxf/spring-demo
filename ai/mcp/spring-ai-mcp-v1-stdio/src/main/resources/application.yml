@@ -1,0 +1,26 @@
+server:
+  port: 8026
+
+spring:
+  application:
+    name: spring-ai-mcp-stdio
+  ai:
+    mcp:
+      server:
+        # MCP 服务器配置
+        enabled: true
+        # 服务器名称
+        name: Spring AI MCP Demo Server
+        # 服务器版本
+        version: 1.0.0
+        # 传输方式：stdio（标准输入输出）
+        transport: stdio
+  main:
+    banner-mode: off  # 禁用 Spring Boot 启动横幅
+
+logging:
+  level:
+    root: ERROR
+    com.example.mcp: ERROR
+    org.springframework.ai.mcp: ERROR
+    org.springframework: ERROR

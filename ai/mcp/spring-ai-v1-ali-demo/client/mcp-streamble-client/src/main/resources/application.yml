@@ -1,0 +1,46 @@
+server:
+  port: 19100
+
+spring:
+  application:
+    name: mcp-streamable-client
+  main:
+    web-application-type: none
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY:__ Key is empty __}
+      chat:
+        options:
+          model: qwen-max
+    chat:
+      client:
+        observations:
+          include-unknown-fields: true
+          log-prompt: true # 开启提示词和结果记录
+          log-completion: true
+    mcp:
+      client:
+        enabled: true
+        name: my-mcp-client
+        version: 1.0.0
+        request-timeout: 600s
+        type: ASYNC  # or ASYNC for reactive applications
+        streamable-http:
+          connections:
+            server1:
+              url: http://localhost:20000
+              endpoint: /mcp
+
+# 调试日志
+logging:
+  level:
+    io.modelcontextprotocol.client: DEBUG
+    io.modelcontextprotocol.spec: DEBUG
+    org.springframework.ai.chat.client.advisor: DEBUG
+#    org.springframework.ai.mcp: DEBUG
+#    com.alibaba.dashscope.aigc: DEBUG
+#    com.alibaba.cloud.ai.dashscope: DEBUG
+
+
+
+# 北京时间
