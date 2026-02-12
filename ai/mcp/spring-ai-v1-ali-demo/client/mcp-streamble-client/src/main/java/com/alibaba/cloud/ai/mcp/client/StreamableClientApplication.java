@@ -29,9 +29,11 @@ public class StreamableClientApplication {
     }
 
     @Bean
-    public CommandLineRunner predefinedQuestions(ChatClient.Builder chatClientBuilder, ToolCallbackProvider tools,
-                                                 ConfigurableApplicationContext context) {
-
+    public CommandLineRunner predefinedQuestions(
+            ChatClient.Builder chatClientBuilder,
+            ToolCallbackProvider tools,
+            ConfigurableApplicationContext context
+    ) {
         System.out.println("---------------------------------");
         // System.out.println("api-key: " + this.apiKey);
         System.out.println("---------------------------------");
@@ -55,4 +57,5 @@ public class StreamableClientApplication {
             context.close();
         };
     }
+
 }
