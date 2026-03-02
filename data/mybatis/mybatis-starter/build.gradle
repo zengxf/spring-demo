@@ -1,7 +1,9 @@
 plugins {
-    id "org.springframework.boot" version "3.0.3"
-    id "io.spring.dependency-management" version "1.1.0"
-    id "io.freefair.lombok" version "6.6.3"
+    // id "org.springframework.boot" version "3.0.3"
+    // id "io.spring.dependency-management" version "1.1.0"
+    id "org.springframework.boot" version "3.2.5"
+    id "io.spring.dependency-management" version "1.1.4"
+    id "io.freefair.lombok" version "9.2.0"
     id 'java'
 }
 
@@ -18,7 +20,8 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
     // MyBatis
-    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.1'
+    // implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.1' // 对应 sb 3.0
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '3.0.3' // 对应 sb 3.2
     // MySQL
     // implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.0.33'
