@@ -1,0 +1,18 @@
+plugins {
+    id "java"
+}
+
+allprojects {
+    apply plugin: "java"
+}
+
+subprojects {
+    group = "cn.zxf"
+    version = "1.0.0"
+    sourceCompatibility = 17
+
+    repositories {
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+}

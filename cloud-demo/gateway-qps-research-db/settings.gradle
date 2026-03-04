@@ -1,0 +1,7 @@
+// 设置名称，默认是项目目录名
+rootProject.name = 'research-qps'
+
+include 'rule-cfg'                  // 规则配置
+include "sentinel-cluster-service"  // sentinel 服务端
+include "gateway-sentinel-control"  // sentinel 客户端 (微服务网关)
+include "spring-web-1"              // 微服务

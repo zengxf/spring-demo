@@ -1,0 +1,9 @@
+plugins {
+    id "io.freefair.lombok" version "9.2.0"
+    id "java"
+}
+
+dependencies {
+    compileOnly "com.alibaba.csp:sentinel-core:1.8.9"
+    compileOnly group: 'org.slf4j', name: 'slf4j-api', version: '2.0.13'
+}

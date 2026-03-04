@@ -1,0 +1,36 @@
+server:
+  port: 9651
+
+spring:
+  application:
+    name: sentinel-cluster-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: public
+    sentinel:
+      cluster: # 集群流控配置
+        server: # 作为 Token Server 启动
+          port: 18730 # Token Server 端口
+  datasource:
+    url: jdbc:mysql://localhost:3306/nacos_3?useUnicode=true&characterEncoding=utf-8
+      &useSSL=false&failOverReadOnly=false
+      &serverTimezone=GMT%2B8
+    username: root
+    password: abc123
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+  mapper-locations: classpath*:/mapper/*.xml
+
+logging:
+  level:
+    org.apache.ibatis: DEBUG
+    org.mybatis: DEBUG
+    cn.zxf.sentinel.cluster.gateway.mapper: DEBUG
+    org.springframework.cloud.gateway: INFO
+    com.alibaba.csp.sentinel: DEBUG

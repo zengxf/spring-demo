@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zxf.sentinel.cluster.mapper.RuleMapper">
+
+    <select id="selectEnabledAll" resultType="cn.zxf.sentinel.cluster.config.RulePO">
+        SELECT * FROM qps_rule
+        WHERE
+            enable = 1
+    </select>
+
+    <update id="saveRule">
+        INSERT INTO rule_config (
+            id, tenant, app, api, `type`, `limit`, `window`, `enable`
+        ) VALUES (
+            #{id}, #{tenant}, #{app}, #{api}, #{type}, #{limit}, #{window}, #{enable}
+        )
+        ON DUPLICATE KEY UPDATE
+            `type` = VALUES(`type`),
+            `limit` = VALUES(`limit`),
+            `window` = VALUES(`window`),
+            `enable` = VALUES(`enable`),
+            update_time = CURRENT_TIMESTAMP
+    </update>
+
+</mapper>
